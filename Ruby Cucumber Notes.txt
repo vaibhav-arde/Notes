@@ -1,0 +1,553 @@
+//Features Files:
+//1. home_screen.feature
+@home_screen
+Feature: Tests for Home screen functionality
+
+  @default @wip
+  Scenario: Default values on Home screen is Foot and Centimeter
+    Given I land on Home screen
+    Then Left Unit picker value should be "Foot"
+    And Right unit picker value should be "Centimeter"
+
+  Scenario: Show All button should be enabled at launch
+    Given I land on Home screen
+    Then Show All button should be enabled
+    When I press on Clear button
+    Then Show All button should be disabled
+
+  @conversions
+  Scenario Outline: Verify default conversion
+    Given I land on Home screen
+    When I type "<target>" to target text field
+    Then I should see result as "<result>"
+  Examples:
+    |target|result|
+    |1     |12    |
+    |2     |24    |
+    |3     |36    |
+    |9     |106   |
+--------------------------------------------------------------------------
+//2. main_menu.feature
+Feature: As a user I want ro convert Units
+
+  Scenario: When I tap on menu icon, I should left side menu
+    Given I land on Home screen
+    When I press on Menu icon
+    Then I should see left side menu
+
+  @conversions
+  Scenario: I should be able to open My conversions screen
+    Given I land on Home screen
+    When I press on Menu icon
+    And I press on My conversions button
+    Then I land on My conversions screen
+--------------------------------------------------------------------------
+//1.hookd.rb
+
+Before do
+  puts "Before hook is executed"
+end
+
+After do
+  puts "After hook is executed"
+end
+--------------------------------------------------------------------------
+//2. home_screen_steps.rb
+
+Then(/^Left Unit picker value should be "([^"]*)"$/) do |value|
+  puts("Left unit picker value is " + value)
+end
+
+Then(/^Right unit picker value should be "([^"]*)"$/) do |value|
+  puts("Right unit picker value is " + value)
+end
+
+Then(/^Show All button should be (enabled|disabled)$/) do |state|
+  if state == "enabled"
+    puts("button is enabled")
+  elseif state == "disabled"
+    puts("button is disabled")
+  end
+end
+
+When(/^I press on Clear button$/) do
+  puts("clear button is pressed")
+end
+
+
+When(/^I type "([^"]*)" to target text field$/) do |target|
+  puts("target is #{target}")
+end
+
+Then(/^I should see result as "([^"]*)"$/) do |result|
+  puts("result is #{result}")
+end
+--------------------------------------------------------------------------
+//3. main_menu_steps.rb
+Given(/^I land on Home screen$/) do
+  puts("I landed on Home screen")
+end
+
+When(/^I press on Menu icon$/) do
+  puts("Menu icon pressed")
+end
+
+Then(/^I should see left side menu$/) do
+  puts("I see left side menu")
+end
+
+When(/^I press on My conversions button$/) do
+  puts("My conversions button pressed")
+end
+
+Then(/^I land on My conversions screen$/) do
+  puts("Landed on My conversions screen")
+end
+
+--------------------------------------------------------------------------
+//folder structure of RubyCucumber is as below
+android_automation
+	features
+		step_definations
+			custom_conversionts_steps.rb
+			gustures_steps.rb
+			home_screen_steps.rb
+			main_menu_steps.rb
+		support
+			env.rb
+			hooks.rb
+			PreciseUnitConversion.apk
+		custom_conversions.feature
+		gestures.feature
+		home_screen.feature
+		main_menu.feature
+	screenshots
+	cucumber.yml
+	report.html
+------------------------------------------------------------------------------
+//custom_conversionts_steps.rb
+---------------
+Then(/^I press on Create your first conversion button$/) do
+  find_element(id: "btn_new_custom_conversion").click
+end
+
+Then(/^I type "([^"]*)" as custom conversion name$/) do |name|
+  find_element(id: "edit_custom_conversion_category_name").send_keys(name)
+end
+
+When(/^I press on New unit button$/) do
+  find_element(id: "btn_new_custom_unit").click
+end
+
+Then(/^I type "([^"]*)" as unit name$/) do |unit_name|
+  find_element(id: "edit_custom_conversion_unit_dtls_name").send_keys(unit_name)
+end
+
+Then(/^I type "([^"]*)" as unit symbol$/) do |symbol_name|
+  find_element(id: "edit_custom_conversion_unit_dtls_symbol").send_keys(symbol_name)
+end
+
+Then(/^I type "([^"]*)" as unit value$/) do |unit_value|
+  find_element(id: "edit_custom_conversion_unit_dtls_value").send_keys(unit_value)
+end
+
+Then(/^I press submit checkmark on Custom conversions screen$/) do
+  find_element(id: "action_confirm_custom_unit").click
+end
+
+When(/^I press on OK button on Custom conversions screen$/) do
+  find_element(id: "btn_custom_conversion_details_ok").click
+end
+
+Then(/^I verify "([^"]*)" added to Custom conversions list$/) do |conversion_name|
+  text(conversion_name)
+end
+------------------------------------------------------------------------------------------------------
+gustures_steps.rb
+-----------------
+When(/^I swipe from left to right$/) do
+  Appium::TouchAction.new.swipe(start_x: 0.01, start_y: 0.5, end_x: 0.8, end_y: 0.5, duration:600).perform
+end
+
+Then(/^I swipe from right to left$/) do
+  Appium::TouchAction.new.swipe(start_x: 0.99 , start_y: 0.5, end_x: 0.01, end_y: 0.5, duration:600).perform
+end
+-----------------------------------------------------------------------------------------------------------------
+home_screen_steps.rb
+--------------------
+Then(/^Left Unit picker value should be "([^"]*)"$/) do |value|
+  actual_picker_text = find_elements(id: "select_unit_spinner")[0].text
+
+  if actual_picker_text != value
+    fail("Expected left unit picker value is #{value}, actual value is #{actual_picker_text}")
+  end
+
+end
+
+Then(/^Right unit picker value should be "([^"]*)"$/) do |value|
+  array_of_elements = find_elements(id: "select_unit_spinner")
+  actual_picker_text = array_of_elements[1].text
+
+  if actual_picker_text != value
+    fail("Expected right unit picker value is #{value}, actual value is #{actual_picker_text}")
+  end
+end
+
+Then(/^Show All button should be (enabled|disabled)$/) do |state|
+  button_state = find_element(id: "btn_show_all").enabled?
+
+  if state == "enabled"
+    fail("Expected to be enabled") if button_state != true
+  elsif state == "disabled"
+    fail("Expected to be disabled") if button_state != false
+  end
+end
+
+When(/^I press on Clear button$/) do
+  puts("clear button is pressed")
+end
+
+
+When(/^I type "([^"]*)" on application keyboard$/) do |target|
+  digits = target.split("")
+
+  digits.each do |num|
+    find_element(id: "keypad").find_element(xpath: "//android.widget.Button[@text='#{num}']").click
+  end
+end
+
+Then(/^I should see result as "([^"]*)"$/) do |result|
+  value = find_element(id: "target_value").text
+
+  if value != result
+    fail("expected value is #{result}, actual value is #{value}")
+  end
+end
+
+Then(/^I press on Add to Favorites icon$/) do
+  find_element(id: "action_add_favorites").click
+end
+
+Then(/^I press on Favorite conversions$/) do
+  text("Favorite conversions").click
+end
+
+And(/^I verify "([^"]*)" added to Favorite conversions list$/) do |unit_type|
+  item_text = find_element(id: "favorites_item_hint").text
+  if unit_type != item_text
+    fail("Cannot find #{unit_type} in Favorite list")
+  end
+end
+
+Then(/^I press on search icon$/) do
+  find_element(id: "action_search").click
+end
+
+Then(/^I type "([^"]*)" in search field$/) do |text|
+  find_element(id: "search_src_text").send_keys(text)
+end
+
+Then(/^I press return button on soft keyboard$/) do
+  Appium::TouchAction.new.tap(x:0.99, y:0.99, count: 1).perform
+end
+
+Then(/^I see "([^"]*)" as a current unit converter$/) do |current_unit|
+  find_element(id: "action_bar").find_element(xpath: "//android.widget.TextView[@text='#{current_unit}']")
+end
+
+
+Then(/^I select "([^"]*)" from left unit picker$/) do |value|
+  find_elements(id: "select_unit_spinner")[0].click
+  find_in_list(value)
+end
+
+
+Then(/^I select "([^"]*)" from menu$/) do |value|
+  text(value).click
+end
+
+Then(/^I select "([^"]*)" from right unit picker$/) do |value|
+  find_elements(id: "select_unit_spinner")[1].click
+  find_in_list(value)
+end
+
+Then(/^I should see text "([^"]*)"$/) do |value|
+  text(value)
+end
+
+Then(/^I verify that (\d+)(?:st|nd|rd|th)? result in history list is "([^"]*)"$/) do |index, text|
+  parent_element = find_element(id: "history_conversion_list")
+  array_of_elements = parent_element.find_elements(id: "history_single_line")
+  actual_text = array_of_elements[index.to_i - 1].find_element(id: "history_item_hint").text
+  if actual_text != text
+    fail("Expected text is #{text}, actual text is #{actual_text}")
+  end
+end
+
+When(/^I press delete from history at (\d+)st row$/) do |index|
+  parent_element = find_element(id: "history_conversion_list")
+  array_of_elements = parent_element.find_elements(id: "history_single_line")
+  array_of_elements[index.to_i - 1].find_element(id: "deleteIcon").click
+end
+---------------------------------------------------------------------------------------------------------
+main_menu_steps.rb
+------------------
+Given(/^I land on Home screen$/) do
+  find_element(id: "action_search")
+  find_element(id: "action_add_favorites")
+end
+
+When(/^I press on Menu icon$/) do
+  find_element(accessibility_id: "Open navigation drawer").click
+end
+
+Then(/^I should see left side menu$/) do
+  text("Unit Converter")
+end
+
+When(/^I press on My conversions button$/) do
+  text("My conversions").click
+end
+
+Then(/^I land on My conversions screen$/) do
+  text("No personal conversion created yet")
+end
+---------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
+//support
+---------
+//env.rb
+---------
+require "appium_lib"
+require "pry"
+
+def caps
+    { caps: {
+        deviceName: "Anyname",
+        platformName: "Android",
+        app: (File.join(File.dirname(__FILE__), "PreciseUnitConversion.apk")),
+        appPackage: "com.ba.universalconverter",
+        appActivity: "MainConverterActivity",
+        newCommandTimeout: "3600"
+    }}
+end
+
+Appium::Driver.new(caps, true)
+Appium.promote_appium_methods Object
+
+
+def find_in_list(value)
+  3.times { Appium::TouchAction.new.swipe(start_x: 0.5, start_y: 0.2, end_x: 0.5, end_y: 0.8, duration:600).perform }
+
+  current_screen = get_source
+  previous_screen = ""
+
+  until (exists{ text(value) }) || (current_screen == previous_screen) do
+    Appium::TouchAction.new.swipe(start_x: 0.5, start_y: 0.8, end_x: 0.5, end_y: 0.4, duration:1000).perform
+    previous_screen = current_screen
+    current_screen = get_source
+  end
+
+  if exists{ text(value) }
+    text(value).click
+  else
+    fail("Cannot find element with text #{value}")
+  end
+
+end
+----------------------------------------------------------------------------------------------------------------------
+//hooks.rb
+----------
+Before do
+  $driver.start_driver
+end
+
+After do |scenario|
+  if scenario.failed?
+    if !File.directory?("screnshots")
+      FileUtils.mkdir_p("screnshots")
+    end
+
+    time_stamp = Time.now.strftime("%Y-%m-%d_%H.%M.%S")
+    screenshot_name = time_stamp + ".png"
+    screenshot_file = File.join("screnshots", screenshot_name)
+    $driver.screenshot(screenshot_file)
+    embed("#{screenshot_file}", "image/png")
+ end
+  $driver.driver_quit
+end
+
+AfterConfiguration do
+  FileUtils.rm_r("screenshots") if File.directory?("screenshots")
+end
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+//features
+-----------
+//custom_conversions.feature
+----------------------------
+@custom_conversions
+Feature: User able to create and manage custom conversions
+
+  Scenario: User able to create new conversion
+    Given I land on Home screen
+    Then I press on Menu icon
+    Then I press on My conversions button
+    Then I press on Create your first conversion button
+    And I type "Power" as custom conversion name
+    When I press on New unit button
+    Then I type "Horse power" as unit name
+    Then I type "HP" as unit symbol
+    Then I type "1" as unit value
+    Then I press submit checkmark on Custom conversions screen
+    When I press on New unit button
+    Then I type "Mule power" as unit name
+    Then I type "MP" as unit symbol
+    Then I type "0.5" as unit value
+    Then I press submit checkmark on Custom conversions screen
+    When I press on OK button on Custom conversions screen
+    Then I verify "Power" added to Custom conversions list
+----------------------------------------------------------------------------------------------------------------------
+//gestures.feature
+------------------
+@gestures
+Feature: User able to use gestures
+
+  Scenario: User able to swipe to open Left side menu
+    Given I land on Home screen
+    When I swipe from left to right
+    Then I should see left side menu
+    Then I swipe from right to left
+    And I see "Length" as a current unit converter
+
+  Scenario: User able to sGiven I land on Home screen
+    Given I land on Home screen
+    When I swipe from right to left
+    And I see "Calculator" as a current unit converter
+    When I swipe from left to right
+    And I see "Length" as a current unit converter
+----------------------------------------------------------------------------------------------------------------------
+//home_screen.feature
+---------------------
+@home
+Feature: Tests for Home screen functionality
+
+  Background:
+    Given I land on Home screen
+
+  @default
+  Scenario: Default values on Home screen is Foot and Centimeter
+    Then Left Unit picker value should be "Foot"
+    And Right unit picker value should be "Centimeter"
+
+  Scenario: Show All button should be enabled at launch
+    Then Show All button should be disabled
+    When I type "1" on application keyboard
+    Then Show All button should be enabled
+
+  @conversions
+  Scenario Outline: Verify default conversion
+    When I type "<target>" on application keyboard
+    Then I should see result as "<result>"
+  Examples:
+    |target|result    |
+    |1     |30.48     |
+    |2     |60.96     |
+    |3     |91.44     |
+    |9     |274.32    |
+    |1011  |30 815.28 |
+
+  Scenario: User able to add current conversion to Favorites list
+    Then I press on Add to Favorites icon
+    When I press on Menu icon
+    Then I press on Favorite conversions
+    And I verify "Length" added to Favorite conversions list
+  @wip
+  Scenario: User able to search by existing Conversion type
+    Then I press on search icon
+    Then I type "Temperature" in search field
+    And I press return button on soft keyboard
+    Then I see "Temperature" as a current unit converter
+    Then Left Unit picker value should be "Celsius"
+    And Right unit picker value should be "Fahrenheit"
+
+  Scenario Outline: User able to select values from unit pickers
+    Then I select "<unit_type>" from left unit picker
+    When I type "<amount>" on application keyboard
+    Then I should see result as "<result>"
+
+    Examples:
+    |unit_type| amount |  result |
+    | Inch    | 1      | 2.54    |
+    | Link    | 1      | 20.1168 |
+
+  Scenario: User able to convert values
+    When I press on Menu icon
+    Then I select "Volume" from menu
+    Then I select "Cup" from right unit picker
+    When I type "1" on application keyboard
+    Then I should see result as "15.1416"
+
+  Scenario: User able to cleanup conversion history
+    When I press on Menu icon
+    Then I select "History" from menu
+    Then I see "History" as a current unit converter
+    Then I should see text "No history right now"
+    When I press on Menu icon
+    Then I select "Length" from menu
+    When I type "1" on application keyboard
+    When I press on Menu icon
+    Then I select "History" from menu
+    And I verify that 1st result in history list is "Length"
+    When I press delete from history at 1st row
+    Then I should see text "No history right now"
+----------------------------------------------------------------------------------------------------------------------
+//main_menu.feature
+-------------------
+@menu
+Feature: As a user I want ro convert Units
+
+  Scenario: When I tap on menu icon, I should see left side menu
+    Given I land on Home screen
+    When I press on Menu icon
+    Then I should see left side menu
+
+  @conversions
+  Scenario: I should be able to open My conversions screen
+    Given I land on Home screen
+    When I press on Menu icon
+    And I press on My conversions button
+    Then I land on My conversions screen
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+Commands:
+
+adb devices
+adb shell pm list packages
+adb shell pm path com.android.chrome
+adb pull /data/app/com.android.chrome-1.apk
+adb shell dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp'
+----------------------------------------------------------------------------
+
+//IOS
+--------
+//env.rb
+--------
+require "appium_lib"
+require "pry"
+
+def caps
+  { caps: {
+      deviceName: "iPhone 8 Plus",
+      platformName: "iOS",
+      platformVersion: "11.0",
+      app: (File.join(File.dirname(__FILE__), "BonusApp.app")),
+      bundleId: "iOS.BonusApp",
+      newCommandTimeout: "3600"
+  }}
+end
+
+Appium::Driver.new(caps)
+Appium.promote_appium_methods Object
+---------------------------------------------------------------------------------
+		
