@@ -1,0 +1,3449 @@
+****************************************************
+Section: 1 				/ 5
+Introduction to the Course
+***************************************************
+--------------------------------
+1. Introduction to the course
+------------------------------
+RAman: www.way2automation.com
+Other tool:
+Robotium : Supports Android, APK fie needed, Application code needed, Supports Sauce
+calabash ; Supports IOS and APK, only Ruby
+Appium : Supports IOS and APK, No app or APK required, No Application code needed, Supports Sauce
+Selendroid : Supports Android, APK fie needed, No Application code needed, Supports Sauce
+IOS - Driver: Supports IOS, APK fie needed, No Application code needed, Supports Sauce
+------------------------------------------------------------
+2. Important things to know before you start with the course 
+-------------------------------------------------------------
+Appium: It is wrapper over the webDriver API, its build on Json webdriver wire protocol.
+Free Course; (Selenium Webdriver Training with Java Basics)
+
+-------------------------
+3. Introduction to Appium
+-------------------------
+Appium is build using WebDriver protocol
+3 types of application on mobile :
+Native - Any stadalone application ex:Camera , calulator
+Hybrid - It is combination of NAtive and Webapp: ex: facebook, Linkedin.
+WebApps - Open through Browser- Supported are Chrome(Android) And Safari(IOS)
+
+Appium supports Android(Windows, mac, linux) and IOS-(MAC) applications.
+Appium is open source but for IOS real device - Apple Dev Prog - 99 USD/ yr
+IOS Simulators are free of cost
+Android Emulators
+
+------------------------------------------
+4. Installation Guide
+------------------------
+
+-----------------------
+5. Pre requisite
+----------------------
+Java - JDK 1.8 (anything above 1.7)
+Android Studio
+Eclipse IDE
+Appium tool - GUI
+Appium jar - API
+Selenium jar
+
+Specific to IOS:
+Xcode
+
+--------------------------
+*****************************************************
+Section: 2 										 / 2
+The New Android Studio - Video release 19th May 2017
+*****************************************************
+--------------------------------------
+6. Configuring the New Android Studio
+--------------------------------------
+This is for who dont want to use Eclise and want to use android Studio
+For Android Studio: JDK should be 1.8
+Android Studio can be downloaded from:
+https://developer.android.com/studio/index.html?gclid=CO_QkdPowMwCFdITaAodqrYHPQ
+download android studio bundle and run to install
+Android studio comes with Gradle:
+
+After installation start new project: 
+Here need to select minimum SDK
+Gradle Project:
+Gradle will include dependencies at path:
+C:\Users\Selenium\.gradle
+
+build.gradle file hold all the dependencies(In maven same is available as pom.xml file)
+Go to mvnrepository.com
+Java Client hold selenium webdriver 2.5 , if we download this then no need to download selenuim dependency
+
+----------------------------------------------------------------------------
+7. Integrating Appium and Adding Gradle dependencies under Android Studio
+----------------------------------------------------------------------------
+TeamViewer: 
+
+----------------------------------------
+*************************************************
+Section: 3                                  /26
+NEW - Online Live Batch on Appium from Oct 2016
+*************************************************
+------------------------------------------------------
+8. Download Android Studio and Eclipse Stable Version
+------------------------------------------------------
+-------------------------------------------------------------------
+10. Day 1 - Introduction to Appium and other integrated components
+-------------------------------------------------------------------
+What is Selenium:
+It is an API, Multi lang- java, c#, python, ruby, php, js.
+WebDriver - Locating elements on webDriver
+locators - id, name, xpath,css
+wait - implicit xplicit wait;
+Appium - Android and IOS
+To read and write data from excel-POI API- Apache
+JDBC API-jar
+Log4J
+JUnit/ TestNG
+ReportNG, ExtentReport- for reporting
+Data Driven+ Page Object Model
+Maven
+CI - Jenkins
+
+Java - jdk 1.8
+install and setup JAVA_HOME and Path
+JAVA_HOME: C:\Program Files\Java\jdk1.8.0_144
+Append Path available - Path: ;%JAVA_HOME%\bin
+
+Appium: Download from appium.io
+gui and API
+
+Eclipse: Download and extract Eclipse IDE for Java EE developers
+Create Maven Project
+
+Maven: Download from mvnrepository -apache
+MVN_HOME: apache-maven root folder
+Path: %MVN_HOME%\bin
+cmd; mvn --version
+
+main: Anything related to coding
+test: Anything related to Testing like selenium, appium script
+in test two folder 
+java: anything that ie .java
+and resources: xml, testng, xls i.e. not .java
+
+pom.xml:
+maven is build and dependency management tool
+<dependencies>
+	<dependency>
+		---
+		---
+	<dependency>
+<dependencies>
+for Maven we can find .m2 folder in which repository is available
+in c:\users\adid\.m2\repository
+for selenium path extends to:
+org\seleniumhq\selenium\selenium-java
+
+in Eclipse 
+create package then
+create class
+
+webdriver is not a class its a interface
+hence we write it as;
+WebDriver driver = new FirefoxDriver();
+
+using WebDriver we can switch to other browser like ie, chrome
+driver.get("http://gmail.com");
+driver.manage().window().maximize(); //??
+class-- method -- interface
+
+driver.findElement(by)
+by is a class
+locators are static method of 'by' class.
+firebug and firepath
+HTML tag
+	Tagname
+	Attribute
+	values
+Locators:
+ID, Name, CSS, Xpath, LinkText, PartialLinkText, TagName, ClassName
+
+WebElement email = driver.findElement(By.id("Email");
+what is WebElement??
+WebElement is an interface.
+
+email.sendKeys("a@b.com");
+-------------------------------------------------------------------------------
+11. Day 2 - Implicit and Explicit Wait, Dynamic Elements, Appium pre-requisite
+-------------------------------------------------------------------------------
+driver.findElement(by.id("next")).click();
+driver.findElement(by.name("Passwd")).sendKeys("hgjh");
+driver.findElement(by.xpath("//*[@id='signIn'")).click();
+System.out.println(driver.findElement(by.xpath("//*[@id='errormsg_0_Passdw']")).getText());
+
+Above code fails at Passwd;
+Thread.sleep(1000);// it is not recommended
+Two types of element on page:
+One which load when page is loaded : No need to give any wait
+second which load without loading entire page.: need to give wait
+
+recommended is implicitlyWait and ExplicitlyWait
+implicitlyWait:
+It is declared only once in script. It will wait till element is found within given time (below 10 second)
+driver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
+ImplicitlyWait will work if Element is not present in Dom.
+
+DOM: "The W3C Document Object Model (DOM) is a platform and language-neutral interface that allows 
+programs and scripts to dynamically access and update the content, structure, and style of a document."
+
+driver.close();//current page
+driver.quit();//Kill the session + close all related pages
+
+Element is present in Dom but not visible:
+ExplicitlyWait is applicable for particular element.
+WebDriverWait wait = new WebDriverWait(driver, 5);// import WebDriverWait class.
+System.out.println(wait.until(ExpectedConditions.visibilityofElementLocated(By.xpath("//*@id='errormsg_0_Email'")).getText());
+
+What is fluentWait??
+when we set time for wait then in that particular time many hits are done, if we want to manage numbers of hits then fluent Wait is used.
+Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+			.withTimeout(30, TimeUnit.SECONDS)
+			.pollingEvery(5, TimeUnit.SECONDS)
+			.withMessage("Timed out after 30 seconds, user defined")
+			.ignoring(NoSuchElementException.class);
+			
+windowHandles??
+driver.getWindowHandles(); // This is required when we work on tabs, popups, newwindow: this is to switch focus.
+-------
+Locators:
+id 
+name
+className
+xpath:
+//tagName[@attribute='value']
+//* --means selecting all nodes
+//input --All elements who's tag name is 'input'
+//input[@id='Email']
+Concatenate
+//input[@id='Email'][@type='email']
+If consider id is dynamic;
+//input[starts-with(@id,'Emai')]
+//input[contains(@id,'mai')]
+/.. --this will get back to parent.
+there are elements where every thing is same;
+go to qa.way2automation.com
+what is absolute path??
+how to navigate to sibling at same level??-- Use preceding-sibling and following-sibling as follows:
+//div[@id='login']/form/preceding-sibling::fieldset
+//div[@id='login']/form/following-sibling::div
+
+css : this will work only on WebApp, not on native and Hybrid.
+Pre - requisite
+java jdk 1.8
+Eclipse
+Selenium jar 2.53.1
+Android Studio
+configure Device
+First we need to set our environment for android and then we need to set for Appium
+Appium : two part GUI Application and API jar file
+nodejs; Appium is nodejs server -- nodejs.org
+for Iphone/Ipads need apple machine
+IOS - Xcode
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------
+13. Day 3 - Installing Appium
+-------------------------------
+Download Appium GUI from appium.io
+then download API jar or Search same in mnvrepository (apache java client)
+and add to maven pom.xml
+we can get sample application for test from selendroid.io
+connect device.
+give path of application in settings select pre-Launch application in appium and click on launch
+-------------------------------------------------
+---------------------------------------------------------------------
+16. Day 4 - Test WebApp, Deploying app, Starting server through code
+---------------------------------------------------------------------
+DownLoad and install android studio set env varibles
+in SDK manager download couple of API required for the device.
+Configure android device:
+Developer Options -> 6 times tap on Build Number -> Check USB debugging and Stay awake
+cmd: adb devices ->above gives list of devices connected to system.
+Now Donwload Appium gui and install.
+server addres: 127.0.0.1 port:4723
+Appium is channel of communication between real device and client/Code,
+Coding part is API needs to be downloaded i.e. 'Appium java Client'
+
+Create a new Maven project in Eclipse.
+In pom.xml we will be adding maven dependencies.
+
+STF(Smartphone Test Farm) Framework : It support more than 100 devices.
+
+Create new package in src/test/java
+
+package testCases;
+import io.appium.java_clinet.android.AndroidDriver;
+public class TestWebApp{
+	public static AndroidDriver driver;
+	public static void main(String []args){
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
+		capabilities.setCapability("device", "Android");
+		capabilities.setCapability("deviceName", "Samsung Galaxy Edge 7");
+		capabilities.setCapability("platformVersion", "6.0.1");
+		capabilities.setCapability("platformName", "Android");
+		//In case of android 'deviceName' is the most required capabilities.
+		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		driver.manage().timeouts().implicitlyWait(10L,TimeUnit.SECONDS);
+		driver.get("http://google.com");
+		driver.findElement(By.name("q")).sendKeys("Hello Appium !!!!");
+		Thread.sleep(4000);
+		driver.quit();
+	}
+}
+
+Locators on android chrome device;
+Open chrome in desktop and type : chrome://inspect/#devices
+In console type Xpath: ex: $x("//input[@name='q']")
+In console type CSS selector: $$(".other-projects")
+
+Test script for printing and counting values in dropdown in wikipedia:
+package testCases;
+import io.appium.java_clinet.android.AndroidDriver;
+public class TestDropdownOnWebApp{
+	public static AndroidDriver<WebElement> driver;
+	//IOSElement, AndroidElement, MobileElement, WebElement
+	public static void main(String []args){
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
+		capabilities.setCapability("device", "Android");
+		capabilities.setCapability("deviceName", "Samsung Galaxy Edge 7");
+		capabilities.setCapability("platformVersion", "6.0.1");
+		capabilities.setCapability("platformName", "Android");
+		//In case of android 'deviceName' is the most required capabilities.
+		driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		driver.manage().timeouts().implicitlyWait(10L,TimeUnit.SECONDS);
+		driver.get("http://wikipedia.org");
+		WebElement dropDown = driver.findElement(By.id("searchLanguage"));
+		//new Select (dropDown).selectByVisibleText("Dansk");
+		//new Select (dropDown).selectByValue("hi");
+		Select select = new Select(dropDown)
+		select.selectByValue("hi");
+		List<WebElement> values = driver.findElements(By.tagName("option"));//this will return list
+		//List<WebElement> values = dropDown.findElements(By.tagName("option"));//this will return list
+		System.out.println(values.size());
+		for (WebElement value: values){
+			System.out.println(value.getAttribute("lang"));
+		}
+		System.out.println("------Print all links in page");
+		//WebElement block = driver.findElement(By.cssSelector(".other-projects"));
+		//List<WebElement> links = block.findElements(By.tagName("a"));//this will return list
+		
+		List<WebElement> links = driver.findElements(By.tagName("a"));//this will return list
+		System.out.println(links.size());
+		for (WebElement link: links){
+			System.out.println(link.getAttribute("href")+ "----"+ link.getText());
+		}
+			
+		}
+		
+driver.manage().deleteAllCookies();// this will delete all cookies.
+
+How to start Appium server by cmd:
+In Appium installed folder ex; 'c:\\Program File(x86)\Appium' we have node_modules folder (since appium is one of nodejs programm)
+c:\\Program File(x86)\Appium\node_modules\appium\bin here we have appium.js file .. go to cmd from here and type node appium
+this will start appium.
+
+How to start Appium from Framework;
+AppiumDriverLocalService class available
+AppiumDriverLocalService service = AppiumDriverLocalService
+	.buildService(new AppiumServiceBuilder()
+		.usingDriverExecutable(new File ("C:\\Program Files (x86)\\Appium\\node.exe")))//this path has nodejs hence the path.
+		.withAppiumJS(new File("c:\\Program File(x86)\\Appium\\node_modules\\appium\\bin\\appium.js")));//here need to give path of AppiumJS file.
+		.withLogFile(new File("c:\\appiumlogs\\logs.txt")));//This will Print log in separate file:
+	service.start();
+-------------------
+Navite Applications:
+We will download sample app from selendroid.io for installation
+
+Install app using Appium application:
+In Android settings of appium give Application path, then in general settings click on Pre-Launch Application.
+
+from code;
+File app = new File("paste path of file")
+DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("device", "Android");
+		capabilities.setCapability("app", app.getAbsolutePath());
+	// If app is already install then we need to give below two capabilities(appPackage, appActivity) which are also available in appium settings;
+		capabilities.setCapability("appPackage", "application name");
+		capabilities.setCapability("appActivity", ".HomeScreenActivity");
+
+Note: For Appium we need to install .net framework
+----------------------------------------------------------------------------
+18. Day 5 - Native Events, Dialing a call, Package and Activity information
+----------------------------------------------------------------------------
+download application ; APK info : It gives information /activities about the apps in your device.
+ADT Plugin is required : in Eclipse marketplace search for ADT Android development code for eclipse 
+
+To launch application we need "appPackage, and appActivity".
+In Play Store we have 'APK info' app
+Need ADP plugin i.e. Android Devloper Tools for eclipse
+
+Code to Dial and also about finding element;
+package testCases;
+import io.appium.java_clinet.android.AndroidDriver;
+public class TestDropdownOnWebApp{
+	public static AndroidDriver<WebElement> driver;
+	//IOSElement, AndroidElement, MobileElement, WebElement
+	public static void main(String []args){
+	
+		AppiumDriverLocalService class available
+		AppiumDriverLocalService service = AppiumDriverLocalService
+			.buildService(new AppiumServiceBuilder()
+			.usingDriverExecutable(new File ("C:\\Program Files (x86)\\Appium\\node.exe")))//this path has nodejs hence the path.
+			.withAppiumJS(new File("c:\\Program File(x86)\\Appium\\node_modules\\appium\\bin\\appium.js")));//here need to give path of AppiumJS file.
+			.withLogFile(new File("c:\\appiumlogs\\logs.txt")));//This will Print log in separate file:
+		service.start();
+		
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
+		capabilities.setCapability("device", "Android");
+		capabilities.setCapability("deviceName", "Samsung Galaxy Edge 7");
+		capabilities.setCapability("platformVersion", "6.0.1");
+		capabilities.setCapability("platformName", "Android");
+		capabilities.setCapability("appPackage", "io.selendroid.testapp");
+		capabilities.setCapability("appActivity", "io.selendroid.testapp.HomeScreenActivity");
+		
+		//In case of android 'deviceName' is the most required capabilities.
+		driver = new AndroidDriver<WebElement>(new URL("http;//127.0.0.1:4723/wd/hub"), capabilities);
+		driver.manage().timeouts().implicitlyWait(10L,TimeUnit.SECONDS);
+		driver.get("http://wikipedia.org");
+		WebElement dropDown = driver.findElement(By.id("searchLanguage"));
+		//new Select (dropDown).selectByVisibleText("Dansk");
+		//new Select (dropDown).selectByValue("hi");
+		Select select = new Select(dropDown)
+		select.selectByValue("hi");
+		List<WebElement> values = driver.findElements(By.tagName("option"));//this will return list
+		//List<WebElement> values = dropDown.findElements(By.tagName("option"));//this will return list
+		System.out.println(values.size());
+		for (WebElement value: values){
+			System.out.println(value.getAttribute("lang"));
+		}
+		System.out.println("------Print all links in page");
+		//WebElement block = driver.findElement(By.cssSelector(".other-projects"));
+		//List<WebElement> links = block.findElements(By.tagName("a"));//this will return list
+		
+		List<WebElement> links = driver.findElements(By.tagName("a"));//this will return list
+		System.out.println(links.size());
+		for (WebElement link: links){
+			System.out.println(link.getAttribute("href")+ "----"+ link.getText());
+		}
+			
+		}
+Appium inspector is not good for windows machine, hence we use uiautomator to find elements on mobile app.
+At below path we have uiautomator;
+C:\Users\Administrator\AppData\Local\Android\sdk\tools\bin
+
+driver.findElement(By.id("io.selendroid.testapp:id/my_test_field")).sendKeys("Hello Appium!!!");
+driver.hideKeyboard();//this will hide keyboard once typing is complete.
+
+System.out.println(driver.findeElements(By.className("android.widget.Button"))).size();
+List <MobileElement> btn = driver.findeElements(By.className("android.widget.Button"))
+for (MobileElement button : btn){
+	if (button.getAttribute("text").contains("Display text view"))
+		button.click();
+}
+
+If device is lock:
+if (driver.isLocked()){
+	driver.unlockDevice();
+}
+
+Handle Notification on Mobile:
+driver.openNotifications();
+driver.findElement(By.id("com.android.systemui:id/clear button")).click();
+
+driver.closeApp();
+driver.removeApp("io.selendroid.testapp");
+System.out.println(driver.isAppInstalled("io.selendroid.testapp")); //this will return true or false
+ if (!driver.isAppInstalled("io.selendroid.testapp")){
+	driver.installApp("c:\\users\\varde\\download\\selenium-test-app-0.17.0.apk");
+	driver.startActivity(appPackage, appActivity);//used for starting and switching app 
+ }
+
+How to check if button exist on page or not if it is not available.
+public static boolean isElementPresent(String id){
+	try{
+	driver.findElement(By.id(id));
+	return true;
+	}catch(Throwable t){
+		return false;
+	}
+}
+
+if(isElementPresent("com.android.systemui:id/clear button")){
+	driver.findElement(By.id("com.android.systemui:id/clear button")).click();
+}
+
+driver.pressKeyCode(4); //4 is for backkey;
+
+Dialing a number:
+
+		capabilities.setCapability("platformName", "Android");
+		capabilities.setCapability("appPackage", "com.android.contacts");
+		capabilities.setCapability("appActivity", "com.android.dialer.DialtactsActivity");
+		
+	driver.findElement(By.id("com.android.contacts:id/one")).click();
+	driver.findElement(By.id("com.android.contacts:id/two")).click();
+	driver.findElement(By.id("com.android.contacts:id/three")).click();
+	driver.findElement(By.id("com.android.contacts:id/nine")).click();
+	driver.findElement(By.id("com.android.contacts:id/zero")).click();
+	driver.findElement(By.id("com.android.contacts:id/dialButton")).click();
+
+	If a machine and device on same wifi network then we can remove USB :
+In cmd:
+adb tcpip 5555
+now go back to device and check for ip address(192.168.1.7) of wifi 
+adb connect 192.168.1.7
+-----------------------------------------------------------------------
+19. Day 6: Handling Gestures, Drag and Drop, Swipe, Scroll etc.
+----------------------------------------------------------------
+Gesture: Swipe , long press, multi touch, Drag and drop;
+
+Drag and Drop:
+Application : Drag-Sort Demos
+To get apk install ES file Explorer
+
+We keep apk file in Eclipse and use below command to :
+File app = new File(System.getProperty("user.dir")+"//apk//drag.apk");
+
+capabilities.setCapability("app", app.getAbsolutePath());
+
+Now open uiautomatorviewer take screenshot and locate element
+if there are same class name and text... use index as below:
+driver.findElements(By.id("com.mobeta.android.demodslv:id/activity title")).get(0).click();
+
+get Xml / page source by below command;
+System.out.println(driver.getPageSource());
+then same that as xml and open in chrome browser, find text, create xpath. use that xpath in code to find element.
+
+to align code use ctrl+shift+f.
+
+Handling element via android internal class:
+uiautomator 
+String text = "Basic";
+driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\""+text+"\")").click();
+
+TO drag element:
+first locate element 
+Use sibling as below;
+$x("//android.widget.TextView[contains(@text,'Kurt')]/preceding-sibling::android.widget.ImageView"));
+
+MobileElement draggable = driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'Brad')]/preceding-sibling::android.widget.ImageView"))
+MobileElement droppable = driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'Kurt')]/preceding-sibling::android.widget.ImageView"))
+
+TouchAction action = new TouchAction(driver);
+action.longPress(draggable).moveTo(droppable).release().perform();
+
+Multitouch:
+Download multitouch app.
+capabilities.setCapability("appPackage", "multitouchpro.tests");
+capabilities.setCapability("appActivity", ".Multitouch");
+
+TouchAction action1 = new TouchAction(driver).tap(345, 1475).waitAction(2000);
+TouchAction action2 = new TouchAction(driver).tap(742, 895).waitAction(2000);
+TouchAction action3 = new TouchAction(driver).tap(925, 2105).waitAction(2000);
+
+new MultiTouchAction(driver).add(action1).add(action2).add(action3).perform();
+
+Thread.sleep(4000);
+driver.quit();
+In developer option --> enable 'Show pointer location' to see axis.
+Scrolling and swiping are different.
+
+Scrolling:
+scrollto() is no more in new API.
+Now we are dependend on internal library of android that is uiautomator
+Now we are dependend on internal library of android that is uiautomator
+need to use one class : UiScrollable.
+capabilities.setCapability("appPackage", "com.android.contacts");
+capabilities.setCapability("appActivity", "com.android.dialer.DialtactsActivity");
+String text ="Fire";
+driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().resourcedId(\"android:id/list\")).scrollIntoView(new UiSelector().textContains(\""+text+"\"))").click();
+
+Swipping:
+capabilities.setCapability("appPackage", "in.amazon.mShop.android.shopping");
+capabilities.setCapability("appActivity", "com.amazon.mShop.home.HomeActivity");
+
+driver.findElement(By.id("in.amazon.mShop.android.shopping:id/rs_search_src_text")).click();
+driver.findElement(By.id("in.amazon.mShop.android.shopping:id/rs_search_src_text")).sendKeys("Shoes");
+//below code to press enter on android :
+driver.pressKeyCode(AndroidKeyCode.ENTER);
+
+List<MobileElement> names = driver.findElements(By.id("in.amazon.mShop.android.shopping:id/item_title"))
+try{
+while(true){
+for(MobileElement name: names){
+	if(name.getText().startsWith("Columbus")){
+		name.click();
+		break;
+	}
+}
+
+//driver.swipe(startx, starty, endx, endy, duration);
+driver.swipe(500, 1900, 500, 200, 5000);
+}}catch(Throwable t){
+	
+}
+---------------------------------------------------------------------------
+21. Day 7 - Handling Hybrid Apps, Right and Left swipe, Toast Verification
+---------------------------------------------------------------------------
+Right Left Swipe:
+capabilities.setCapability("appPackage", "com.android.contacts");
+capabilities.setCapability("appActivity", "com.android.dialer.DialtactsActivity");
+String text ="Fire";
+MobileElement ele = driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().resourcedId(\"android:id/list\")).scrollIntoView(new UiSelector().textContains(\""+text+"\"))");
+
+//Left to right swipe:
+drive.swipe(ele.getLocation().x+200, ele.getLocation().y, ele.getLocation().x+1100, ele.getLocation().y, 5000);
+
+//Right to Left swipe:
+drive.swipe(ele.getLocation().x+900, ele.getLocation().y, ele.getLocation().x+100, ele.getLocation().y, 5000);
+------------------
+Switch between Native and hybrid:
+App : 'HTML5Test WebView'
+public static void main(String []args){
+	DesiredCapabilities capabilities = new DesiredCapabilities();
+	capabilities.setCapability("deviceName", "Samsung Galaxy Edge 7");
+	capabilities.setCapability("appPackage", "com.html5test.webview");
+	capabilities.setCapability("appActivity", "main.java.MainActivity");
+	driver = new AndroidDriver(new URL("http;//127.0.0.1:4723/wd/hub"), capabilities);
+	driver.manage().timeouts().implicitlyWait(10L,TimeUnit.SECONDS);
+	
+	//uiautomator can not identify element in webview.
+	
+	driver.findElement(By.id("com.html5test.webview:id/et")).clear();
+	driver.findElement(By.id("com.html5test.webview:id/et")).sendKeys("https://google.com");
+	driver.findElement(By.id("com.html5test.webview:id/go")).click();
+	//below code line will not work since we are moving from native to web view:
+	//driver.findElement(By.name("q")).sendKeys("Inside webview!!!");
+	
+	//lets find context views:
+	Thread.sleep(3000);
+	Set<> contextNames = driver.getContextHandles();
+	//Thread.sleep(3000);
+	for (String context: contextNames){
+		System.out.println(context);
+		//below if condition will change the context to WEBVIEW.
+		/*if(context.contains("WEBVIEW")){
+			driver.context(context);
+		}*/
+	}
+	//Out put values are ; NATIVE_APP and WEBVIEW_com.html5test.webview
+	driver.context("WEBVIEW_com.html5test.webview");// this will change context to webview
+	driver.findElement(By.name("q")).sendKeys("Inside webview!!!");
+	driver.context("NATIVE_APP");// this will change context to NATIVE_APP
+--------------
+How to take screenshot of device, for entire screen or perticular element: Validate toast message:
+public static void main(String []args){
+	//to take screenshot is same as in selenium:
+	public static String destDir;
+	public static DateFormat dateFormat;
+	public static void takeScreenShot(){
+		// Directory
+		destDir = "screenshots"
+		//what is type cast???
+		//Capturing screenshot 
+		File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		//Set Date
+		dateFormat = new SimpleDateFormat("dd-mmm-yyyy__hh_mm_ssaa");
+		//Create Folder
+		new File(destDir).mkdir();
+		String destFile = dateFormat.format(new Date())+".png";
+		
+		FileUtils.copyFile(scrFile, new File(destDir+"/"+destFile));
+	}
+	DesiredCapabilities capabilities = new DesiredCapabilities();
+	capabilities.setCapability("deviceName", "Samsung Galaxy Edge 7");
+	capabilities.setCapability("appPackage", "io.selendroid.testapp");
+	capabilities.setCapability("appActivity", ".HomeScreenActivity");
+	driver = new AndroidDriver(new URL("http;//127.0.0.1:4723/wd/hub"), capabilities);
+	driver.manage().timeouts().implicitlyWait(10L,TimeUnit.SECONDS);
+	
+	takeScreenShot();
+	Thread.sleep(4000);
+	driver.quit();
+	}
+}
+
+Copy code for perticular element screenshot -----
+
+Toast Messages Validation:
+
+package toastVerification;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import net.sourceforge.tess4j.ITesseract;
+import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.TesseractException;
+
+public class ToastVerification {
+	
+	public static AndroidDriver<MobileElement> driver;
+	 public static String destDir;
+	 public static DateFormat dateFormat;
+	 public static String scrPath;
+	 
+	 @Test
+	 public void validateToast() throws MalformedURLException{
+		 DesiredCapabilities capabilities = new DesiredCapabilities();
+			capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
+			capabilities.setCapability("device", "Android");
+			capabilities.setCapability("deviceName", "Samsung 7S Edge");
+			capabilities.setCapability("platformVersion", "6.0");
+			capabilities.setCapability("platformName","Android");
+			capabilities.setCapability("appPackage",
+					"io.selendroid.testapp");
+			capabilities.setCapability("appActivity",
+					".HomeScreenActivity");
+			driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+			driver.manage().timeouts().implicitlyWait(20L, TimeUnit.SECONDS);		
+
+			driver.findElementById("io.selendroid.testapp:id/buttonTest").click();
+			driver.findElementById("android:id/button2").click();
+			takeScreenShot();
+	
+			String Text=OCR(scrPath);
+			
+			System.out.println(Text);
+			
+			Assert.assertTrue(Text.contains("Activity1 will continue"), "Activity will continue");	 
+	 }
+//Method for Capturing Screenshot
+
+	public static void takeScreenShot() {
+		  // Set folder name to store screenshots.
+		  destDir = "screenshots";
+		  // Capture screenshot.
+		  File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		  // Set date format to set It as screenshot file name.
+		  dateFormat = new SimpleDateFormat("dd-MMM-yyyy__hh_mm_ssaa");
+		  // Create folder under project with name "screenshots" provided to destDir.
+		  new File(destDir).mkdirs();
+		  // Set file name using current date time.
+		  String destFile = dateFormat.format(new Date()) + ".png";
+
+		  try {
+		   // Copy paste file at destination folder location
+		   FileUtils.copyFile(scrFile, new File(destDir + "/" + destFile));
+		   scrPath = destDir+ "/" + destFile;
+		  } catch (IOException e) {
+		   e.printStackTrace();
+		  }
+		 }
+
+//OCR Reading
+
+public static String OCR(String ImagePath)
+{
+	 String result = null;
+	  File imageFile = new File(ImagePath);
+      ITesseract instance = new Tesseract();  
+      try {
+          result = instance.doOCR(imageFile);
+     
+      } catch (TesseractException e) {
+          System.err.println(e.getMessage());
+      }
+	return result;
+  }
+}
+-------------------------------------------------------------------
+23. Day 8 - Utilities & TestNG Framework
+-----------------------------------------
+Utilities :
+In test resources create folder Logs in that create Application .log
+Apache Log4j API -- JAr
+Application.log -- Needed to store all logs
+Logger -- its a class in log4j
+log4j.properties file// this file is kept in Test /java
+
+//Log file location as below;
+.withLogFile(new File(System.getProperty("user.dir")+"\\src\\test\\resources\\logs\\logs.txt")));
+
+//To get log need to add below statement:
+public static Logger log = Logger.getLogger(devpinoyLogger); // import this from apache.
+
+log.debug("Application Launched");//This is just like SYSO but will be printed in logs.
+log.debug("Application Closed");
+
+Send Automail with ScreenShot:
+needed:
+JavaMail api
+Create package utility for all common utilities.
+get javax.mail api from MVNRepository.
+
+In monitoringMail.java file we sendmail class which we need to call to send mail.
+parameters required for sendmail class are stored in TestConfig class.
+need mails server information of the company to send mail.
+
+Create a new package "properties" in test/resources, then in that creat new file conf.properties
+How to read property file:
+create new java class 'TestProperties'
+public class TestProperties{
+	public static void main(String [] args){
+	Properties android = new Properties();
+	FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\resources\\properties\\Conf.properties);
+	android.load(fis);
+	System.out.println(android.getProperty("device.name"));
+	//at below ex we can place this.
+	//capabilities.setCapability("platformName",android.getProperty("device.name"));
+	}
+}
+
+TestNG Framework:
+Needed TestNG jars
+TestNG plugin can be added to eclipse
+Go to TestNG.org and download , or copy maven dependency or drag plugin and drop into eclipse.
+Go to Build path - add liabrary - Select TestNG -Click next -finish--> We get jar in eclipse.
+No main method in testNG class, needed tag as @Test
+ByDefault execution happens in alphabatical order
+we can set Priority;
+@Test(priority=1)
+Before/After every test if we need to perform some activity then use annotation as : @BeforeMethod and @AfterMethod
+Before/After Class if we need to perform some activity then use annotation as : @BeforeTest and @AfterTest
+In TestNG to compare values we need to use 'Assert'. ex; Assert.assertEquals(actualText, expectedText);
+Assert.assertTrue(isElementPresent(""));
+Assert.fail("any message");
+Dependencies:
+@Test(priority=2, dependentOnMethods={"doLogin", "doCompose"}), if any of previous fail then dependent will skip.
+@Test(priority=2, dependentOnMethods="doLogin")
+Forceful skipping test case: throw new SkipException("Forceful skipping test case");
+
+Create TestSuite:
+Right click on Project -go to TestGN - Convert to TestNG 
+Above generate testGn.xml file 
+
+----------------------------------------
+24. Day 9 - TestNG Framework
+----------------------------------------
+Groups:
+ex: @Test(group="high")  @Test(priority=2, groups="med")
+Test can be defined with multiple groups: Ex:  @Test(group="high", "med") 
+to run test cases of same group do below changes in TestNG.xml:
+under Suite tag add below:
+<groups>
+    <run>
+      <include name="high"/>
+	  <exclude name="low"/>
+    </run>
+</groups>
+---------
+Take screenshot only if test fail:
+Listner:
+In testGN.xml need to add tag:
+<listeners>
+	<listener class-name="Packagename.classname"><listener>
+</listeners>
+
+@BeforeSuite @AfterSuite
+
+What is softAssertions???
+SoftAssertion will allow you multiple failure in one test case.
+
+ReportNG;
+ Download from MVNrepository
+Guice : Download from MVNrepository
+add below tags in listners tag in testNG.xml:
+<listeners>
+      <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+      <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+</listeners>
+
+add below in listener class to get screenshot;
+System.setProperty("org.uncommons.reportng.escape-output","false");
+Reporter.log("<a target=\"_blank\" href= \"abcd.jpg\">Screenshot Captured</a>");
+-------------
+Extent Report:
+Download from mvnrepository: ExtentReports For Selenium
+--------
+Running through Maven:
+cmd mvn clean
+maven Test:
+To tell maven not to pick test starting with test but to pick TestNG.xml we need maven-surefire-plugin.
+---------------------------------------------------------------------------------
+25. Day 10 - TestNG Dataprovider & Grid - Parallel execution on Multiple Devices
+---------------------------------------------------------------------------------
+Parameterization:
+Using excel sheet: Excel has two columns username password
+@DataProvider : this annotation is used to provide data.
+arguments passed to method should be same as in Excel sheet. 
+To have generic Data type we have 'object' , it is mother of all classes, super class. object can retrieve and return data in any form.
+Each row of excel will be treated as individual test.
+
+
+@Test(dataProvider = "getData")
+public void loginTest(String username, String password){
+	System.out.println(u+"---"+p);
+	
+}
+
+//two [][] are because we have two inputs in excel. 
+@DataProvider
+public static Object [][] getData(){
+	Object[][] data =new Object[2][2];
+	data[0][0] ="Sham";
+	data[0][1] ="Ram";
+	data[1][0] ="Gopal";
+	data[1][1] ="Sundar";
+	return data;
+}
+
+POI API is from Apache and it is one PAI to read microsoft docs. 
+POI HSSF- 97(-2007)
+POI XSSF- (.xlsx)
+for XSSF , utility is created as ExcelReader.
+poi, poi-ooxml, dom4j, xmlbeans, poi-ooxml-schemas.
+@Test(dataProvider = "getData")
+public void loginTest(String username, String password){
+	System.out.println(u+"---"+p);
+	
+}
+//in test/ resources create a new folder as test data and store the excel there as testdata.xlsx
+//two [][] are because we have two inputs in excel. 
+@DataProvider
+public static Object [][] getData(){
+	if(excel==null){
+		excel = new ExcelReader(System.getProperty("user.dir")+"\\src\\test\\resources\\testdata\\testdata.xlsx");// this loads the excel.
+		String  sheetName="LoginTest";
+		int rows = excel.getRowCount(sheetName);
+		int cols = excel.getColumnCount(sheetName);
+		System.out.println("Total rows are : "+rows+" and cols are : "+cols);
+	}
+	return data;
+	
+}
+
+Same test on Multiple devices:
+	Grid: Parallel execution is not task of Grid, it will be done by TestNG 
+In testNG suite annotations one need to add a tag as parallel ="tests" as below:
+<suite name ="Suite" parallel = "tests">
+
+------------------------------------------------------------------------------------
+26. Day 11 - Jenkins, Customized Reporting using ReportNG and Extent Report
+------------------------------------------------------------------------------------
+Jenkins:
+Continious Integration: 
+call to maven Ant, batch run, build after every checkin
+
+Download jenkins: jenkins.io:
+we get .war file for jenkins 
+go to cmd ; java -jar jenkins.war
+localhost:8080 to launch jenkins Ui
+
+
+------------------------------------------------------------------------------------
+27. Day 12 - Live Project on Page Object Model Framework
+------------------------------------------------------------------------------------
+Using Page Object model : If any change in requirement then dont need to update test cases only change in bussiness logic is sufficient.
+test cases and bussiness logic is kept separate in POM.
+
+in src/test/java
+base: Create Base classes in Base packeage:
+EX: ScreenBase.java, and TestBase.java
+
+package base;
+public class ScreenBase{
+	public AppiumDriver<MobileElement> driver;
+	//below is constructor
+	public ScreenBase(AppiumDriver<MobileElement> driver){
+	this.driver = driver;
+	}
+}
+
+in src/test/java
+Listener : we can have same listners.
+
+in src/test/java
+Utility: Same utilities can be used like reading writing excel, sending mail, if needed extra utilities can be added.
+creating new utility file : CommonUtils.java to load all properties, initialising DesiredCapabilities, 
+Settingup android capabilities, method to initialise appium driver :
+
+AppiumServer: this utility will start and stop service:
+package utility;
+public class AppiumServer{
+	public static void start(){
+	
+	}
+	
+	public static void stop(){
+		service.stop();
+	}
+}
+
+package utility;
+public class CommonsUtils{
+	public static int IMPLICIT_WAIT_TIME;
+	public static int EXPLICIT_WAIT_TIME;
+	public static String BASE_PKG;
+	public static String APP_PATH;
+	public static String APP_ACTIVITY;
+	public static String BROWSER_NAME;
+	public static String PLATFORM_NAME;
+	public static String PLATFORM_VERSION;
+	public static String DEVICE_NAME;
+	public static String APPIUM_PORT;
+	public static URL severUrl;// import URL from java.net
+	
+	private static Properties prop = new Properties();
+	private static DesiredCapabilities capabilities = new DesiredCapabilities();
+	private static AppiumDriver<MobileElement> driver; //here we can create AndroidDriver too but to use for both android and IOS best is to use AppiumDriver
+	
+		//below is for android same way we can create for IOS: loadIOSConfProp
+	public static void loadAndroidConfProp(String propertyFileName){
+		//here we will load property file
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"src\\test\\resources\\properties\\"+ propertyFileName)
+		prop.load(fis);
+		IMPLICIT_WAIT_TIME = Integer.parseInt(prop.getProperty("implicit.wait"));
+		EXPLICIT_WAIT_TIME = Integer.parseInt(prop.getProperty("explicit.wait"));
+		APP_PATH = prop.getProperty("application.path");
+		BASE_PKG = prop.getProperty("base.pkg");
+		APP_ACTIVITY = prop.getProperty("application.activity");
+		BROWSER_NAME = prop.getProperty("browser.name");
+		PLATFORM_NAME = prop.getProperty("platform.name");
+		PLATFORM_VERSION = prop.getProperty("platform.version");
+		DEVICE_NAME = prop.getProperty("device.name");
+		APPIUM_PORT = prop.getProperty("appium.server.port");
+	}
+	
+	//Below method is for android same way we can create for IOS
+	public static void setAndroidCapabilities{
+		capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, BROWSER_NAME);
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, PLATFORM_NAME);
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, PLATFORM_VERSION);
+		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
+		
+		capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, BASE_PKG);
+		capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, APP_ACTIVITY);
+	}
+	
+	//Below method is for android same way we can create for IOS :getIOSDriver
+	public static AppiumDriver<MobileElement> getAndroidDriver(){
+		severUrl = new URL ("http://localhost:" + APPIUM_PORT + "wd/hub");
+		driver = new AndroidDriver<MobileElement>(severUrl, capabilities);
+		
+		return driver;
+	}
+}
+
+in src/test/resources
+Logs: in test resources we can create new Appium.log file, for user defined log we can create Application.log file 
+
+in src/test/resources
+properties: Entire Appium configuration is in Properties. Application package info, activity info can be stored.
+For different app we should have different property file.
+Field is property file are as below:
+application.path = here copy application path
+base.pkg = com.care.android.careview //we can have either application.path or base.pkg and application.activity
+application.activity =com.care.android.careview.ui.startup.SplashActivity
+browser.name = null
+platform.name = android
+device.name=android
+platform.version=6.0.1
+implicit.wait=10
+explicit.wait=60
+appium.server.port=4723
+
+same above settings we can change in other properties file.
+in src/test/resources
+app: will paste apk file in app folder.
+
+in src/test/java
+Screens.care : Created new package as HomeScreen.java 
+
+package screens.care;
+public class HomeScreen extends ScreenBase {
+	
+	@AndroidFindBys ({
+		@AndroidFindBy(id = "com.care.android.careview:id/linearLayout"),
+		@AndroidFindBy(className = "android.widget.TextView"),
+	})
+	public List<AndroidElement> signUpBtn;
+	
+	@AndroidFindBy(id="com.care.android.careview:id/sign_up_email")
+	public WebElement signUpEmail;
+	
+	@AndroidFindBy(id="com.care.android.careview:id/sign_up_facebook")
+	public WebElement signUpFB;
+	
+	public HomeScreen(AppiumDriver<MobileElement> driver){
+		super (driver);
+		PageFactory.initElements(new AppiumFieldDecorator(driver, 5, TimeUnit.SECONDS), this);
+	}
+	
+	public int validateButtonCount(){
+	
+	return signUpBtn.size();
+	}
+	
+	public void signUpWithFacebook(){
+		signUpFB.click();
+	}
+	public void signUpWithEmail(){
+		//driver.findElement(By.id("com.care.android.careview:id/sign_up_email").click();
+		signUpEmail.click();
+	}
+	public void signInToMyAccount(){
+	
+	}
+}
+
+Every screen have another class, we clicked on signUpWithEmail.
+as new screen appears create another class for that screen.
+Created new class GetStartedScreen:
+
+package screens.care;
+public class GetStartedScreen extends ScreenBase{
+	public HomeScreen(AppiumDriver<MobileElement> driver){
+		super (driver);
+	}
+	
+	public void hireACareGiver(){
+	
+	}
+	public void findACareJob(){
+	
+	}
+}
+
+Created new class for new page TypeOfCareGiver:
+
+package screens.care;
+public class TypeOfCareGiver extends ScreenBase{
+	public HomeScreen(AppiumDriver<MobileElement> driver){
+		super (driver);
+	}
+	public void selectATypeOfCare(String careName){
+	
+	}
+}
+
+Created new class for new page TypeOfCareJob:
+
+package screens.care;
+public class TypeOfCareJob extends ScreenBase{
+	public HomeScreen(AppiumDriver<MobileElement> driver){
+		super (driver);
+	}
+	public void chooseCareJob(String jobType){
+	
+	}
+}
+
+
+Test Cases are designed in TestBase.java in base package.
+in src/test/java:
+base: TestBase.java : All initialisation required for test will be in this class
+package base;
+public class TestBase{
+
+	public static AppiumDriver<MobileElement> driver;
+	public static String loadPropertyFile = "Android_careapp.properties";
+	//in test data folder create a excelsheet: right click -property- copy path where you can save excelsheet
+	public static ExcelReader excel = new ExcelReader(System.getProperty("user.dir")+\\src\\test\\resources\\testdata\\testdata.xlsx);
+	public static Logger log = Logger.getLogger("devpinoyLogger");//these are user defined logs
+	
+	//Test fixturessetUp and TearDown, which should be executed before anything exceuted in test suite.
+	@BeforeSuite
+	public void setUp(){
+		if (driver==null){
+			AppiumServer.start();
+			log.debug("Appium server started");
+			if(loadPropertyFile.startsWith("Android")){
+				CommonUtils.loadAndroidConfProp(loadPropertyFile);
+				CommonUtils.setAndroidCapabilities();
+				driver.CommonUtils.getAndroidDriver();
+			}else if (loadPropertyFile.startsWith("IOS")){
+				CommonUtils.loadIOSConfProp(loadPropertyFile);
+				CommonUtils.setIOSCapabilities();
+				driver.CommonUtils.getIOSDriver();
+			}
+		}
+	}
+	
+	@AfterSuite
+	public void tearDown(){
+		
+		driver.quit();
+		AppiumServer.stop();
+		log.debug("Appium server stopped");
+		
+	}
+}
+
+we can start and Stop server from the code create a utility to do so.
+
+
+------------------------------------------------------------------------------------
+29. Day 13 - Live Project on Page Object Model Framework - Part 2
+------------------------------------------------------------------------------------
+in src/test/java
+Screens.care : 
+package screens.care;
+public class GetStartedScreen extends ScreenBase{
+	@AndroidFindBy(id="com.care.android.careview:id/seeker_enrollment_layout")
+	public WebElement careGiver;
+	public HomeScreen(AppiumDriver<MobileElement> driver){
+		super (driver);
+	}
+	
+	public void hireACareGiver(){
+		careGiver.click();
+	}
+	public void findACareJob(){
+	
+	}
+}
+
+------------------------------------------------------------------------------------
+****************************************
+Section: 4                   11
+Basic Installation - Windows OS
+****************************************
+--------------------------------------------------------
+34. Installing Java & configuring enviornment variables
+--------------------------------------------------------
+Go to google: download jdk 1.8
+oracle site...
+Based on operating system 32 or 64 bit download .
+exe is downloded  then install same
+Edit environment variables :
+JAVA_HOME: C:\Program Files\Java\jdk1.8.0_144
+Append Patrh avriable - Path: ;%JAVA_HOME%\bin
+----------------------------------
+35. Installing Android Studio
+----------------------------------
+Setup Environment for SDK (Software Development Kit)
+ANDROID_HOME: C:\Users\varde\AppData\Local\Android\Sdk
+android SDK:
+https://fossies.org/windows/misc/android-sdk-tools-windows-3859397.zip/
+
+Next need to give path for platform-tools and tools:
+Go to Path environment variable and edit:
+%ANDROID_HOME%\tools
+%ANDROID_HOME%\platform-tools
+
+go to cmd
+type android -> it should open your SDK manager.
+In Android SDK Manager, one can 
+check android wiki???????
+Check API level against your device operating system.
+API level 19????????
+To get Developer Option:
+In About Phone-> Tap six time on Build number.
+USB Debugging should be turned on.
+
+When all set up is done open cmd and type
+adb devices
+if we get msg -> id and device then connection is successful.
+--------------------------------------------------------------
+android SDK:
+https://fossies.org/windows/misc/android-sdk-tools-windows-3859397.zip/
+open cmd here 
+type:  sdkmanager.bat "platform.tools"
+above will ask for license agreement hence press 'y'.
+this will download tools, go back to tools, it will have license dir, platform-tools dir
+-----------------------------------------------------------------------------------------
+
+--------------------------------------------------------------
+36. Download Eclipse
+---------------------
+Download Eclise
+
+Workspace is a location where it will be maintaing all piece of java code.
+--------------------------------------
+37. Installing the Eclipse ADT Plugin
+--------------------------------------
+The Eclipse ADT plugin is no longer supported, as per this announcement in June 2015
+https://dl-ssl.google.com/android/eclipse/
+------------------------------------
+38. Download Appium jars
+--------------------------
+Will go to main webside of Appium that is appium.io
+Appium is intwo ways 
+1. Appium GUI:
+
+Go to download section:
+Appium liabraries are available in different languages, since we are on Java we will download Java client for appium.
+download selenium jar from selenium.org
+
+If we work with standalone server then we need 'gson' jar file
+If we are using entire java jar downloaded from selenium.org then we dont need 'gson'and selenium-server-standalone jar file
+
+We need below jar files.(mvnrepository)
+commons-languages
+commons-validator
+
+----------------------------
+39. Install Appium GUI tool
+----------------------------
+Download appium for window and install.
+after installation at path c:/Program Files (x86)/Appium
+we get Appium application which is actual Appium application.
+Open Appium application:
+Server address: local host address: 127.0.0.1 and port 4723
+Appium inspector works only on MAC not on windows.
+-------------------------------------
+40 Install Maven
+------------------------------
+Maven is build tool
+download Maven from maven.apache.org(binary zip is for windows.
+create folder in c drive
+cd\
+mkdir maven
+cd maven
+mvn archetype:generate
+--This will start scanning existing project inside maven
+
+To make maven eclipse compatible do below:
+cd\
+cs maven\MavenProject
+mvn eclipse:eclipse
+
+as we do above it will generate supportive files for eclipse i.e. .classpath file and project file
+import maven project in eclipse
+----------------------------------------
+41. Installing the Maven Eclipse Plugin
+----------------------------------------
+
+----------------------------------------
+
+*****************************************************
+Section: 6                                         5
+Important updates from the Appium official community
+*****************************************************
+--------------------------------------------------
+57. Update 07232015: New Appium 3.1 API Launched
+--------------------------------------------------
+Appium: 1.4.8 and Java client is 3.1.0
+new class MobileElement this is to be used for native apps.
+If we are using Android device then its always good to use AndroidDriver.
+-----------------------------------------------------------------------
+--------------------------------------
+60. Appium 2.0.0 Launched - 30Sep2014
+--------------------------------------
+in Appium 2.0.0 AppiumDriver is an abstract class, IOSDriver and AndroidDriver both extend it. hence Platform_name capability no more required.
+
+------------------------------------------------------------------
+61. Appium 3.2 Launched - Starting Appium server programmatically
+------------------------------------------------------------------
+java client version 3.2.0 launched.
+need dependency commons-validator v1.4.1
+
+-----------------------------------------------------------------
+*****************************************************
+Section: 7                                 6
+Appium - Get started with basic installation
+*****************************************************
+--------------------------------------------------
+62. Adding Appium javadocs to eclipse
+--------------------------------------------------
+on java client right click->Build->Configure Build Path ->select java doc and Edit paste: http://appium.github.io/java-client/
+--------------------------------------------------
+63. Understanding Desired Capabilities class
+--------------------------------------------------
+public static AndroidDriver driver;
+	public static void main(String []args){
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(CapabilityType.BROWSER_NAME, "Chrome");
+		capabilities.setCapability("device", "Android");
+		capabilities.setCapability("deviceName", "Samsung Galaxy Edge 7");
+		capabilities.setCapability("platformVersion", "6.0.1");
+		capabilities.setCapability("platformName", "Android");
+		
+		capabilities.setCapability("appPackage", "application name");
+		capabilities.setCapability("appActivity", ".HomeScreenActivity");
+		
+		//In case of android 'deviceName' is the most required capabilities.
+		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+----------------------------------------------------
+64. Package and Activity information of Mobile Apps
+----------------------------------------------------
+
+----------------------------------------------------
+66. Package and Activity information through ADT Eclipse plugin
+----------------------------------------------------
+
+----------------------
+67. Appium basic test
+----------------------
+***********************************************
+Section: 8                                  4
+Starting and Stopping Appium server from Code
+***********************************************
+------------------------------------------------
+68. Starting Appium server from code on Windows
+------------------------------------------------
+************************************************
+Section: 9                                 6
+Appium Android - Identifying Mobile Elements
+************************************************
+---------------------------------------------------------------------
+72. How to automate apps on a Device with API Level < 17 - Part 1
+---------------------------------------------------------------------
+----------------------------------------
+75. Understanding the UISelector Class
+----------------------------------------
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+public class UiSelectorTest {
+public static AndroidDriver driver;
+	public static void main(String[] args) throws MalformedURLException, InterruptedException {
+		File app = new File("C:\\Users\\Selenium\\Downloads\\testingapp\\testingapp\\way2automation.apk");
+		//C:\Users\Selenium\Downloads\com.facebook.katana.apk
+		 DesiredCapabilities capabilities = new DesiredCapabilities();
+		 capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Appium");
+		 capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+		 capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "4.4.2");
+		 capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android");
+		 capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());	  
+	       driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+	       // driver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);	       
+	      // driver.findElement(By.xpath("//android.widget.Button[contains(@text,'Display Popup Window')]")).click();       
+	     //  driver.findElementByAndroidUIAutomator("UiSelector().className(\"android.widget.Button\").text(\"Display Popup Window\")").click();
+	    //   driver.findElementByAndroidUIAutomator("UiSelector().className(\"android.widget.CheckBox\").checked(true)").click();	       
+	     /*
+		System.out.println(driver.findElementsByAndroidUIAutomator("UiSelector().className(\"android.widget.LinearLayout\").className(\"android.widget.Button\").index(1)").size());
+	      WebElement button = driver.findElementsByAndroidUIAutomator("UiSelector().className(\"android.widget.LinearLayout\").className(\"android.widget.Button\").index(1)").get(1);
+	      button.click();*/
+	      WebDriverWait wait = new WebDriverWait(driver, 2L);
+	      wait.until(ExpectedConditions.presenceOfElementLocated(By.id("io.selendroid.testapp:id/visibleButtonTest"))).click();
+	      driver.quit();
+	}
+}
+-----------------------------------------
+*********************************************************
+Section: 10 										  9
+Appium Android - Testing Android Native Apps on Windows
+*********************************************************
+-----------------------------------------------------------------
+78. Making a call with internal dialer application - Real Device
+-----------------------------------------------------------------
+package com.Maven.HandsOnAppium;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import io.appium.java_client.android.AndroidDriver;
+import org.testng.annotations.Test;
+
+public class MakeATestCall {
+	@Test
+	public static void testCall() throws MalformedURLException, InterruptedException{
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("automationName", "Appium");
+		capabilities.setCapability("platformName", "Android");
+		capabilities.setCapability("platformVersion", "7.1.2");
+		capabilities.setCapability("deviceName", "Mi A1");
+		capabilities.setCapability("appPackage", "com.android.dialer");
+		capabilities.setCapability("appActivity", "com.android.dialer.DialtactsActivity");
+		//capabilities.setCapability("appPackage", "com.android.contacts");
+		//capabilities.setCapability("appActivity", "com.android.contacts.activities.PeopleActivity");
+		AndroidDriver<WebElement> driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		driver.findElement(By.id("com.android.dialer:id/floating_action_button")).click();
+		WebElement DialPad = driver.findElement(By.id("com.android.dialer:id/dialpad_view"));
+		DialPad.findElement(By.id("com.android.dialer:id/nine")).click();
+		DialPad.findElement(By.id("com.android.dialer:id/six")).click();
+		DialPad.findElement(By.id("com.android.dialer:id/eight")).click();
+		DialPad.findElement(By.id("com.android.dialer:id/nine")).click();
+		DialPad.findElement(By.id("com.android.dialer:id/nine")).click();
+		DialPad.findElement(By.id("com.android.dialer:id/four")).click();
+		DialPad.findElement(By.id("com.android.dialer:id/three")).click();
+		DialPad.findElement(By.id("com.android.dialer:id/one")).click();
+		DialPad.findElement(By.id("com.android.dialer:id/five")).click();
+		DialPad.findElement(By.id("com.android.dialer:id/one")).click();
+		driver.findElement(By.id("com.android.dialer:id/dialpad_floating_action_button_sim_1")).click();
+		Thread.sleep(5000);
+		driver.findElement(By.id("com.android.dialer:id/floating_end_call_action_button")).click();
+		driver.quit();
+}
+}
+---------------------------------------------------------
+80. Adding a new contact to the phone book - Real Device
+---------------------------------------------------------
+package com.Maven.HandsOnAppium;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.android.AndroidDriver;
+
+public class AddAContact {
+	@Test
+	public static void testCall() throws MalformedURLException, InterruptedException{
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("automationName", "Appium");
+		capabilities.setCapability("platformName", "Android");
+		capabilities.setCapability("platformVersion", "7.1.2");
+		capabilities.setCapability("deviceName", "Mi A1");
+		
+		capabilities.setCapability("appPackage", "com.android.contacts");
+		capabilities.setCapability("appActivity", "com.android.contacts.activities.PeopleActivity");
+		AndroidDriver<WebElement> driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		//driver.manage().timeouts().implicitlyWait(20L,TimeUnit.SECONDS);
+		driver.findElement(By.id("com.android.contacts:id/floating_action_button")).click();
+		
+		if (driver.findElement(By.className("android.widget.FrameLayout")).isDisplayed()){
+			driver.findElementByXPath("//android.widget.TextView[contains(@text,'Google')]").click();
+		}
+		driver.findElement(By.xpath("//android.widget.EditText[contains(@text, 'Name')]")).click();
+		
+		/*
+		WebElement LinearLay = driver.findElement(By.id("com.android.contacts:id/kind_section_views"));
+		//WebElement NLinearLay= LinearLay.findElements(By.className("android.widget.LinearLayout")).get(0);
+		System.out.println(LinearLay.findElements(By.className("android.widget.EditText")).size());
+		/*
+		WebElement PLinearLay= LinearLay.findElements(By.className("android.widget.LinearLayout")).get(1);
+		PLinearLay.findElement(By.className("android.widget.EditText")).sendKeys("1234567890");
+		WebElement dropdown = PLinearLay.findElement(By.id("android:id/text1"));
+		Select select = new Select (dropdown);
+		select.selectByValue("Work");
+		*/
+		/*
+		System.out.println(driver.findElements(By.className("android.widget.EditText")).size());
+		System.out.println(driver.findElements(By.xpath("//android.widget.EditText[contains(@text,'Name')]")).size());
+		//System.out.println(driver.findElementsByAndroidUIAutomator("UiSelector().className(\"android.widget.EditText\").text(\"Name\")").size());
+		System.out.println(driver.findElementsByAndroidUIAutomator("UiSelector().className(\"android.widget.EditText\")").size());
+		//driver.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.android.contacts:id/editors\").text(\"Name\")").sendKeys("TestContact");
+		
+		//driver.findElementById("com.android.contacts:id/menu_save");
+				
+		//Thread.sleep(25000);
+		//driver.findElement(By.id("com.android.dialer:id/floating_end_call_action_button")).click();
+		driver.quit();
+		*/
+		System.out.println(driver.findElementsById("com.android.contacts:id/kind_section_views").size());
+		driver.quit();
+}
+}
+------------------------------------
+82. Sending SMS from a real device
+------------------------------------
+package com.Maven.HandsOnAppium;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidKeyCode;
+
+public class SendMessage {
+	@Test
+	public static void sendAMsg() throws MalformedURLException, InterruptedException{
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("automationName", "Appium");
+		capabilities.setCapability("platformName", "Android");
+		capabilities.setCapability("platformVersion", "7.1.2");
+		capabilities.setCapability("deviceName", "Mi A1");
+		
+		capabilities.setCapability("appPackage", "com.google.android.apps.messaging");
+		capabilities.setCapability("appActivity", "com.google.android.apps.messaging.ui.ConversationListActivity");
+		AndroidDriver<WebElement> driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		driver.manage().timeouts().implicitlyWait(20L,TimeUnit.SECONDS);
+		
+		driver.findElement(By.id("com.google.android.apps.messaging:id/start_new_conversation_button")).click();
+		driver.findElement(By.id("com.google.android.apps.messaging:id/recipient_text_view")).sendKeys("9689943151");
+		driver.pressKeyCode(AndroidKeyCode.ENTER);
+		driver.findElement(By.id("com.google.android.apps.messaging:id/compose_message_text")).sendKeys("Message sent using Appium");
+		driver.findElement(By.id("com.google.android.apps.messaging:id/send_message_button_icon")).click();
+		driver.quit();
+		//driver.findElement(By.id("com.google.android.apps.messaging:id/action_ime_dialpad_toggle")).click();
+}
+}
+---------------------------------------------------
+84. Working with Calculator - Real Device - Part 1
+---------------------------------------------------
+---------------------------------------------------
+85. Working with Calculator - Real Device - Part 2
+---------------------------------------------------
+package com.Maven.HandsOnAppium;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.android.AndroidDriver;
+
+public class Calculator {
+	public static AndroidDriver<WebElement> driver;
+	public static WebElement linearLayout;
+	public static WebElement calculation;
+	public static WebElement result;
+	public String cal;
+	public String res;
+	
+	@BeforeClass
+	public void setUp() throws MalformedURLException{
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("automationName", "Appium");
+		capabilities.setCapability("platformName", "Android");
+		capabilities.setCapability("platformVersion", "7.1.2");
+		capabilities.setCapability("deviceName", "Mi A1");
+		
+		capabilities.setCapability("appPackage", "com.google.android.calculator");
+		capabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
+		driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		driver.manage().timeouts().implicitlyWait(20L,TimeUnit.SECONDS);
+		linearLayout = driver.findElement(By.id("com.google.android.calculator:id/main_calculator"));
+		calculation = linearLayout.findElement(By.id("com.google.android.calculator:id/formula"));
+		//result = linearLayout.findElement(By.id("com.google.android.calculator:id/result"));
+	}
+	@Test(priority = 1)
+	public void add() throws InterruptedException{
+		Thread.sleep(10000);
+		linearLayout.findElement(By.id("com.google.android.calculator:id/digit_7")).click();
+		linearLayout.findElement(By.id("com.google.android.calculator:id/op_add")).click();
+		linearLayout.findElement(By.id("com.google.android.calculator:id/digit_5")).click();
+		String cal1 = calculation.getText();
+		linearLayout.findElement(By.id("com.google.android.calculator:id/eq")).click();
+		String res1 = calculation.getText();
+		System.out.println(cal1+" equals "+ res1);
+		linearLayout.findElement(By.id("com.google.android.calculator:id/clr")).click();
+	}
+	@Test(priority = 2)
+	public void sub(){
+		linearLayout.findElement(By.id("com.google.android.calculator:id/digit_7")).click();
+		linearLayout.findElement(By.id("com.google.android.calculator:id/op_sub")).click();
+		linearLayout.findElement(By.id("com.google.android.calculator:id/digit_5")).click();
+		String cal2 = calculation.getText();
+		linearLayout.findElement(By.id("com.google.android.calculator:id/eq")).click();	
+		String res2 = calculation.getText();
+		System.out.println(cal2+" equals "+ res2);
+		linearLayout.findElement(By.id("com.google.android.calculator:id/clr")).click();
+	}
+	@Test(priority = 3)
+	public void mul(){
+		linearLayout.findElement(By.id("com.google.android.calculator:id/digit_7")).click();
+		linearLayout.findElement(By.id("com.google.android.calculator:id/op_mul")).click();
+		linearLayout.findElement(By.id("com.google.android.calculator:id/digit_5")).click();
+		String cal3 = calculation.getText();
+		linearLayout.findElement(By.id("com.google.android.calculator:id/eq")).click();	
+		String res3 = calculation.getText();
+		System.out.println(cal3+" equals "+ res3);
+		linearLayout.findElement(By.id("com.google.android.calculator:id/clr")).click();
+	}
+	@Test(priority = 4)
+	public void div(){
+		linearLayout.findElement(By.id("com.google.android.calculator:id/digit_7")).click();
+		linearLayout.findElement(By.id("com.google.android.calculator:id/op_div")).click();
+		linearLayout.findElement(By.id("com.google.android.calculator:id/digit_5")).click();
+		String cal4 = calculation.getText();
+		linearLayout.findElement(By.id("com.google.android.calculator:id/eq")).click();
+		String res4 = calculation.getText();
+		System.out.println(cal4+" equals "+ res4);
+		linearLayout.findElement(By.id("com.google.android.calculator:id/clr")).click();
+	}
+	@AfterClass
+	public void quit(){
+		driver.quit();
+	}
+
+}
+-----------------------------------------------------------
+*******************************************************************
+Section: 11 												  14
+Appium Android- TouchActions and Events - Handling user gestures
+*******************************************************************
+------------------
+87. Drag and Drop
+------------------
+package com.Maven.HandsOnAppium;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
+
+public class DragAndDrop {
+	@Test
+	public static void Drag() throws MalformedURLException, InterruptedException{
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("automationName", "Appium");
+		capabilities.setCapability("platformName", "Android");
+		capabilities.setCapability("platformVersion", "7.1.2");
+		capabilities.setCapability("deviceName", "Mi A1");
+		
+		capabilities.setCapability("appPackage", "com.mobeta.android.demodslv");
+		capabilities.setCapability("appActivity", "com.mobeta.android.demodslv.Launcher");
+		AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		driver.manage().timeouts().implicitlyWait(20L,TimeUnit.SECONDS);
+		
+		driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'Basic usage playground')]")).click();
+		
+		MobileElement draggable = driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'Miles')]/preceding-sibling::android.widget.ImageView"));
+		MobileElement droppable = driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'Brad')]/preceding-sibling::android.widget.ImageView"));
+				
+		//MobileElement draga = driver.findElement(By.xpath("//android.widget.TextView[contains(@test,'Brad')]/preceding-sibling::android.widget.ImageView"));
+		//MobileElement dropa = driver.findElement(By.xpath("//android.widget.TextView[contains(@test,'Chick')]/preceding-sibling::android.widget.ImageView"));
+		
+		TouchAction action = new TouchAction(driver);
+		//action.longPress(draga).moveTo(dropa).release().perform();
+		action.longPress(draggable).moveTo(droppable).release().perform();
+		
+		List<MobileElement> button= driver.findElements(By.id("com.mobeta.android.demodslv:id/drag_handle"));
+		action.longPress(button.get(0)).moveTo(button.get(4)).release().perform();
+		action.longPress(button.get(7)).moveTo(button.get(1)).release().perform();
+		driver.quit();
+}}
+---------------------------------------
+89. Android Key Events
+-------------------------
+package TouchEvents;
+import io.appium.java_client.AndroidKeyCode;
+import io.appium.java_client.AppiumDriver;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+public class AndroidKeyEvents {
+public static AppiumDriver driver;
+	public static void main(String[] args) throws MalformedURLException {
+		DesiredCapabilities capabilites = new DesiredCapabilities();
+		capabilites.setCapability("device", "Android");
+		capabilites.setCapability("deviceName", "GT-N7100");
+		capabilites.setCapability("platformVersion", "4.4.3");
+		capabilites.setCapability("platformName", "Android");
+		capabilites.setCapability("appPackage", "com.android.mms");
+		capabilites.setCapability("appActivity", "com.android.mms.ui.ConversationComposer");
+		driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilites);
+		driver.manage().timeouts().implicitlyWait(20L, TimeUnit.SECONDS);
+		WebElement actionBar = driver.findElement(By.id("android:id/action_bar"));
+		
+		List<WebElement> textView = actionBar.findElements(By.className("android.widget.TextView"));
+		System.out.println(textView.size());
+		textView.get(1).click();
+		driver.findElement(By.id("com.android.mms:id/recipients_editor_to")).sendKeys("9711111558");
+		driver.findElement(By.id("com.android.mms:id/mms_rich_composer_linear")).sendKeys("Sending message through Appium");
+		driver.sendKeyEvent(AndroidKeyCode.ENTER);
+		driver.sendKeyEvent(AndroidKeyCode.ENTER);
+		driver.sendKeyEvent(AndroidKeyCode.BACKSPACE);
+		driver.sendKeyEvent(AndroidKeyCode.BACKSPACE);
+		driver.sendKeyEvent(AndroidKeyCode.BACKSPACE);
+		driver.sendKeyEvent(AndroidKeyCode.HOME);
+	}
+}
+--------------------------------
+91. Swipe test on Flipboard App
+--------------------------------
+package com.Maven.HandsOnAppium;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
+
+public class Swipe {
+	@Test
+	public static void Drag() throws MalformedURLException, InterruptedException{
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("automationName", "Appium");
+		capabilities.setCapability("platformName", "Android");
+		capabilities.setCapability("platformVersion", "7.1.2");
+		capabilities.setCapability("deviceName", "Mi A1");
+		
+		capabilities.setCapability("appPackage", "com.nis.app");
+		capabilities.setCapability("appActivity", "com.nis.app.ui.activities.HomeActivity");
+		AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		driver.manage().timeouts().implicitlyWait(20L,TimeUnit.SECONDS);
+		TouchAction action = new TouchAction(driver);
+		System.out.println("Start swipe");
+		Thread.sleep(10000);
+		action.longPress(500, 1600).moveTo(500,250).release().perform();
+		System.out.println("1 swipe");
+		action.longPress(500, 1600).moveTo(500,250).release().perform();
+		System.out.println("2 swipe");
+		action.longPress(500, 1600).moveTo(500,250).release().perform();
+		System.out.println("3 swipe");
+		action.longPress(500, 1600).moveTo(500,250).release().perform();
+		System.out.println("4 swipe");
+		
+		driver.quit();
+}}
+--------------------------------------------------
+93. Tapping an Element on a Real Device - Part 1
+--------------------------------------------------
+
+-------------------------------------------------
+94. Tapping an Element on a Real Device - Part 2
+-------------------------------------------------
+package com.Maven.HandsOnAppium;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidKeyCode;
+
+public class WhatsAppSendPic {
+	@Test
+	public static void SendPic() throws MalformedURLException, InterruptedException{
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("automationName", "Appium");
+		capabilities.setCapability("platformName", "Android");
+		capabilities.setCapability("platformVersion", "7.1.2");
+		capabilities.setCapability("deviceName", "Mi A1");
+		capabilities.setCapability("fullReset", "false");
+		capabilities.setCapability("noReset", "true");
+		
+		capabilities.setCapability("appPackage", "com.whatsapp");
+		capabilities.setCapability("appActivity", "com.whatsapp.Main");
+		AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		driver.manage().timeouts().implicitlyWait(20L,TimeUnit.SECONDS);
+		
+		driver.findElement(By.id("com.whatsapp:id/menuitem_search")).click();
+		driver.findElement(By.id("com.whatsapp:id/search_src_text")).sendKeys("W Avinash Jio");
+		TouchAction action = new TouchAction(driver);
+		action.tap(500, 430).perform();
+		driver.findElement(By.id("com.whatsapp:id/camera_btn")).click();
+		driver.findElement(By.id("com.whatsapp:id/shutter")).click();
+		driver.findElement(By.id("com.whatsapp:id/caption")).sendKeys("Pick Using Appium");
+		driver.pressKeyCode(AndroidKeyCode.ENTER);
+		driver.findElement(By.id("com.whatsapp:id/send")).click();
+		
+		driver.quit();
+	}
+}
+---------------------------------------------------
+96. Swipe - Searching Phonebook Contacts - Part 1
+---------------------------------------------------
+---------------------------------------------------
+97. Swipe - Searching Phonebook Contacts - Part 2
+---------------------------------------------------
+Apply debug
+f6 to go line by line.
+
+package com.Maven.HandsOnAppium;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
+
+public class FindandCall {
+	@Test
+	public static void findCall() throws MalformedURLException, InterruptedException {
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("automationName", "Appium");
+		capabilities.setCapability("platformName", "Android");
+		capabilities.setCapability("platformVersion", "7.1.2");
+		capabilities.setCapability("deviceName", "Mi A1");
+
+		capabilities.setCapability("appPackage", "com.android.contacts");
+		capabilities.setCapability("appActivity", "com.android.contacts.activities.PeopleActivity");
+		AndroidDriver<WebElement> driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"),
+				capabilities);
+		driver.manage().timeouts().implicitlyWait(20L, TimeUnit.SECONDS);
+		
+		WebElement NameList= driver.findElement(By.id("android:id/list"));
+		List<WebElement> conLists = NameList.findElements(By.className("android.view.ViewGroup"));
+		int i = 1;
+		do {
+
+			for (WebElement conList : conLists) {
+				System.out.println("Contact Name is : " + conList.findElement(By.className("android.widget.TextView")).getText());
+				if (conList.findElement(By.className("android.widget.TextView")).getText().equalsIgnoreCase("ABHISHEK KUMAR singh")) {
+					i = 0;
+					conList.findElement(By.className("android.widget.TextView")).click();
+					break;
+				}
+
+			}
+			if (i == 1) {
+				TouchAction action = new TouchAction(driver);
+				action.longPress(565, 1875).moveTo(565, 330).release().perform();
+			}
+						
+		}while(i==1);
+
+	}
+}
+------------------------------------------------------
+99. Android Lollipop 5.0 Update - ScrollTo - Contacts
+------------------------------------------------------
+String str="alan";
+driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+str+"\").instance(0))").click();
+
+*****************************************************
+Section: 12 									  4
+Appium Android - Testing Android Native Apps on MAC
+*****************************************************
+--------------------------------
+*******************
+Section: 13 	 2
+Toast Verification
+*******************
+
+**********************************************************
+Section: 14 0 / 1
+Appium Android - Testing Chrome Browser on MAC & Windows
+**********************************************************
+----------------------------------------------------------------
+107. Installing and Launching Chrome on Android Emulator - MAC
+----------------------------------------------------------------
+***********************************************
+Section: 15 							   2
+Appium Android - Testing Android Hybrid Apps
+***********************************************
+--------------------------------
+108. Handling Hybrid Mobile app
+--------------------------------
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
+public class HybridBurgerKing {
+	public static AndroidDriver driver;
+	public static void main(String[] args) throws InterruptedException, MalformedURLException {
+		File app = new File("C:\\selenium\\AppiumAndroid\\Appium2.0\\app\\bk-mobile-native.apk");
+		 DesiredCapabilities capabilities = new DesiredCapabilities();
+		 capabilities.setCapability("automationName","Selendroid");
+		 capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+		 capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "4.4.2");
+		 capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android");
+		 capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+	       driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+	      driver.manage().timeouts().implicitlyWait(60L, TimeUnit.SECONDS);
+	      waitForElementPresent(By.id("button1"), 40);
+	    	driver.findElement(By.id("button1")).click();
+	       Thread.sleep(30000);
+	      Set<String> contextNames = driver.getContextHandles();
+	        for (String contextName : contextNames) {
+	          System.out.println(contextName);
+	          if (contextName.contains("WEBVIEW")){
+	            driver.context(contextName);
+	          }
+	        }
+
+	        System.out.println(driver.getPageSource());
+	        waitForElementPresent(By.id("ext-comp-1024"), 40);
+	        driver.findElement(By.id("ext-comp-1024")).click();
+	    	Thread.sleep(10000);
+	    	waitForElementPresent(By.cssSelector("div[data-index='1']"), 40);
+	        driver.findElement(By.cssSelector("div[data-index='1']")).click();
+	        contextNames = driver.getContextHandles();
+	        for (String contextName : contextNames) {
+	          System.out.println(contextName);
+	          if (contextName.contains("NATIVEVIEW")){
+	            driver.context(contextName);
+	          }
+	        }
+	      }
+	  public static void waitForElementPresent(final By by, int timeOutInSeconds) {
+	        WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+	        wait.until(new ExpectedCondition<Boolean>() {
+			@Override
+			public Boolean apply(WebDriver d) {
+				// TODO Auto-generated method stub
+				return d.findElement(by).isDisplayed();
+			}
+	        });
+	     }
+}
+
+------------------------------------------------------
+105. Toast Verification - validating text from images
+------------------------------------------------------
+For Toast messages appium do not support we need third party API like : Tesseract
+
+
+**************************************************************
+Section: 19							  2
+Appium - Locating Elements on a WebPage
+************************************************************
+----------------------------------------
+133. User Agent for Android
+----------------------------
+chrome://inspect/#devices
+
+--------------------------------------------------
+*************************************************************
+Section: 22												  7
+Appium Mobile Grid for Android and IOS - Parallel Execution
+*************************************************************
+---------------------------------
+146. Introduction to Appium Grid
+---------------------------------
+147. Executing Test Parallely on two Real Devices
+-------------------------------------------------
+148. Appium Grid - Detailed Installation
+-----------------------------------------
+Download Utility : AndroidScreenCast
+Connect devices to machine
+Start hub: 
+cmd cd\
+cd softwares/jars
+java -jar selenium-server-standalone-2.44.0.jar -role hub
+hub will start on port 4444
+go to : localhost:4444
+need to connect to nodes 
+to start node:
+cmd: cd cd C:\--this is path where nodes are present.
+--------------------------------------------------------------
+******************************
+Section: 24 			   4
+Design Pattern: Page Factory
+******************************
+--------------------------------------------------------------
+157. Introduction to Page Factory, @AndroidFindBy, @IOSFindBy
+--------------------------------------------------------------
+------------------------------------------
+158. Chaining Elements - @AndroidFindBys
+------------------------------------------
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AndroidFindBys;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+
+public class PageFactoryTest {
+
+	public AndroidDriver driver;
+	public File app = new File(System.getProperty("user.dir")+"\\app\\selendroid-test-app-0.12.0.apk");
+	
+	@AndroidFindBy(id="io.selendroid.testapp:id/my_text_field")
+	public WebElement textField; 
+	@AndroidFindBy(id="io.selendroid.testapp:id/visibleButtonTest")
+	public WebElement displayBtn; 
+	@AndroidFindBy(id="io.selendroid.testapp:id/visibleTextView")
+	public WebElement displayTxt; 
+	@AndroidFindBy(className="android.widget.Button")
+	public List<WebElement> button;
+	@AndroidFindBy(id="io.selendroid.testapp:id/buttonStartWebview")
+	public WebElement imgBtn;
+	@AndroidFindBys({
+		@AndroidFindBy(id="android:id/content"),
+		@AndroidFindBy(id="android:id/parentPanel"),
+		@AndroidFindBy(id="android:id/customPanel"),
+		@AndroidFindBy(id="android:id/custom"),
+		@AndroidFindBy(uiAutomator="new UiSelector().testContains(\"iframes\")"),
+		@AndroidFindBy(className="android.widget.ListView"),
+		@AndroidFindBy(className="android.widget.TextView"),
+		})
+	public List<WebElement> cars;
+		
+	@BeforeTest
+	public void setUp() throws MalformedURLException{
+		 DesiredCapabilities capabilities = new DesiredCapabilities();
+	        capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
+	        capabilities.setCapability("device", "Android");
+	        capabilities.setCapability("deviceName", "GT-N7100");
+	        capabilities.setCapability("platformVersion", "4.4.2");
+	        capabilities.setCapability("platformName","Android");
+			capabilities.setCapability("app", app);
+	       driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+	       driver.manage().timeouts().implicitlyWait(20L, TimeUnit.SECONDS);
+	}
+
+	@Test
+	public void doTesting(){
+		PageFactory.initElements(new AppiumFieldDecorator(driver,20,TimeUnit.SECONDS), this);
+		textField.sendKeys("Rahul");
+		displayBtn.click();
+		System.out.println(displayTxt.getText());
+		System.out.println("Total buttons are : "+button.size());
+		imgBtn.click();
+		System.out.println(driver.getPageSource());
+		button.get(1).click();
+		cars.get(1).click();
+	}
+	
+	@AfterTest
+	public void tearDown(){
+		driver.quit();
+	}	
+}
+*********************
+Section: 26    7
+Git - GitHub
+*********************
+---------------------------------------------------
+166. Introduction to Version control system
+------------------------------------------------
+167. Installing Git on Windows
+-------------------------------
+GIT installation on windows is quite easy and straight forward. Steps are as follows :
+Go to http://msysgit.github.io/ and download the GIT installer package.
+During installation select “use GIT Bash only” as it will not modify our system path variable.
+Once it is installed we will get both command line version known as “GIT bash” and GUI version known as “GIT GUI”.
+In order to check the setting of GIT just run the following command in GIT bash :
+“git config --list”
+
+How git stores Data:
+GIT stores the data in terms of “snapshots”.
+The term “snapshots” is used to replace the word “re-vision” generally used with other VCS system.
+Whenever we “commit” in the GIT, it stores the data in terms of “set of snapshots”.
+It can be imagined as “snapshots” of each files is taken and stored in GIT repository.
+
+------------------------------------------------
+168. Git Commands
+-------------------------------
+Tracking an existing project using GIT:
+
+In order to track files of an existing project we need to initialize a GIT repository inside the project.
+For this go to the project directory using GIT Bash and run following command:
+<directory path> git init
+If the above command is successful, then a empty GIT repository is created inside the specified path. (as a hidden holder)
+
+right click in that folder and select 'Git Bash here'.
+then cmd will open right there as : git init
+
+This empty GIT repository is just a GIT skeleton and none of the files are tracked yet.
+But how to track files of any project???? 
+
+Adding files to “GIT repository”:
+For tracking any files we need to add them in GIT repository and then do a initial “commit”. 
+This is done by following commands :git add *.txt
+The above command will add all files having .txt extension
+In order to check the status of files, we can use following command: git status
+> In order to commit already track files following command is used : git commit –m “my first commit”
+The above command will do a “commit” and needs a commit statement.
+Without commit statement the process will be aborted.
+
+If we do some changes in file : to check fire command as : git status
+It will give files changed in Red.
+
+Command To display changes:
+In order to display all “changes” done in the files following command is used:
+“git diff”
+
+But if the files are in staging area, then following command is used :
+“git diff –cached”
+
+Command display commit logs:
+In order to display all previous commit logs following command is used :
+“git log”
+In order to get log only in single line following command is used :
+“git log --oneline”
+If the git logs are too large to show on the screen, then it will throw us on command line editor. In order to exit from this editor following key combination is use :
+“ hold shift + zz”
+------------------------------------------------
+169. Introduction to GitHub - remote repository
+------------------------------------------------
+Need of Remote repositories:
+Remote repositories are needed, when more then one developer is working on the same project.
+This single central repository act as a hub of communication and collaboration.
+The remote repository which can be used efficiently with Git is “Github”.
+
+GitHub is basically a “Git repository” web hosting service.
+It’s a web-based application, which can be accessed anywhere in the world using internet.
+If a project repository is stored in the GitHub, then it work as centralized repository, and can be used by multiple teams across the world.
+It’s an ideal centralized repository for open-source projects.
+
+Register with Git-hub:
+GitHub provides both public and private repositories services.
+Public repositories are free, where private repositories are paid.
+In order to use any Git service, first we need to register with the GitHub.
+
+Social and watch feature of GitHub:
+GitHub works also act as a hub of communication between developers and contributors.
+Follow-a-Friend feature:
+This feature allow us to follow anyone on GitHub and can watch all it’s GitHub activity.
+Watch feature:
+Through this feature, any project can be watched i.e if there is any changed/update in the project, then GitHub automatically inform the Watcher.
+
+Creating an empty repository on GitHub:
+In order to create a repository on GitHub use following steps:
+Go to your repository section.
+Click on “New” link to create a New repository.
+Give Repository name and Description.
+Click on “Create Repository” to create.
+
+------------------------------------------------------------------------
+170. Creating Account on GitHub & Pushing code to the remote repository
+------------------------------------------------------------------------
+to add complete folder to git use below command: git add src/
+to add any one file to git use below command: git add code.java
+
+Secure Shell Cryptography:
+GitHub uses Secure Shell cryptography technique in order to securely connect a remote repository to Git repository.
+This technique works on “RSA algorithm”. As per this algorithm, two keys needs to generate “public key” and “private key”.
+The Public key resides on Centralized remote machine where private key on local machines.
+If the Private key of local machine matches with the public key of remote machine, then connection can be made otherwise refused.
+
+Generating SSH keys:
+Following are the steps to generate SSH-RSA key pair:
+1. Open Git bash and run following command :
+ssh-keygen –t rsa
+2. Enter the location in which these files will be saved (Default is fine!!!)
+3. If you want to put one more security, on this RSA key, enter a “Passphrase”. This phrase will be asked every time we use RSA keys. (Press enter if don’t want to use this extra security).
+4. A pair of RSA keys will be generated, one is public and other is private.
+
+Adding public RSA key to GitHub:
+Following are the steps to add public RSA key to GitHub:
+Login to your GitHub account.
+Go to settings > Open SSh keys >Click on add SSH keys
+Go to home/.ssh folder on your local repository and open public RSA id file using notepad/wordpad.
+Copy public RSA key and paste it on GitHub. 
+Confirm password
+In order to permanantly store this key with git hub run following command in Git bash :
+ssh –T git@github.com
+
+Adding remote repository to the project:
+In order to communicate with any remote repository, we need to add address of that repository to our project.
+The address of remote repository can be added by following command :
+git remote add gitHub <remote repository ssh key>
+
+Pushing our code to the remote repository:
+In order to push our code to already added remote repository, following command is used:
+git push <repository name> <branch name>
+
+--------------------------------
+171. E-Git plugin for Eclipse
+--------------------------------
+Download egit
+
+Concept of branching:
+Git branching allows us to work separately on any project without affecting the main project
+
+Finding, Creating and switching branches:
+In order to find total number of branches following command is used :
+“git branch”
+In order to create a new branch following command is used :
+“git branch <branch name>”
+For switching to any branch following command is used :
+“git checkout <branch name>”
+
+Cloning a project:
+In order to clone any remote repository to local repository following command is used :
+git clone <remote repository ssh key>
+
+Merging on branch to another:
+In order to merge any branch to other branch use following steps:
+Switch to the branch “in which new branch has to merge” by following command:
+git checkout <branch name>
+2. Use following command to merge other branch to this branch :
+git merge <other branch name>
+
+Code syncing – git pull:
+In order to sync to the lastest change in the remote repository following command is used :
+Git pull <repository name> <branch name>
+------------------------------------------------------------------------
+*************************************
+Section: 27 					  2
+Continuous Integration - Jenkins CI
+*************************************
+---------------------------------------------------------------------
+173. Introduction to Continuous Integration and configuring Jenkins
+---------------------------------------------------------------------
+Download .war file:
+cmd ; navigate to downloaded .war file and run below command;
+java -jar jenkins.war
+go to localhost:8080
+go to manage jenkins: 
+for plug in go to Manage Plugins: for git we need git plugin and Git Client Plugin, for Maven need Maven Integration plugin
+
+Go to configure system :
+configure jdk give java_home path i.e. jdk path.
+To configure git give folder path where git.exe is available i.e. c:\Programs Files(x86)\Git\bin
+For Maven: give path of folder where bin folder is available.
+local maven repository is path till .m2\repository.
+------------------------------------------------
+174. Creating a free style Jenkins project
+--------------------------------------------
+*******************************************************
+Section: 28          5
+Jenkins - New Lectures
+************************
+-------------------------------------------
+175. Jenkins execution with batch file
+---------------------------------------
+Create a new lib folder at root of project:
+Add testNG jar to lib folder.
+Set classpath of testNG:
+
+java.org.testng.TestNG testng.xml
+Create a batchpath:
+java -cp bin;lib/* java.org.testng.TestNG testng.xml
+save above as "testrunner.bat" in root folder of project.
+
+Now start jenkins go to advance Project Option select custom workspace and provide workspace 
+
+For selenium need to keep below jars in lib;
+gson
+java-client
+selenium-server-standalone
+and foll same process above.
+
+------------------------------------------------------
+176. Configuring Emails and Test Reports with Jenkins
+------------------------------------------------------
+Need to install plugin in jenkins for Testng report: TestNG Result Plugin
+
+Configuration to send email :
+In Configure system, configure Email notification - SMTP system.
+
+----------------------------------------------------------------
+177. Performing Continuous integration with Maven and Jenkins 2
+----------------------------------------------------------------
+----------------------------------------------------------------
+178. Performing Continuous integration with Maven and Jenkins 1
+----------------------------------------------------------------
+In Jenkins create new Maven project
+in configuration give github url, 
+Build to trigger on any change in code select Poll SCM, in schedule type(five *)as :  ***** 
+In prestep: select invoke top level Maven Target , give goal as : clean Test
+-------------------------------------------------------------------------------
+179. Executing Android Test through Jenkins
+--------------------------------------------
+
+********************
+Section: 30  10
+TestNG Basics
+********************
+--------------------------------------------
+185. Introduction to TestNG and Annotations
+--------------------------------------------
+@Test
+@BeforeClass, @ AfterClass
+@BeforeTest, @AfterTest
+@BeforeSuite, @AfterSuite
+------------------------------
+186. TestNG Parameterization
+------------------------------
+@DataProvider : Create an object array in which call our 
+
+@Test(dataProvider= "getData")
+public void testFormFill(String username, String password, Integer age){
+	System.out.println(username +"---" + password +"---"+age);
+}
+@DataProvider
+public Object [][] getData(){
+	Object[][] data = new Object[2][3]; //here 2 is row(each row represents new test case) and 3 is columns
+	data[0][0] ="a.b@gmail.com";
+	data[0][1] ="pass123";
+	data[0][2] =18;
+	
+	data[0][0] ="c@gmail.com";
+	data[0][1] ="pass234";
+	data[0][2] =20;
+	
+	return data;
+}
+
+to skip any testcase add below line in test case:
+throw new SkipException("Skip this test case");
+
+-------------------------------------------------------
+187. Configuring ANT, Generating TestNG & XSLT Reports
+-------------------------------------------------------
+Download ANT and extract, set path files. ANT_HOME : D:\VaibhaV\Selenium Setup\apache-ant-1.9.9 and Path : %ANT_HOME%\bin
+Some time we get message as tools.jar file missing then 
+copy tools.jar file from (jdk): C:\Program Files\Java\jdk1.8.0_144\lib
+ad paste it at(jre) : C:\Program Files\Java\jre1.8.0_91\lib
+
+Create a build.xml file and paste in root of the project.
+open cmd navigate to location where project exist:
+ant clean
+ant compile
+ant run
+
+XSLT report:
+Download testng-results.xsl file 
+Keep testng-results.xsl file in package xslt and keep that package in src folder.
+testng-xslt-maven-plugin-test-0.0 to be imported in project.
+in cmd: ant makexsltreports
+
+Now above all from batch file:
+c:
+cd c:\selenium_training_videos\Learning_testNG
+ant clean compile run makexsltreports
+
+save above at desktop as testNgexe.bat
+-------------------------------------------
+190. TestNG Parameterization Excel Reading
+-------------------------------------------
+-----------------------------------------------------------
+191. TestNG Parameterization Excel Reading with HashTables
+-----------------------------------------------------------
+import java.util.Hashtable;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+public class TestNGParameterizationExcel {
+	public static ExcelReader excel = null;
+	@Test(dataProvider="getData")
+	public void testData(Hashtable<String,String> data){
+	System.out.println(data.get("username")+"---"+data.get("password")+"---"+data.get("is_correct")+"---"+data.get("age")+"---"+data.get("gender"));	
+	}
+	//Hashtable
+	@DataProvider
+	public static Object[][] getData(){
+		if(excel == null){
+			excel = new ExcelReader("c:\\selenium\\testngdata.xlsx");	
+		}
+		String sheetName="loginTest";
+		int rows = excel.getRowCount(sheetName);
+		int cols = excel.getColumnCount(sheetName);
+		Object[][] data = new Object[rows-1][1];
+		Hashtable<String,String> table = null;
+		for(int rowNum=2; rowNum<=rows; rowNum++){
+			table = new Hashtable<String,String>();
+			for(int colNum=0; colNum<cols; colNum++){
+			//	data[rowNum-2][colNum]=	excel.getCellData(sheetName, colNum, rowNum);
+			table.put(excel.getCellData(sheetName, colNum, 1), excel.getCellData(sheetName, colNum, rowNum));	
+			data[rowNum-2][0]=table;	
+			}	
+		}
+		return data;	
+	}
+}
+-------------------------------------
+193. Handling Multiple DataProviders
+-------------------------------------
+import java.lang.reflect.Method;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+public class DataProviders {
+	@DataProvider(name="dp1")
+	public static Object[][] getData(Method m){
+		Object[][] data = null;
+		if(m.getName().equals("testLogin")){
+		data = new Object[2][2];
+		data[0][0] = "raman";
+		data[0][1] = "sdfdsfdilf";
+		data[1][0] = "Rahul";
+		data[1][1] = "asdfhsdlkfjls";
+		}else if(m.getName().equals("testUserReg")){
+			data = new Object[2][3];
+			data[0][0] = "raman";
+			data[0][1] = "ahuja";
+			data[0][2] = "sdfds@gmail.com";
+			data[1][0] = "Rahul";
+			data[1][1] = "Arora";
+			data[1][2] = "sdfdsfdilf@gmail.com";
+		}
+		return data;
+	}
+	/*@DataProvider(name="dp2")
+	public static Object[][] getData2(){
+		Object[][] data = new Object[2][3];
+		data[0][0] = "raman";
+		data[0][1] = "ahuja";
+		data[0][2] = "sdfds@gmail.com";
+		data[1][0] = "Rahul";
+		data[1][1] = "Arora";
+		data[1][2] = "sdfdsfdilf@gmail.com";
+		return data;
+	}
+*/
+}
+-----------
+import org.testng.annotations.Test;
+public class NewLoginTest {
+	@Test(priority=1,dataProviderClass=DataProviders.class,dataProvider="dp1")
+	public void testLogin(String username,String password){
+		System.out.println(username+"----"+password);
+	}
+	@Test(priority=2,dataProviderClass=DataProviders.class,dataProvider="dp1")
+	public void testUserReg(String fName,String lName, String email){
+		System.out.println(fName+"----"+lName+"----"+email);
+	}
+}
+*******************************
+Section: 31               12
+TestNG Extended - New Videos
+*******************************
+------------------------------------------
+195. Priority and Depends-on Annotations
+------------------------------------------
+Priority:
+Dependencies:
+Hard dependencies
+Soft dependencies
+import org.junit.Assert;
+import org.testng.annotations.Test;
+
+public class TestPriority {
+	@Test(priority=1)
+	public void testLogin(){
+		System.out.println("Executing Test One");
+		Assert.fail();
+	}
+
+	@Test(priority=2,dependsOnMethods = { "testLogin" })
+	public void testUserReg(){
+		System.out.println("Executing Test Two");
+	}
+	
+	@Test(priority=3,dependsOnMethods = { "testLogin" },alwaysRun=true)
+	public void testThree(){
+
+		System.out.println("Executing Test Three");
+	}
+	
+	@Test(priority=4,dependsOnMethods = { "testLogin" },alwaysRun=true)
+	public void testFour(){
+
+		System.out.println("Executing Test Four");
+	}
+}
+-------------
+197. Groups
+-------------
+
+import org.testng.annotations.Test;
+public class TestGroup1 {
+	@Test(priority=1,groups = { "high" })
+	public void doLogin(){
+		System.out.println("Login to the System");
+	}
+	
+	@Test(priority=2,groups = { "low" })
+	public void fillForm(){
+		System.out.println("Filling up the form");
+	}
+	
+	@Test(priority=3,groups = { "high" })
+	public void searchFlights(){
+		System.out.println("Searching for flights");
+	}
+	
+	@Test(priority=4,groups = { "med" })
+	public void bookTickets(){
+		System.out.println("Booking a ticket");
+	}
+}
+--------
+import org.testng.annotations.Test;
+public class TestGroup2 {
+	@Test(groups = { "high" })
+	public void validateFlightResults(){
+		System.out.println("Validating flight results");
+	}
+}
+---------
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestNG Learning">
+    <listeners>
+    <listener class-name="ErrorCollectors.TestListenerAdapter" />
+</listeners>
+
+<test name="Group 1 test">
+    
+      <groups>
+    <run>
+      <include name="med"/>
+    </run>
+  </groups>
+  
+    <classes>
+        <class name="TestGroup1" ></class>  
+    </classes>
+</test>
+
+
+<test name="Group 2 test">
+    <classes>
+        <class name="TestGroup2" ></class>  
+    </classes>
+</test>
+</suite>
+------------------------------------
+-----------------------
+199. TestNG Listeners
+-----------------------
+----------------------
+200. Soft Assertions
+----------------------
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestNG Learning">
+   <listeners>
+    	<listener class-name="ErrorCollectors.TestListenerAdapter" />
+   </listeners>
+
+<test name="Login test">
+    <classes>
+        <class name="TestValidateTitles" ></class>  
+    </classes>
+</test>
+</suite>
+-----------
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import ErrorCollectors.ErrorCollector;
+public class TestValidateTitles {
+	@Test
+	public void ValidteTitle(){
+		try{
+		System.out.println("Beginning");
+		
+		String actual_title = "Gmail.com";
+		String expected_title = "Yahoo.com";
+		
+		Assert.assertEquals(expected_title, actual_title);
+		}catch(Throwable t){
+			
+			System.out.println("Error Occurred");
+			ErrorCollector.addVerificationFailure(t);
+		}
+		System.out.println("Ending");
+	}
+}
+---------------------------
+202. Customized Reporting
+---------------------------
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.LogStatus;
+
+public class TestGmail {
+	static final ExtentReports reports = ExtentReports.get(TestGmail.class);
+	static WebDriver driver;
+	@BeforeTest
+	public void setUp(){
+		reports.init("c:\\reports\\report.html", true);
+		driver = new FirefoxDriver();
+	}
+	
+	@Test
+	public void validateTitle(){
+		reports.startTest("Validate Title test");
+		driver.get("http://gmail.com");
+		reports.log(LogStatus.INFO, "Navigating to Gmail.com");
+		String actual_title = driver.getTitle();
+		reports.log(LogStatus.INFO, "validating titles");
+		Assert.assertEquals(actual_title, "Gmail");
+		reports.log(LogStatus.PASS, "Validate Title test Pass");
+	}
+	@Test(dependsOnMethods="validateTitle")
+	public void doLogin(){
+		reports.startTest("Validate Login test");
+		try{
+		Assert.fail();
+		}catch(Throwable t){
+		reports.log(LogStatus.FAIL, "Login Failed");
+		reports.attachScreenshot("c:\\screenshot\\error.jpg");
+		}
+	}
+	@AfterTest
+	public void tearDown(){
+		driver.quit();
+		reports.endTest();
+	}
+}
+----------------------------------------
+204. Re-Run Failed TestCases in TestNG
+----------------------------------------
+Need below class files:
+Retry.java
+RetryListner.java
+
+Listner always work through testNG.xml file
+
+Retry.java:
+------
+package com.sample.test;
+import org.testng.IRetryAnalyzer;
+import org.testng.ITestResult;
+
+public class Retry implements IRetryAnalyzer {
+	int retrycount = 0;
+	 int maxretyrcount =1;
+	@Override
+	public boolean retry(ITestResult result) {
+		// TODO Auto-generated method stub
+		if (retrycount<maxretyrcount){
+			System.out.println("Retrying test " + result.getName() + " with status "
+                    + getResultStatusName(result.getStatus()) + " for the " + (retrycount+1) + " time(s).");
+			retrycount++;
+            return true;
+		}
+		return false;
+	} 
+	 public String getResultStatusName(int status) {
+	    	String resultName = null;
+	    	if(status==1)
+	    		resultName = "SUCCESS";
+	    	if(status==2)
+	    		resultName = "FAILURE";
+	    	if(status==3)
+	    		resultName = "SKIP";
+			return resultName;
+	    }
+}
+----------
+RetryListner.java:
+----------
+package com.sample.test;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import org.testng.IAnnotationTransformer;
+import org.testng.IRetryAnalyzer;
+import org.testng.annotations.ITestAnnotation;
+
+public class RetryListner implements IAnnotationTransformer{
+	@Override
+	public void transform(ITestAnnotation arg0, Class arg1, Constructor arg2,
+			Method arg3) {
+		// TODO Auto-generated method stub
+		IRetryAnalyzer analyzer = arg0.getRetryAnalyzer();
+		if (analyzer == null)	{
+			arg0.setRetryAnalyzer(Retry.class);
+		}
+	}
+}
+-------------
+testNG.xml:
+------------
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1">
+	  <listeners>
+		<listener class-name="com.sample.test.RetryListner"></listener>
+	  </listeners>
+
+	<test name="Login">
+		<classes>
+			<class name="com.sample.test.TestCases" />
+		</classes>
+	</test>
+</suite>
+-----------------
+Test Case:
+package com.sample.test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+public class TestCases {
+	WebDriver driver;
+	String baseURL = "https://www.linkedin.com/";
+
+	@BeforeClass
+	public void setup() {
+		driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+	}
+
+	@Test(priority=1)
+	public void verifyLoginPageText() {
+		driver.navigate().to(baseURL);
+		System.out.println("Verify login page test started");
+		WebElement element = driver.findElement(By.cssSelector(".header>h2"));
+		String headerText = element.getText();
+		Assert.assertEquals(headerText, "Get started – it’s free.");
+	}
+
+	@Test(priority=2)
+	public void verifyForgotPasswordPage() {
+		driver.navigate().to(baseURL);
+		System.out.println("Verify Forgot password page test started");
+		WebElement element = driver.findElement(By.linkText("Forgot your password?"));
+		element.click();
+		WebElement pageTextElement = driver.findElement(By.cssSelector(".flow-login-content>fieldset>h1"));
+		String pageText = pageTextElement.getText();
+		Assert.assertEquals(pageText, "Wrong text");
+		//Assert.assertEquals(pageText, "Change your password");
+	}
+}
+-------------------------------------------------------------------------------
+***********************************************
+Section: 32                                11
+Page Object Model Framework - IOS and Android
+***********************************************
+-------------------------------------------
+207. Part 1 - Creating a New Maven Project
+-------------------------------------------
+pom.xml:
+---------
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.w2a</groupId>
+  <artifactId>MobileAutomationFramework</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+   <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>2.16</version>
+      </plugin>
+    </plugins>
+  </reporting>
+  
+  <build>
+      <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <testFailureIgnore> false </testFailureIgnore>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/runner/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+                </plugin>
+        </plugins>
+    </build>
+	
+  <dependencies>
+  <dependency>
+     <groupId>org.seleniumhq.selenium</groupId>
+     <artifactId>selenium-java</artifactId>
+      <version>2.47.1</version>
+  </dependency>
+    
+    <dependency>
+	<groupId>io.appium</groupId>
+	<artifactId>java-client</artifactId>
+	<version>3.1.0</version>
+</dependency>
+    <dependency>
+	<groupId>org.testng</groupId>
+	<artifactId>testng</artifactId>
+	<version>6.9.6</version>
+</dependency>
+    <dependency>
+	<groupId>log4j</groupId>
+	<artifactId>log4j</artifactId>
+	<version>1.2.17</version>
+</dependency>
+<dependency>
+	<groupId>org.apache.poi</groupId>
+	<artifactId>poi</artifactId>
+	<version>3.6</version>
+</dependency>
+
+   <dependency>
+	<groupId>dom4j</groupId>
+	<artifactId>dom4j</artifactId>
+	<version>1.1</version>
+</dependency>
+
+    <dependency>
+	<groupId>org.apache.poi</groupId>
+	<artifactId>poi-ooxml</artifactId>
+	<version>3.6</version>
+</dependency>
+
+   <dependency>
+	<groupId>org.apache.poi</groupId>
+	<artifactId>poi-ooxml-schemas</artifactId>
+	<version>3.6</version>
+</dependency>
+
+    <dependency>
+	<groupId>org.apache.xmlbeans</groupId>
+	<artifactId>xmlbeans</artifactId>
+	<version>2.3.0</version>
+</dependency>
+  </dependencies>
+  
+</project>
+--------------------------------------------------------------
+208. Part 2 - Setting up Framework Architecture and Packages
+--------------------------------------------------------------
+In src/test/java create below packages:
+base, rough, screens(screens.android, screens.ios), testcases(testcases.android, testcases.ios), utils
+
+In src/test/resources create below packages:
+app, logs, properties, runner
+
+In app folder add UICatalog an IOS app and selendroid-test-app-0 a Android app.
+In properties folder create Android_SelendroidTestApp.properties and IOS_UICatalog.properties file.
+
+IOS_UICatalog.properties:
+---------------
+explicit.wait=120
+default.wait=3
+implicit.wait=10
+#application.path=C:\\selenium\\MobileFramework\\appiumframework\\src\\test\\resources\\app\\selendroid-test-app-0.12.0.apk
+appium.server.port=4723
+application.app=com.example.apple-samplecode.UICatalog
+udid=16a241b5344bc50421ebc7a5a27edea3019f5536
+automation.instumentation=Appium
+browser.name=null
+platform.name=iOS
+device.name=iPhone 6 Plus
+platform.version=8.4
+new.command.timeout=300
+device.ready.timeout=300
+-----------------------------------------------------
+Create a ScreenBase class under Base package:
+--------------
+package com.w2a.appium.base;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import io.appium.java_client.AppiumDriver;
+public class ScreenBase {
+	public AppiumDriver driver;
+	public WebDriverWait wait;
+	public ScreenBase(AppiumDriver driver){
+		this.driver = driver;
+	}
+
+	public void waitforElement(long duration, String locator){
+		wait = new WebDriverWait(driver, duration);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.id(locator)));
+	}
+
+	public void hideKeyboard(){
+		driver.hideKeyboard();
+	}
+}
+------------------------------------------
+Create a UICatlogMainScreen class under screens.ios package:
+-------------
+package com.w2a.appium.pages.ios;
+
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import com.w2a.appium.base.ScreenBase;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+
+public class UICatalogScreen extends ScreenBase {
+	public UICatalogScreen(AppiumDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+	public void handleSwitches(){
+		driver.scrollTo("Switches").click();
+	    WebElement switches = (WebElement) driver.findElements(By.className("UIASwitch")).get(0);
+	    System.out.println(switches.getAttribute("value"));
+	    //Turn on the Switch
+	    if(switches.getAttribute("value").equals("1")){
+	    	switches.click();
+	    }
+	    System.out.println(switches.getAttribute("value"));
+	    //Turn off
+	    if(switches.getAttribute("value").equals("0")){
+	    	switches.click();
+	    }
+	    System.out.println(switches.getAttribute("value"));
+	    driver.findElement(By.name("UICatalog")).click();
+	}
+	
+	public void handleSteppers(){
+		driver.scrollTo("Steppers").click();
+	    List<MobileElement> text = driver.findElements(By.className("UIAStaticText"));
+	    for(WebElement staticText : text){
+	    	System.out.println(staticText.getAttribute("name"));
+	    }
+	    System.out.println(driver.findElements(By.className("UIAButton")).size());
+	    //increment
+	    while(!((WebElement) driver.findElements(By.className("UIAStaticText")).get(1)).getAttribute("name").equals("10")){
+	    	((WebElement) driver.findElements(By.name("Increment")).get(0)).click();
+	    }
+	    //decrement
+    while(!((WebElement) driver.findElements(By.className("UIAStaticText")).get(1)).getAttribute("name").equals("0")){
+	    	((WebElement) driver.findElements(By.name("Decrement")).get(0)).click();
+	    }
+    driver.findElement(By.name("UICatalog")).click();
+	}
+	
+	public void handleSliders(){
+driver.scrollTo("Sliders").click();
+	    System.out.println(driver.findElements(By.className("UIASlider")).size());
+	    WebElement slider = (WebElement) driver.findElements(By.className("UIASlider")).get(0);
+	    slider.sendKeys("0.8");
+	   System.out.println(slider.getAttribute("value"));
+	    slider = (WebElement) driver.findElements(By.className("UIASlider")).get(1);
+	    slider.sendKeys("0.2");
+	    System.out.println(slider.getAttribute("value"));
+	    slider = (WebElement) driver.findElements(By.className("UIASlider")).get(2);
+	    slider.sendKeys("0.5");
+	    System.out.println(slider.getAttribute("value"));
+	    driver.findElement(By.name("UICatalog")).click();
+	}
+}
+-------------------------------------------------------------------------------
+-------------------------------------
+209. Part 3 - Creating Common Utils
+-------------------------------------
+Create a TestBase class under base package:
+----------
+package com.w2a.appium.base;
+import java.io.IOException;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import org.apache.log4j.Logger;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import com.w2a.appium.pages.ios.StrykerScreen;
+import com.w2a.appium.pages.ios.UICatalogScreen;
+import com.w2a.appium.utils.CommonUtils;
+import com.w2a.appium.utils.ExcelReader;
+
+public class TestBase {
+	public static AppiumDriver driver;
+	public static StrykerScreen str;
+	public static UICatalogScreen ucs;
+	public static String loadPropertyFile = "IOS_UICatalog.properties";
+	public static ExcelReader excel = new ExcelReader(System.getProperty("user.dir")+"/src/test/resources/properties/testdata.xlsx");
+	public static Logger log = Logger.getLogger("devpinoyLogger");
+	@BeforeSuite
+	public void setUp() throws IOException, InterruptedException{
+		if(driver==null){
+			log.debug("Appium server started");	
+		if(loadPropertyFile.startsWith("IOS")){
+			log.debug("Starting on IOS");
+			CommonUtils.loadIOSConfigProp(loadPropertyFile);
+			CommonUtils.setIOSCapabilities();
+			driver = CommonUtils.getIOSDriver();
+		}else if(loadPropertyFile.startsWith("Android")){
+			log.debug("Starting on Android");
+			CommonUtils.loadAndroidConfigProp(loadPropertyFile);
+			CommonUtils.setAndroidCapabilities();
+			driver = CommonUtils.getAndroidDriver();
+		}
+		}
+	}
+	@AfterSuite
+	public void tearDown() throws IOException{
+		driver.quit();
+	}
+}
+------------------------------------------------
+Create a CommonUtils class under utils package:
+------------
+package com.w2a.appium.utils;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+public class CommonUtils {
+	private static Properties prop = new Properties();
+	public static int EXPLICIT_WAIT_TIME;
+	public static int IMPLICIT_WAIT_TIME;
+	public static int DEFAULT_WAIT_TIME;
+	public static String APPLICATION_NAME;
+	public static String BASE_PKG;
+	public static String APP_ACTIVITY;
+	public static String APP_PASSWORD;
+	private static String APPIUM_PORT;
+	public static String AUTOMATION_INSTRUMENTATION;
+	public static String BROWSER_NAME;
+	public static String PLATFORM_NAME;
+	public static String NEW_COMMAND_TIMEOUT;
+	public static String PLATFORM_VERSION;
+	public static String DEVICE_READY_TIMEOUT;
+	public static String DEVICE_NAME;
+	public static String APP;
+	public static String UDID;
+	private static DesiredCapabilities capabilities = new DesiredCapabilities();
+	private static URL serverUrl;
+	private static AppiumDriver driver;
+	public static void loadIOSConfigProp(String propertyFileName) throws IOException
+	 {
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/properties/"+propertyFileName);
+		prop.load(fis);
+		
+		EXPLICIT_WAIT_TIME = Integer
+				.parseInt(prop.getProperty("explicit.wait"));
+		IMPLICIT_WAIT_TIME = Integer
+				.parseInt(prop.getProperty("implicit.wait"));
+		DEFAULT_WAIT_TIME = Integer.parseInt(prop.getProperty("default.wait"));
+		//APPLICATION_NAME = prop.getProperty("application.path");
+		UDID = prop.getProperty("udid");
+		APP = prop.getProperty("application.app");
+		APPIUM_PORT = prop.getProperty("appium.server.port");
+		AUTOMATION_INSTRUMENTATION=prop.getProperty("automation.instumentation");
+		DEVICE_NAME=prop.getProperty("device.name");
+		BROWSER_NAME=prop.getProperty("browser.name");
+		PLATFORM_NAME=prop.getProperty("platform.name");
+		PLATFORM_VERSION=prop.getProperty("platform.version");
+		NEW_COMMAND_TIMEOUT=prop.getProperty("new.command.timeout");
+		DEVICE_READY_TIMEOUT=prop.getProperty("device.ready.timeout");
+}
+	public static void setIOSCapabilities() {
+		capabilities.setCapability(MobileCapabilityType.BROWSER_NAME,
+				CommonUtils.BROWSER_NAME);
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,
+				CommonUtils.PLATFORM_VERSION);
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,
+				CommonUtils.PLATFORM_NAME);
+		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,
+				CommonUtils.DEVICE_NAME);
+		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,
+				CommonUtils.AUTOMATION_INSTRUMENTATION);
+		//capabilities.setCapability(MobileCapabilityType.APP, CommonUtils.APPLICATION_NAME);
+		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT,
+				CommonUtils.NEW_COMMAND_TIMEOUT);
+		capabilities.setCapability(MobileCapabilityType.DEVICE_READY_TIMEOUT,
+				CommonUtils.DEVICE_READY_TIMEOUT);
+		capabilities.setCapability(MobileCapabilityType.APP,
+				CommonUtils.APP);
+		capabilities.setCapability(MobileCapabilityType.UDID,
+				CommonUtils.UDID);
+	}
+	public static void loadAndroidConfigProp(String propertyFileName) throws IOException
+	 {
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/properties/"+propertyFileName);
+		prop.load(fis);
+		
+		EXPLICIT_WAIT_TIME = Integer
+				.parseInt(prop.getProperty("explicit.wait"));
+		IMPLICIT_WAIT_TIME = Integer
+				.parseInt(prop.getProperty("implicit.wait"));
+		DEFAULT_WAIT_TIME = Integer.parseInt(prop.getProperty("default.wait"));
+		//APPLICATION_NAME = prop.getProperty("application.path");
+		BASE_PKG = prop.getProperty("base.pkg");
+		APP_ACTIVITY = prop.getProperty("application.activity");
+		APPIUM_PORT = prop.getProperty("appium.server.port");
+		AUTOMATION_INSTRUMENTATION=prop.getProperty("automation.instumentation");
+		DEVICE_NAME=prop.getProperty("device.name");
+		BROWSER_NAME=prop.getProperty("browser.name");
+		PLATFORM_NAME=prop.getProperty("platform.name");
+		PLATFORM_VERSION=prop.getProperty("platform.version");
+		NEW_COMMAND_TIMEOUT=prop.getProperty("new.command.timeout");
+		DEVICE_READY_TIMEOUT=prop.getProperty("device.ready.timeout");
+}
+	public static void setAndroidCapabilities() {
+		capabilities.setCapability(MobileCapabilityType.BROWSER_NAME,
+				CommonUtils.BROWSER_NAME);
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,
+				CommonUtils.PLATFORM_VERSION);
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,
+				CommonUtils.PLATFORM_NAME);
+		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,
+				CommonUtils.DEVICE_NAME);
+		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,
+				CommonUtils.AUTOMATION_INSTRUMENTATION);
+		//capabilities.setCapability(MobileCapabilityType.APP, CommonUtils.APPLICATION_NAME);
+		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT,
+				CommonUtils.NEW_COMMAND_TIMEOUT);
+		capabilities.setCapability(MobileCapabilityType.DEVICE_READY_TIMEOUT,
+				CommonUtils.DEVICE_READY_TIMEOUT);
+		capabilities.setCapability(MobileCapabilityType.APP_ACTIVITY,
+				CommonUtils.APP_ACTIVITY);
+		capabilities.setCapability(MobileCapabilityType.APP_PACKAGE,
+				CommonUtils.BASE_PKG);
+	}
+	public static AppiumDriver getAndroidDriver() throws MalformedURLException {
+		serverUrl = new URL("http://localhost:" + APPIUM_PORT + "/wd/hub");		
+		driver = new AndroidDriver(serverUrl, capabilities);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		return driver;
+	}
+	public static AppiumDriver getIOSDriver() throws MalformedURLException {
+		serverUrl = new URL("http://localhost:" + APPIUM_PORT + "/wd/hub");		
+		driver = new IOSDriver(serverUrl, capabilities);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		return driver;
+	}
+}
+----------------------------------------------------------------------------
+-----------------------------------------------------
+210. Part 4 - Implementing Base class for TestCases
+-----------------------------------------------------
+------------------------------------------------
+211. Part 5 - Creating the First IOS Test Case
+------------------------------------------------
+Create a UICatalogTest class under testcases.ios package:
+------------------
+package com.w2a.appium.testcases.ios;
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import com.w2a.appium.base.TestBase;
+import com.w2a.appium.pages.ios.StrykerScreen;
+import com.w2a.appium.pages.ios.UICatalogScreen;
+public class UICatalogTest extends TestBase {
+	@BeforeTest
+	public void init(){
+		ucs = new UICatalogScreen(driver);
+	}
+	@Test(priority=1)
+	public void SwitchTest() throws InterruptedException{
+		ucs.handleSwitches();
+	}
+	@Test(priority=2)
+	public void SliderTest() throws InterruptedException{
+		ucs.handleSliders();
+	}
+	@Test(priority=3)
+	public void SteppersTest() throws InterruptedException{
+		ucs.handleSteppers();
+	}
+}
+------------------
+Create TestNG.xml file;
+Location: AppiumFramework\src\test\resources\runner\testng.xml
+--------------------
+---------------------------------------------------------------
+212. Part 6 - Executing the test on Iphone 6 Plus real device
+---------------------------------------------------------------
+-----------------------------
+213. Part 7 - Creating Logs
+-----------------------------
+Two types of logs to generate:User defined and Appium server side logs: 
+User defined :
+In src/test/resources/logs create Application.log file
+We need log4j jar file, log4j properties file, paste log4j properties file at path : \src\test\java
+in log4j change application path.
+
+Appium server side logs: 
+In src/test/resources/logs create Appium.log file
+Copy path of Appium.log file -> go to appium (stop server) ->Settings ->Change log path to copied path.
+
+--------------------------------------------------------------
+214. Part 8 - BDD Integration - Adding Cucumber Dependencies
+--------------------------------------------------------------
+
+***********************************************************
+Section: 33                                           15
+Master Framework with Native, Hybrid & WebApp Automation
+***********************************************************
+-------------------------------------
+218. Part 1 - Framework Introduction
+-------------------------------------
+---------------------------------------------
+219. Part 2 - Creating Architectural Layouts
+---------------------------------------------
+Create Different packages in test java
+and in test resources create packages as app , properties and runner.
+------------------------
+-----------------------------------
+220. Part 3 - Adding Common Utils
+-----------------------------------
+package com.w2a.appium.utils;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.remote.DesiredCapabilities;
+public class CommonUtils {
+		
+	private static Properties prop = new Properties();
+	public static int EXPLICIT_WAIT_TIME;
+	public static int IMPLICIT_WAIT_TIME;
+	public static int DEFAULT_WAIT_TIME;
+	public static String APPLICATION_NAME;
+	public static String BASE_PKG;
+	public static String APP_ACTIVITY;
+	public static String APP_PASSWORD;
+	private static String APPIUM_PORT;
+	public static String AUTOMATION_INSTRUMENTATION;
+	public static String BROWSER_NAME;
+	public static String PLATFORM_NAME;
+	public static String NEW_COMMAND_TIMEOUT;
+	public static String PLATFORM_VERSION;
+	public static String DEVICE_READY_TIMEOUT;
+	public static String DEVICE_NAME;
+	private static DesiredCapabilities capabilities = new DesiredCapabilities();
+	private static URL serverUrl;
+	private static AndroidDriver driver;
+	public static void loadConfigProp(String propertyFileName) throws IOException
+	 {
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\resources\\properties\\"+propertyFileName);
+		prop.load(fis);
+		
+		EXPLICIT_WAIT_TIME = Integer
+				.parseInt(prop.getProperty("explicit.wait"));
+		IMPLICIT_WAIT_TIME = Integer
+				.parseInt(prop.getProperty("implicit.wait"));
+		DEFAULT_WAIT_TIME = Integer.parseInt(prop.getProperty("default.wait"));
+		APPLICATION_NAME = prop.getProperty("application.path");
+		BASE_PKG = prop.getProperty("base.pkg");
+		APP_ACTIVITY = prop.getProperty("application.activity");
+		APPIUM_PORT = prop.getProperty("appium.server.port");
+		AUTOMATION_INSTRUMENTATION=prop.getProperty("automation.instumentation");
+		DEVICE_NAME=prop.getProperty("device.name");
+		BROWSER_NAME=prop.getProperty("browser.name");
+		PLATFORM_NAME=prop.getProperty("platform.name");
+		PLATFORM_VERSION=prop.getProperty("platform.version");
+		NEW_COMMAND_TIMEOUT=prop.getProperty("new.command.timeout");
+		DEVICE_READY_TIMEOUT=prop.getProperty("device.ready.timeout");
+}
+	public static void setCapabilities() {
+		capabilities.setCapability(MobileCapabilityType.BROWSER_NAME,
+				CommonUtils.BROWSER_NAME);
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,
+				CommonUtils.PLATFORM_VERSION);
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,
+				CommonUtils.PLATFORM_NAME);
+		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,
+				CommonUtils.DEVICE_NAME);
+		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,
+				CommonUtils.AUTOMATION_INSTRUMENTATION);
+		capabilities.setCapability(MobileCapabilityType.APP, CommonUtils.APPLICATION_NAME);
+		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT,
+				CommonUtils.NEW_COMMAND_TIMEOUT);
+		capabilities.setCapability(MobileCapabilityType.DEVICE_READY_TIMEOUT,
+				CommonUtils.DEVICE_READY_TIMEOUT);
+		capabilities.setCapability(MobileCapabilityType.APP_ACTIVITY,
+				CommonUtils.APP_ACTIVITY);
+		capabilities.setCapability(MobileCapabilityType.APP_PACKAGE,
+				CommonUtils.BASE_PKG);
+	}
+	public static AndroidDriver getDriver() throws MalformedURLException {
+		serverUrl = new URL("http://localhost:" + APPIUM_PORT + "/wd/hub");		
+		driver = new AndroidDriver(serverUrl, capabilities);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		return driver;
+	}
+}
+
+------------------------------
+--------------------------------------------------------------------------------
+221. Part 4 - Implementing Page Factories and Creating the First Business Class
+--------------------------------------------------------------------------------
+Basic rule of Page object Model is : If any action/method is navigating to the other or same screen then that method should return the page object of that page.
+
+-------------------------------------------
+222. Part 5 - Adding more business logics
+-------------------------------------------
+-------------------------------------------
+223. Part 6 - Adding Test Cases to TestNG
+-------------------------------------------
+------------------------------------------------------------------------
+224. Part 7 - Implementing Start and Stop of Appium Server through Code
+------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------
+Current Project Technologies:    Core Java/ Selenium WebDriver/ TestNG/ Log4j/ Extent report/ Maven/ Jenkins/ GitHub/ POM framework

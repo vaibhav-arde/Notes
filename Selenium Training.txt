@@ -1,0 +1,4628 @@
+Anil Tomar:
+Course Name: Selenium WebDriver With Java - Novice To Ninja + Interview
+
+letskodeit@gmail.com
+letskodeit.com
+
+4. Selenium Architecture:
+WebDriver is an interface.
+All browsers use same methods.
+There are different drivers for each browser.
+HTML browser.
+
+****************************************************************
+Section 2: Setup and installation of required tools and plugins
+****************************************************************
+
+7. Overview and Install Java:
+Download JDK
+
+8. Java Environment Setup MAC:
+MAC:
+terminal
+echo $JAVA_HOME
+nano ~/.bash_profile
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$JAVA_HOME/bin:$PATH
+control+o
+control+x
+
+source ~/.bash_profile
+echo $JAVA_HOME
+
+9. Java Environment Setup Windows:
+Go to environment valiables
+search Path system variable, if not found create one.
+in variable value append with java path till bin.
+now in cmd prompt type java -version
+you will get details
+
+10. Install Eclipse- Windows:
+Download Eclipse for eclipse.org
+Extract ZIP file then open eclipse application.
+
+11. Install Eclipse- Mac:
+Download Eclipse for eclipse.org(website identifies OS)
+Extract ZIP file then open eclipse application.
+on double click MAC extract zip file.
+then copy eclipse to Application.
+
+12. Selenium IDE - Important Update
+Selenium IDE is no longer officially support after FF 55 version.
+
+13. Selenium-IDE-Download-And-Installation
+download selenium plug in from seleniumhq.org
+shortcutkey to open Selenium; Clt + Alt + S
+
+14. Firebug And FirePath
+
+15. Firebug And FirePath Installation
+We can install addin in Get Add-ons in Firefox
+NOte: Always check matching node(it should be one to be unique, it gives us count of matching node.
+
+16. Install Maven Plugin
+In Eclipse click on Help -> Install new Software
+Click on Add button , give name and paste below url. complete installation.
+maven link: http://download.eclipse.org/technology/m2e/releases/
+
+****************************************************************
+Section 3. Java Concepts - Data Types / Classes / Methods
+****************************************************************
+17. Hello World
+Java
+Strongly type: Data type is must and to change data type need to undergo convert condition.
+public class HelloSelenium {
+
+	public static void main(String[] args) {
+		// This is Selenium Java
+		System.out.println(" Hello Selenium");
+	}
+
+}
+
+18. Variables And Data Types 
+ IF variable are declared in method then they can be called only in same method, they can not be identified outside method/Scope.
+ 
+Data Type 		min					max 			 Default
+Byte			-128				127				 0
+Short			-32768				32767			 0
+int 			-2,147,483,648		2,147,483,647	 0
+long 			-2^63				2^63			 0
+float 			NA					NA				 0.0f
+double 			NA 					NA 				 0.0d
+boolean			(true or false)						 false
+char 			0					65,535			 NA
+-----------------------------------
+number change
+21. Reference Data Type - Strings Example
+------------------------------------
+Primitive data type??
+two ways to define string
+1. String literal - JVM stores them in String literal pool(most preferred)
+ex: String str1 = "Hello"; 
+str1 is reference and Hello is object
+ex: String str3 = "Hello";
+now jvm does not store duplicate object in Heap hence same object Hello is referenced by str3.
+2. String Object - JVM stores them in Heap
+ex: String str2 = new String ("Welcome");
+str2 is reference and Welcome is object
+
+now if str1 = "new hello"
+then in this case new object new hello is stored in heap and reference of str1 is changed.
+If there is no reference to object Hello then it is moved to garbage.
+
+-------------------------------------------------
+22. String Methods - Part 1
+23. String Methods - Part 2
+------------------------------------
+public class StringDemo {
+
+	public static void main(String[] args) {
+		String str = "This is the test string";
+		String str1 = "Hello";
+		String str2 = "Hello";
+		String str3 = "Welcome";
+		String str4 = "";
+		String str5 = " Spaces all around ";
+						
+		System.out.println(str.length());//23
+		System.out.println(str.charAt(2));//i
+		System.out.println(str.concat(" This is appended string"));//This is the test string This is appended string
+		System.out.println(str.concat(" " + str1));//This is the test string Hello
+		System.out.println(str.contains("is"));//true
+		System.out.println(str.contains("est"));//true
+		System.out.println(str.contains("si"));//false
+		System.out.println(str.startsWith("This"));//true
+		System.out.println(str.startsWith("Th"));//true
+		System.out.println(str.startsWith("is"));//false
+		System.out.println(str.endsWith("string"));//true
+		System.out.println(str.endsWith("String"));//false
+		System.out.println(str.endsWith("ing"));//true
+		System.out.println(str1.equals(str2));//true
+		System.out.println(str1.equals(str3));//false
+		System.out.println(str.indexOf('i'));//2
+		System.out.println(str.indexOf('q'));//-1 --- -1 means it is not available in str.
+		System.out.println(str.isEmpty());//false
+		System.out.println(str4.isEmpty());//true
+		System.out.println(str5.trim());//Spaces all around
+		System.out.println(str6.replace('e', 'a'));//Hallo
+		System.out.println(str.substring(5));//is the test string
+		System.out.println(str.substring(5, 10));//is th
+		char [] charArray = str.toCharArray();
+		for (int i=0; i<charArray.length; i++){
+			System.out.println("Index " + i + " is: " + charArray[i]);
+		}
+		/*Index 0 is: T
+		Index 1 is: h
+		Index 2 is: i
+		Index 3 is: s
+		Index 4 is:  
+		Index 5 is: i
+		Index 6 is: s
+		Index 7 is:  
+		Index 8 is: t
+		Index 9 is: h
+		Index 10 is: e
+		Index 11 is:  
+		Index 12 is: t
+		Index 13 is: e
+		Index 14 is: s
+		Index 15 is: t
+		Index 16 is:  
+		Index 17 is: s
+		Index 18 is: t
+		Index 19 is: r
+		Index 20 is: i
+		Index 21 is: n
+		Index 22 is: g */
+		
+		System.out.println(str.toLowerCase());//this is the test string
+		System.out.println(str.toUpperCase());//THIS IS THE TEST STRING
+	}
+}
+
+--------------------------------------------
+24. String vs StringBuffer vs StringBuilder
+--------------------------------------------
+String:	
+We have already learned	String is immutable and they are stored in the Constant String Pool.
+Every immutable object in Java is Thread Safe.
+
+StringBuffer:
+StringBuffer is mutable -­> It can be change after it is defined.
+Its object is stored in heap.
+It is also Thread Safe.
+Performance is slow because of thread safety.
+
+StringBuilder:
+StringBuilder is same as StringBuffer -­> Value can be changed and object is stored in heap.
+The only difference is that, it is not Thread Safe.
+It is better in terms of performance because it is not thread safe and there are no checks done to verify thread safety.
+
+Thread Safe -­> Two threads cannot simultaneously access the same method.
+
+---------------------------------
+25. Arrays 
+-----------------
+
+Array has elements of same data type.
+
+import java.util.*;
+
+public class ArraysDemo {
+	public static void main(String[] args) {
+		int [] myIntArray1;
+		myIntArray1 = new int[10];
+		myIntArray1[0] = 100;
+		myIntArray1[1] = 90;
+		
+		System.out.println("0th index: " + myIntArray1[0]);//100
+		System.out.println("1st index: " + myIntArray1[1]);//90
+		System.out.println("2nd index: " + myIntArray1[2]);//0 --- 0 is displayed since index 2 is not available.
+		
+		//String [] myStringArray1 = {"BMW", "AUDI", "HONDA"};
+		String [] myStringArray1;
+		myStringArray1 = new String[4];
+		myStringArray1[0] = "BMW";
+		myStringArray1[1] = "AUDI";
+		myStringArray1[2] = "HONDA";
+		
+				
+		System.out.println("0th index: " + myStringArray1[0]);//BMW
+		System.out.println("1st index: " + myStringArray1[1]);//AUDI
+		System.out.println("2nd index: " + myStringArray1[2]);//HONDA
+		System.out.println("3rd index: " + myStringArray1[3]);//null ---- null is displayed since index 3 is not available.
+		
+		int len1 = myIntArray1.length;
+		int len2 = myStringArray1.length;
+		
+		System.out.println("Int array length: " + len1);
+		System.out.println("String array length: " + len2);
+		
+		// jav.util.* has many function below is for sort:
+		
+		int [] myIntArray2 = {67, 23, 34, 79};
+		
+		for (int i=0; i<myIntArray2.length; i++){
+			System.out.println(myIntArray2[i]);
+		}
+		
+		Arrays.sort(myIntArray2);
+		
+		System.out.println("Array after sort");
+		for (int i=0; i<myIntArray2.length; i++){
+			System.out.println(myIntArray2[i]);
+		}
+	}
+}
+---------------------------
+**************************************************************
+
+Section: 4 									/ 8
+Classes And Methods -> Object Oriented Concepts
+**************************************************************
+--------------------------
+ 26. Methods Introduction 
+--------------------------
+> Variables can be defined outside method but All actions are defined in method.
+> main method is must else we can not run code or it should be called by another class which has main method.
+> We can have any number of method inside class but class need main method to run.
+> Naming convention for method name should be in camel case start with small letter.
+> (String [] args) : is a legacy code : we use it when we run code from command line by giving some arguments.
+> All code should not be in main main method, code should be modular and we should have methods for every action or work we perform.
+> We can not put method inside method, we can call method.
+
+----------------------------------
+27. Methods - Practical Example
+----------------------------------
+
+public class AddingMethod {
+	public static void main(String[] args) {
+		findGrades("John", 90);
+		findGrades("Tom", 70);
+	}
+	
+	public static void findGrades(String studentName, int score){
+		String grade;
+		if (score>= 90 && score <= 100){
+			grade = "A";
+		}else if (score>= 80 && score <= 90){
+			grade = "B";
+		}else if (score>= 70 && score <= 80){
+			grade = "C";
+		}else{
+			grade = "D";
+		}
+		System.out.println("Grade of " + studentName + " is: " +grade);
+	}
+
+}
+output:
+Grade of John is: A
+Grade of Tom is: C
+
+--------------------------------------
+ 28. Understanding Return Type 
+---------------------------------
+void means nothing, void is used when method does not return anything.
+When method returns some value then void is replaced with datatype of that value.
+
+public class AddingMethod1 {
+	public static void main(String[] args) {
+		String grade;
+		String studentName;
+		
+		grade = findGrades(90);
+		studentName= "John";
+		displayGrade(studentName, grade);
+		
+		grade = findGrades(60);
+		studentName= "Tom";
+		displayGrade(studentName, grade);
+	}
+	
+	public static String findGrades(int score){
+		String grade;
+		if (score>= 90 && score <= 100){
+			grade = "A";
+		}else if (score>= 80 && score <= 90){
+			grade = "B";
+		}else if (score>= 70 && score <= 80){
+			grade = "C";
+		}else{
+			grade = "D";
+		}
+		return grade;
+	}
+	
+	public static void displayGrade(String studentName, String grade){
+		System.out.println("****************************************");
+		System.out.println("Grade of " + studentName + " is: " +grade);
+		System.out.println("****************************************");
+	}
+
+}
+Output:
+****************************************
+Grade of John is: A
+****************************************
+****************************************
+Grade of Tom is: D
+****************************************
+
+----------------------------
+29. Class Introduction
+----------------------------
+Classes are core component in most of OOP languages.
+Object: Car house book
+each object has State and Behavior 
+
+Class is actually blueprint which is used to create a object.
+In class state and behavior is defined .
+
+Naming convention of class:
+first character of class name should be capital.
+Name of class should be same as filename.
+
+How to access private variables from outside class.??
+getters ans setters in java.??
+
+----------------------------------------------
+30. Getters-Setters And This Keyword - Part 1
+----------------------------------------------
+Every class inherits from the object class.
+
+Setter:
+A method which is used to set value of a field or a variable.
+this keyword is a special keyword in java, when we use this. in from of variable it accesses the member variable or class variable.
+
+Shortcut to generate getters and setters;
+Right click --> go to source --> Generate Getters and Setters 
+
+package OopsConcepts;
+
+public class Car {
+	//color
+	private String color;
+	//make
+	private String make;
+	//model
+	private String model;
+	//year
+	private int year;
+	
+	public void increaseSpeed(){
+		System.out.println("Increasing the speed");
+	}
+	
+	public String getMake(){
+		return this.make;
+	}
+	
+	public void setMake(String make){
+		this.make = make;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+}
+---------
+package OopsConcepts;
+
+public class ClassDemo {
+	public static void main(String[] args) {
+		Car bmw = new Car();
+		bmw.setMake("BMW");
+		System.out.println(bmw.getMake()); // BMW
+		
+	}
+}
+--------------
+
+------------------------------------------------
+31. Getters-Setters And This Keyword - Part 2
+------------------------------------------------
+In class it is better to set all class variables as private so that those are only available only in class.
+And it is good to use setters and getters so that we can add other validation on same.
+ex:
+public void setYear(int year) {
+		if (year>1900){
+			this.year = year;
+		}
+		else {
+			 System.out.println("This is not valid year");
+		}
+	}
+	
+Encapsulation: Hidding member variables form the outside world and using getters and setters to use them outside class.
+package OopsConcepts;
+
+public class ClassDemo {
+	public static void main(String[] args) {
+		Car bmw = new Car();
+		bmw.setMake("BMW");
+		System.out.println(bmw.getMake()); // BMW
+		
+		Car benz = new Car();
+		
+		benz.setMake("Benz");
+		System.out.println(benz.getMake());
+		
+		benz.setModel("c300");
+		System.out.println(benz.getModel());
+		
+		benz.setYear(1910);
+		System.out.println(benz.getYear());
+	}
+
+}
+
+----------------------------------------------
+32. Getters-Setters And This Keyword - Part 3
+----------------------------------------------
+When a variable is initialized and value is not assigned to it, if we call the same variable then default value of respective data type is displayed.
+Ex: for int default value is 0, and for String default value is null.
+
+-----------------------
+33. Constructors
+----------------------
+Constructors look like methods but they are not methods.
+Constructors gets called on its own when an object is created.
+Constructors hold same name as class
+No Argument constructors always exist
+Constructors are used most probably to instantiate values 
+There can be more than one constructor in one class.
+Constructor can be called from another constructor.
+
+package OopsConcepts;
+
+public class ConstrCar {
+	private String make;
+	int speed;
+	int gear;
+	
+	public ConstrCar() {
+		this(10, 2);
+		this.speed= 0;
+		this.gear = 0;
+		System.out.println("Executing constructor without argument");
+	}
+	
+	public ConstrCar(int speed, int gear){
+		this.speed = speed;
+		this.gear = gear;
+		System.out.println("Executing constructor with argument");
+	}
+	//this refers to the instance of the class (object)
+	public void setMake(String make){
+		this.make =make;
+	}
+
+	public String getMake(){
+		return make;
+	}
+}
+
+package OopsConcepts;
+
+public class ConstructorDemo {
+
+	public static void main(String[] args) {
+		ConstrCar c1 = new ConstrCar();
+		
+		c1.setMake("BMW");
+		System.out.println(c1.getMake());
+		System.out.println(c1.speed);
+		System.out.println(c1.gear);
+		System.out.println("*************");
+		
+		ConstrCar c2 = new ConstrCar(10, 1);
+		System.out.println(c2.speed);
+		System.out.println(c2.gear);
+	}
+}
+OutPut:
+Executing constructor with argument
+Executing constructor without argument
+BMW
+0
+0
+*************
+Executing constructor with argument
+10
+1
+-----------------------------------------
+****************************************************************
+Section: 5 					 / 4
+Conditional Statements and Loops
+****************************************************************
+----------------------------
+34. Conditional Statement
+----------------------------
+package OopsConcepts;
+
+public class ConditionalStatement {
+
+	public static void main(String[] args) {
+		int val1 = 10;
+		int val2 = 20;
+		int val3 = 10;
+		
+		boolean condition = val1==val2;
+		System.out.println(condition);
+		condition = val1==val3;
+		System.out.println(condition);
+		if(val1==val3){
+			System.out.println("Yes, True");
+		}
+		if(val1<val2){
+			System.out.println("Yes, True");
+		}
+		
+		int score = 91;
+		String grade;
+		
+		if (score>90){
+			grade = "A";
+		}else if (score>70){
+			grade = "B";
+		}else {
+			grade = "C";
+		}
+		System.out.println("Score is: " + score + " and Grade is: " + grade);
+	}
+}
+-----------------------------
+35. Switch Statement
+------------------------
+package OopsConcepts;
+
+public class SwitchDemo {
+	public static void main(String[] args) {
+	int numDays = numOfDays(1996,2);
+	System.out.println("Number of days in given and Year and Month are: " + numDays);
+	}
+	static int numOfDays(int year, int month){
+		int numDays = 0;
+		switch (month){
+		case 1:
+			numDays=31;
+			break;
+		case 2:
+			if (year % 4==0){
+				numDays = 29;
+			}else{
+				numDays =28;
+			}
+			break;
+		case 3:
+			numDays=31;
+			break;
+		case 4:
+			numDays=30;
+			break;
+		case 5:
+			numDays=31;
+			break;
+		case 6:
+			numDays=30;
+			break;
+		case 7:
+			numDays=31;
+			break;
+		case 8:
+			numDays=31;
+			break;
+		case 9:
+			numDays=30;
+			break;
+		case 10:
+			numDays=31;
+			break;
+		case 11:
+			numDays=30;
+			break;
+		case 12:
+			numDays=31;
+			break;
+		default:
+			System.out.println("Entered Month is incorrect");
+			break;
+		}
+		return numDays;
+	}
+}
+-----------------------------
+36. While Loop
+---------------
+Shortcut to comment:
+Shift + Ctrl + /
+Shortcut to Uncomment:
+Shift + Ctrl + \
+----
+package OopsConcepts;
+public class WhileLoop {
+	public static void main(String[] args) {
+		int i = 15;
+		while (i<20){
+			if (i==17){
+				break;
+			}
+			System.out.println(i);
+			i++;
+		}
+		System.out.println("Outside loop ...");
+	}
+}
+OutPut:
+15
+16
+Outside loop ...
+-----
+package OopsConcepts;
+
+public class WhileLoop {
+	public static void main(String[] args) {
+		int i = 15;
+		while (i<20){
+			i++;
+			if (i==17){
+				continue;
+			}
+			System.out.println(i);
+		}
+		System.out.println("Outside loop ...");
+		do{
+			System.out.println("do while loop");
+			System.out.println(i);
+			i++;
+		}while(i<10);
+	}
+}
+OutPut:
+16
+18
+19
+20
+Outside loop ...
+do while loop
+20
+---------------------
+package OopsConcepts;
+public class ForLoopDemo {
+	public static void main(String[] args) {
+		// for (initialization; boolean expression; update)
+		// to format code : source--> format
+		int[] numbers = {10, 20, 30};
+		for (int i=0; i<numbers.length; i++){
+			System.out.println("The value of index "+i+ " is: "+ numbers[i]);
+		}
+		
+		//Enhanced for loop
+		for (int num: numbers){
+			System.out.println("The value is: "+ num);
+		}
+		
+		String [] cars={"BMW", "AUDI", "HONDA"};
+		for (String car: cars){
+			System.out.println(car);
+		}
+	}
+}
+OutPut:
+The value of index 0 is: 10
+The value of index 1 is: 20
+The value of index 2 is: 30
+The value is: 10
+The value is: 20
+The value is: 30
+BMW
+AUDI
+HONDA
+-------------------------------------------
+
+*************************************************************
+Section: 6                                             3
+Practice Exercise With Solution + *** Interview Question ***
+*************************************************************
+----------------------------------------------------------------
+38. Practice Exercise With Solution + *** Interview Question ***
+----------------------------------------------------------------
+package OopsConcepts;
+
+public class ReverseString {
+
+	public static void main(String[] args) {
+		String input = "This is a test string";
+		String output = reverse(input);
+		System.out.println(output);
+	}
+	public static String reverse(String input){
+		String reverse ="";
+		if (input.isEmpty()|| input ==null){
+			System.out.println("Empty and null strings are not accepted");
+		}
+		if(input.length() <= 1){
+			reverse = input;
+		}else{
+			String [] originalArray = input.split("\\s+");
+			for(String item : originalArray){
+				reverse = item + " " + reverse;
+			}
+		}
+		return reverse.trim();
+	}
+}
+OutPut:
+string test a is This
+-------------------------------------------
+*******************
+Section: 6   2
+Static Keyword
+*******************
+-----------------------------
+39. Static Keyword - Part 1
+-----------------------------
+
+package staticpackage;
+
+public class StaticExampleClass {
+	private static int wheelsCount = 4;
+	private String make;
+	private static int instanceNum = 0;
+	
+	public StaticExampleClass(String make) {
+		this.make = make;
+		instanceNum++;
+	}
+	public String getMake() {
+		return make;
+	}
+	public static int getInstanceNum() {
+		return instanceNum;
+	}
+}
+--------------
+package staticpackage;
+
+public class StaticDemo {
+	public static void main(String[] args) {
+		StaticExampleClass s1 = new StaticExampleClass("bmw");
+		System.out.println("Make of Car is: " + s1.getMake());
+		System.out.println("This is instance no: " + StaticExampleClass.getInstanceNum());
+		
+		StaticExampleClass s2 = new StaticExampleClass("benz");
+		System.out.println("Make of Car is: " + s2.getMake());
+		System.out.println("This is instance no: " + StaticExampleClass.getInstanceNum());
+	}
+}
+-----------------------------
+40. Static Keyword - Part 2
+-----------------------------
+package staticpackage;
+
+public class StaticKeynotesDemo {
+	
+	// Static method cannot use the non-static variable or method directly
+	// This and super cannot be used in static context
+	
+	public int addNum = 10;
+	public static int addNumStatic = 10;
+
+	public static void main(String[] args) {
+		StaticKeynotesDemo s1 = new StaticKeynotesDemo();
+		int output = s1.sum(20);
+		int staticOutput = sumStatic(10);
+		System.out.println("The output is: " + output);
+		System.out.println("The output is: " + staticOutput);
+	}
+	
+	public int sum(int num) {
+		return num + addNum;
+	}
+	
+	public static int sumStatic(int num) {
+		return num + addNumStatic;
+	}
+}
+------------------------
+******************************************************
+Section: 8 										  12
+Java Concepts - Object Oriented Programming Concepts
+******************************************************
+---------------------------------
+package automobile;
+
+public class Cars {
+	// No Modifier - accessible in the same package
+	int speed;
+	// Only in class
+	@SuppressWarnings("unused")
+	private int privateSpeed;
+	// Anywhere in Java World with importing the package and class
+	public int publicSpeed;
+	// In same package and in sub classes
+	protected int protectedSpeed;
+	int speedLimit = 100 ;
+	
+	public Cars () {
+		this(0);
+	}
+	
+	public void setPrivateSpeed(int pSpeed) {
+		this.privateSpeed = pSpeed;
+	}
+
+	public Cars (int startSpeed) {
+		this.privateSpeed = startSpeed;
+	}
+		
+	public void increaseSpeed() {
+		if (speed < 100) {
+			speed++;
+		}
+		System.out.println("Increasing Speed of Cars ");
+	}
+	
+	protected void decreaseSpeed() {
+		speed--;
+		System.out.println("Decreasing Speed of Cars");
+	}
+}
+-------------------------
+package automobile;
+
+public class BMW extends Cars {
+	
+	public BMW (int startSpeed) {
+		super(startSpeed);
+	}
+
+	@Override
+	public void increaseSpeed() {
+		protectedSpeed++;
+		Cars c1 = new Cars();
+		c1.decreaseSpeed();
+		System.out.println("Increasing Speed of BMW");
+	}
+	
+	public void headupDisplayNavigation() {
+		System.out.println("BMW Specific Functionality");
+	}
+	
+	public void stop() {
+		Cars c1 = new Cars();
+		c1.decreaseSpeed();
+	}
+}
+--------------------------
+import automobile.BMW;
+import automobile.Cars;
+
+public class InheritanceDemo {
+
+	public static void main(String[] args) {
+		int speed = 10;
+		
+		Cars c1 = new Cars(speed);
+		c1.increaseSpeed();
+		c1.publicSpeed = 10;
+		
+		BMW bmw1 = new BMW(speed);
+		bmw1.increaseSpeed();
+		bmw1.headupDisplayNavigation();
+	}
+
+}
+---------------------------------
+********************************************************
+Section: 9											 13
+Selenium WebDriver -> Running Tests On Various Browsers
+********************************************************
+-------------------------------------------------------------------------------------
+56. Setup Selenium 2.x Environment -> If you are using Selenium WebDriver 2 Version
+-------------------------------------------------------------------------------------
+-----------------------------------
+58. Setup Selenium 3.x Environment
+-----------------------------------
+-------------------------
+59. Selenium 3.x Update
+-------------------------
+------------------------------------------------
+60. Running Tests On Firefox with Selenium 2.x
+------------------------------------------------
+61. Running Tests On Firefox With Selenium 3.x
+------------------------------------------------
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class FirefoxDriverDemo {
+
+	public static void main(String[] args) {
+		WebDriver driver;
+		System.setProperty("webdriver.gecko.driver", "/Users/atomar/Documents/workspace_personal/selenium/geckodriver");
+		driver = new FirefoxDriver();
+		String baseURL = "http://www.google.com";
+		
+		driver.get(baseURL);
+	}
+}
+------------------------------
+--------------------------------------
+62. Desired Capabilities Introduction
+--------------------------------------
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+public class DesiredCapabilitiesDemo {
+	
+	public static void main(String[] args) throws Exception {
+		WebDriver driver;
+		String baseURL = "https://letskodeit.teachable.com/pages/practice";
+		DesiredCapabilities caps = DesiredCapabilities.firefox();
+		caps.setBrowserName("firefox");
+		caps.setPlatform(Platform.MAC);
+		
+		driver = new FirefoxDriver(caps);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get(baseURL);
+	}
+}
+---------------------------------------
+63. Running Tests On Google Chrome
+-----------------------------------
+public class TestChrome{
+	public static WebDriver driver;
+	public static String baseURL = "http://www.google.com";
+	
+	public static void main(String[] args) {
+		
+		System.setProperty("webdriver.chrome.driver", "D:\\VaibhaV\\Selenium Setup\\eclipse\\WorkSpace\\JavaRunnable\\chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.get(baseURL);
+	}
+}
+----------------------------------------
+64. Running Tests On Internet Explorer
+----------------------------------------
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+
+public class IEDriver {
+	public static void main(String[] args) {
+		// http://selenium-release.storage.googleapis.com/index.html
+		String baseURL = "http://www.google.com";
+		WebDriver driver;
+		System.setProperty("webdriver.ie.driver", "C:\\Users\\Anil Tomar\\workspace\\SeleniumWD2Tutorial\\libs\\IEDriverServer.exe");
+		driver = new InternetExplorerDriver();
+		driver.get(baseURL);
+	}
+}
+---------------------------------
+65. Resolving IE Related Issues
+---------------------------------
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+public class IEIssue {
+	// Even if you have windows 64-bit version, please download IEDriverServer 32-bit version
+	// All protected zones settings should be same (Disabled / Enabled)
+	// Zoom Level should be 100%
+	// Use Desired Capabilities class to set IE properties
+	public static void main(String[] args) throws Exception {
+		WebDriver driver;
+		String baseURL = "https://letskodeit.teachable.com/pages/practice";
+		DesiredCapabilities caps = DesiredCapabilities.internetExplorer();
+		caps.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);
+		caps.setCapability(InternetExplorerDriver.ENABLE_PERSISTENT_HOVERING, false);
+		caps.setCapability(InternetExplorerDriver.REQUIRE_WINDOW_FOCUS, false);
+		caps.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
+		caps.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
+		caps.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+		System.setProperty("webdriver.ie.driver",
+				"C:\\Users\\Anil Tomar\\workspace\\SeleniumWD2Tutorial\\libs\\IEDriverServer.exe");
+		driver = new InternetExplorerDriver(caps);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get(baseURL);
+	}
+}
+
+All	classes	implement methods of WebDriver interface to enable the browsers	to execute test cases.
+---------------------------
+***********************************
+Section: 10                    6
+Multiple Ways To Locate Elements
+***********************************
+-------------------------------------
+69. Find Elements Using ID And XPATH
+-------------------------------------
+driver.findElement(By.id("lst-ib")).sendKeys("letskodeit");
+driver.findElement(By.xpath("//*[@id='sblsbb']/button")).click();
+------------------------------
+70. Find Elements Using Name
+------------------------------
+driver.findElement(By.id("lst-ib")).sendKeys("letskodeit");		
+driver.findElement(By.name("btnG")).click();
+-----------------------------------------
+71. LinkText And PartialLinkText Update
+-----------------------------------------
+<a> tag is used for hyperlinks in HTML. This is why it is known as link.
+Selenium WebDriver functionality to find element with link text or partial link text works if the text
+is inside <a> tag.
+For any other tag, we need to build XPath/CSS. For reference, CSS/XPath is covered in
+lectures 63 - 75.
+The website used for the demo for next lecture has been uploaded a little bit.
+Previously the text of the Menu items used to be inside <a> tag.
+After the update, text of the Menu items are inside <span> tag.
+The current code will not work because of that. But the most important things is that the concept
+stays the same.
+You should be able to use the same concept on any website where you can find a link with text
+inside it.
+You need to look at the DOM and make sure that text is within <a> tag.
+Google.com is an example, there is a Gmail link on the right hand side and the text is inside <a>
+tag. It may change in the future if google makes an update but I wanted to make sure that you
+understand the concept and do not reply on any particular website for practice.
+-----------------------------------------------------
+72. Find Elements Using LinkText And PartialLinkText
+-----------------------------------------------------
+driver.findElement(By.linkText("Shipping")).click();
+Thread.sleep(2000);
+driver.findElement(By.partialLinkText("Contact")).click();
+-----------------------------------
+73. Find Elements Using ClassName
+-----------------------------------
+driver.findElement(By.className("title")).click();
+driver.findElement(By.className("leaf")).click();
+---------------------------------------------------------------
+74. Find Elements Using TagName And *** Interview Question ***
+---------------------------------------------------------------
+driver.findElement(By.tagName("a")).click();
+		
+		// id - fastest
+		// name
+		// classname
+		// xpath
+		// linktext
+		// partial link text
+		// tagname
+		// css selector
+----------------------------------
+*************************************		
+Section: 11                     5
+CSS Selectors - Advanced Locators
+*************************************
+CSS	Selectors	Cheat	Sheet
+Every element does not have an id -> static	id,	unique	name, unique link text.
+For those elements we need to build xpath to find and then perform actions on them.
+
+Whatever we	use	to find	an element, id,	name, xpath, css -> It should always be	unique.
+It should only find	one	matching node unless we	want to	capture	a list of elements.
+
+Syntax:
+tag[attribute='value']
+“#”	->	Id
+“.”	->	Class
+
+Element	Displayed Example Text Box:
+input[id=displayed-text]
+#displayed-text
+input#displayed-text
+
+input[class=displayed-class]
+.displayed-class
+input.displayed-class
+
+Appending	Classes
+.class1.class2.class3 -> Until we find a unique	element
+
+Using wildcards in CSS Selectors:
+“^”	->	Represents the starting text
+“$”	->	Represents the ending text
+“*”	->	Represents the text contained
+
+Syntax:
+tag[attribute<special	character>=’value’]
+
+Examples:
+input[class='inputs']	->	Only	1	matching	node
+input[class^='inputs']	->	Two	matching	nodes
+input[class='displayed-class']	- No	matching	nodes
+input[class$='class']	->	One	matching	node
+input[class*='displayed-class']	->	One	matching	node
+
+Finding	Children
+fieldset	->	10	matching	nodes
+Fieldset>table
+fieldset>#product	->	One	matching	node
+fieldset>button	->	One	matching	node
+Fieldset>a
+fieldset>input#name
+-----------------------------------------
+****************************
+Section: 12             8
+Xpath - Advanced Locators
+****************************
+XPATH Cheat Sheet
+Every element does not have	an id -> static	id,	unique name, unique link text. 
+For those elements we need to build xpath to find and then perform actions on them.
+Whatever we	use	to find	an element, id,	name, xpath	->	It should always be unique.
+It should only find one	matching node unless we	want to	capture	a list of elements.
+Difference between single ‘/’ or double ‘//’
+Single slash ‘/’ anywhere in xpath signifies to	look for the element immediately inside the	parent element.
+Double slash ‘//’ signifies	to look	for	any	child or nestedchild element inside	the	parent element.
+Syntax:
+//tag[@attribute='value']
+Relative xpath using single ‘/’	for	Login link
+//div[@id='navbar']/div/div/div/ul/li[2]/a
+Relative xpath using double ‘//’ for Login link.
+//div[@id='navbar']//ul/li[2]/a
+Don’t use “*”, always use the tag name.
+Using Text of the element to build xpath Finding Login link:
+//div[@class='homepage-hero']//a[text()='Enroll	now']
+Using Contains to find the	elements:
+Syntax: //tag[contains(attribute, ‘value’)]
+Finding	Login link:
+//div[@id='navbar']//a[contains(text(),'Login')]
+//div[@id='navbar']//a[contains(@class,'navbar-link') and contains(@href,'sign_in')]
+Using Starts-With to find the elements:
+Syntax:	//tag[starts-with(attribute, ‘value’)]
+Finding	Login link:
+//div[@id='navbar']//a[starts-with(@class,'navbar-link')]
+Parent
+Syntax:	xpath-to-some-element//parent::<tag>
+Preceding Sibling
+Syntax:	xpath-to-some-element//preceding-sibling::<tag>
+Following Sibling
+Syntax:	xpath-to-some-element//following-sibling::<tag>
+
+************************************
+Section: 13 					 2
+Selenium IDE / WebDriver -> Basics
+************************************
+--------------------------------------------------
+88. Generating WebDriver Code Using Selenium IDE
+--------------------------------------------------
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class SeleniumTest {
+	private WebDriver driver;
+	private String baseUrl;
+
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "http://www.letskodeit.com/";
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+	}
+
+	@Test
+	public void testSelenium() throws Exception {
+		driver.get(baseUrl + "/");
+		driver.findElement(By.id("i90scv3glabel")).click();
+		driver.findElement(By.linkText("Practice")).click();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		Thread.sleep(3000);
+		// driver.quit();
+	}
+}
+--------------------------------------------------
+89. Assert vs Verify - Selenium IDE Commands
+--------------------------------------------------
+*************************************************
+Section: 14 								 12
+Selenium WebDriver -> Working With Web Elements
+*************************************************
+------------------------
+90. JUnit Introduction
+------------------------
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class JUnitIntroduction {
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		System.out.println("Executed before class...");
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+		System.out.println("Executed after class...");
+	}
+
+	@Before
+	public void setUp() throws Exception {
+		System.out.println("Executed before...");
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		System.out.println("Executed after...");
+	}
+
+	@Test
+	public void test1() {
+		System.out.println("Executed Test1...");
+	}
+	
+	@Test
+	public void test2() {
+		System.out.println("Executed Test2...");
+	}
+}
+----------------------------------------------
+91. How To Click And Type On A Web Element
+----------------------------------------------
+driver.findElement(By.xpath("//div[@id='navbar']//a[@href='/sign_in']")).click();
+System.out.println("Clicked on login");
+driver.findElement(By.id("user_email")).sendKeys("test@email.com");
+System.out.println("Sending keys to username field");
+driver.findElement(By.id("user_password")).sendKeys("test");
+System.out.println("Sending keys to password field");
+driver.findElement(By.id("user_email")).clear();
+System.out.println("Clearing the username field");
+----------------------------------------------
+92. How To Navigate Between Web Pages
+----------------------------------------------
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class NavigatingBetweenPages {
+	WebDriver driver;
+	String baseUrl;
+
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "http://letskodeit.teachable.com/";
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+	}
+
+	@Test
+	public void test() throws InterruptedException {
+		driver.get(baseUrl);
+		String title = driver.getTitle();
+		System.out.println("Title of the page is: " + title);
+		
+		String currentUrl = driver.getCurrentUrl();
+		System.out.println("Current URL is: " + currentUrl);
+		
+		String urlToNavigate = "https://sso.teachable.com/secure/42299/users/sign_in?reset_purchase_session=1";
+		driver.navigate().to(urlToNavigate);
+		System.out.println("Navigating To Login");
+		currentUrl = driver.getCurrentUrl();
+		System.out.println("Current URL is: " + currentUrl);
+		
+		Thread.sleep(2000);
+		
+		driver.navigate().back();
+		System.out.println("Navigate Back");
+		currentUrl = driver.getCurrentUrl();
+		System.out.println("Current URL is: " + currentUrl);
+		
+		Thread.sleep(2000);
+		
+		driver.navigate().forward();
+		System.out.println("Navigate Forward");
+		currentUrl = driver.getCurrentUrl();
+		System.out.println("Current URL is: " + currentUrl);
+		
+		Thread.sleep(2000);
+		
+		driver.navigate().back();
+		System.out.println("Navigate Back");
+		currentUrl = driver.getCurrentUrl();
+		System.out.println("Current URL is: " + currentUrl);
+		
+		driver.navigate().refresh();
+		System.out.println("Navigate Refresh");
+		driver.get(currentUrl);
+		System.out.println("Navigate Refresh");
+		
+		String pageSource = driver.getPageSource();
+		System.out.println(pageSource);
+	}
+	
+	@After
+	public void tearDown() throws Exception {
+		// driver.quit();
+	}
+}
+---------------------------------------------------------------------------
+93. How To Find The State Of A Web Element (Disabled And Enabled Elements)
+---------------------------------------------------------------------------
+WebElement e1 = driver.findElement(By.id("gs_htif0"));
+System.out.println("E1 is Enabled? " + e1.isEnabled());
+		
+WebElement e2 = driver.findElement(By.id("gs_taif0"));
+System.out.println("E2 is Enabled? " + e2.isEnabled());
+
+WebElement e3 = driver.findElement(By.id("lst-ib"));
+System.out.println("E3 is Enabled? " + e3.isEnabled());
+		
+e3.sendKeys("letskodeit");
+----------------------------------
+94. Radio Buttons And CheckBoxes
+----------------------------------
+WebElement bmwRadioBtn = driver.findElement(By.id("bmwradio"));
+bmwRadioBtn.click();
+		
+Thread.sleep(2000);
+WebElement benzRadioBtn = driver.findElement(By.id("benzradio"));
+benzRadioBtn.click();
+		
+Thread.sleep(2000);
+WebElement bmwCheckBox = driver.findElement(By.id("bmwcheck"));
+bmwCheckBox.click();
+		
+Thread.sleep(2000);
+WebElement benzCheckBox = driver.findElement(By.id("benzcheck"));
+benzCheckBox.click();
+		
+System.out.println("BMW Radio Button is selected? " + bmwRadioBtn.isSelected());
+System.out.println("Benz Radio Button is selected? " + benzRadioBtn.isSelected());
+System.out.println("BMW Checkbox is selected? " + bmwCheckBox.isSelected());
+System.out.println("Benz Checkbox is selected? " + benzCheckBox.isSelected());
+------------------------------------------------------------------------------------
+95. Working With List Of Elements
+---------------------------------------
+boolean isChecked = false;
+List<WebElement> radioButtons = driver.findElements(
+		By.xpath("//input[contains(@type,'radio') and contains(@name,'cars')]"));
+int size = radioButtons.size();
+System.out.println("Size of the list: " + size);
+for (int i=0; i<size; i++) {
+	isChecked = radioButtons.get(i).isSelected();
+		if (!isChecked) {
+			radioButtons.get(i).click();
+			Thread.sleep(2000);
+		}
+}
+--------------------------------------
+96. Understanding Dropdown Elements
+--------------------------------------
+//To use Select, dropdown should have select tag.
+//We can use select by three types :selectByValue, selectByIndex, selectByVisibleText
+driver.get(baseUrl);
+WebElement element = driver.findElement(By.id("carselect"));
+Select sel = new Select(element);
+Thread.sleep(2000);
+System.out.println("Select Benz by value");
+sel.selectByValue("benz");
+Thread.sleep(2000);
+System.out.println("Select Honda by index");
+sel.selectByIndex(2);
+Thread.sleep(2000);
+System.out.println("Select BMW by visible text");
+sel.selectByVisibleText("BMW");
+Thread.sleep(2000);
+System.out.println("Print the list of all options");
+List<WebElement> options = sel.getOptions();
+int size = options.size();
+for (int i=0; i<size; i++) {
+String optionName = options.get(i).getText();
+System.out.println(optionName);
+-------------------------------------------
+98. Understanding Multiple Select Elements
+-----------------------------------------------------------
+99. Working With Multiple Select *** Practical Example ***
+-----------------------------------------------------------
+driver.get(baseUrl);
+WebElement element = driver.findElement(By.id("multiple-select-example"));
+Select sel = new Select(element);
+Thread.sleep(2000);
+System.out.println("Select orange by value");
+sel.selectByValue("orange");
+Thread.sleep(2000);
+System.out.println("De-select orange by value");
+sel.deselectByValue("orange");
+Thread.sleep(2000);
+System.out.println("Select peach by index");
+sel.selectByIndex(2);
+Thread.sleep(2000);
+System.out.println("Select Apple by visible text");
+sel.selectByVisibleText("Apple");
+Thread.sleep(2000);
+System.out.println("Print all selected options");
+List<WebElement> selectedOptions = sel.getAllSelectedOptions();
+for (WebElement option : selectedOptions) {
+	System.out.println(option.getText());
+}
+Thread.sleep(2000);
+System.out.println("De-select all selected options");
+sel.deselectAll();
+-------------------------------------------------------------
+101. Working With Hidden Elements *** Practical Example ***
+-------------------------------------------------------------
+public class ElementDisplayed {
+	WebDriver driver;
+	// Adding code for JS
+	private JavascriptExecutor js;
+	String baseUrl1;
+	String baseUrl2;
+
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		// Adding code for JS
+		js = (JavascriptExecutor) driver;
+		baseUrl1 = "http://letskodeit.teachable.com/pages/practice";
+		baseUrl2 = "http://www.expedia.com";
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+	}
+	@Test
+	public void testLetsKodeIt() throws InterruptedException {
+		driver.get(baseUrl1);
+		
+		WebElement textBox = driver.findElement(By.id("displayed-text"));
+		System.out.println("Text Box Displayed: " + textBox.isDisplayed());
+			
+		Thread.sleep(3000);
+		
+		WebElement hideButton = driver.findElement(By.id("hide-textbox"));
+		hideButton.click();
+		System.out.println("Clicked on hide button");
+		System.out.println("Text Box Displayed: " + textBox.isDisplayed());
+		
+		Thread.sleep(3000);
+		
+		// Added code to scroll up because the element was hiding behind the top navigation menu
+		// You will learn about scrolling in future lecture
+		js.executeScript("window.scrollBy(0, -190);");
+		WebElement showButton = driver.findElement(By.id("show-textbox"));
+		showButton.click();
+		System.out.println("Clicked on show button");
+		System.out.println("Text Box Displayed: " + textBox.isDisplayed());
+	}
+
+	@Test
+	public void testExpedia() throws InterruptedException {
+		driver.get(baseUrl2);
+		
+		WebElement childDropdown = driver.findElement(By.id("package-1-age-select-1"));
+		System.out.println("Child Drpdown Displayed: " + childDropdown.isDisplayed());
+	}
+	
+	@After
+	public void tearDown() throws Exception {
+		Thread.sleep(2000);
+		driver.quit();
+	}
+}
+-------------------------------------------------
+****************************************************
+Section: 17										  6
+Selenium WebDriver -> Useful Methods And Properties
+****************************************************
+------------------------------------
+106. How To Get The Text On Element
+------------------------------------
+WebElement btnElement = driver.findElement(By.id("opentab"));
+String elementText = btnElement.getText();
+System.out.println("Text on the Element is : "+ elementText);
+---------------------------------------------------------------
+107. How To Get Value Of Element Attribute
+-------------------------------------------
+WebElement btnElement = driver.findElement(By.id("name"));
+String classAttributeValue = btnElement.getAttribute("class");
+String typeAttributeValue = btnElement.getAttribute("type");
+--------------------------------------------------------------
+108. Generic Method To Find Elements
+--------------------------------------------
+public class GenericMethodsDemo {
+	private WebDriver driver;
+	private String baseUrl;
+	private GenericMethods gm;
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "https://letskodeit.teachable.com/pages/practice";
+		gm = new GenericMethods(driver);
+		// Maximize the browser's window
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+	@Test
+	public void testMethod() throws Exception {
+		driver.get(baseUrl);
+		WebElement element = gm.getElement("name", "id");
+		element.sendKeys("test");
+	}
+	@After
+	public void tearDown() throws Exception {
+		Thread.sleep(2000);
+		//driver.quit();
+	}
+}
+----------
+public class GenericMethods {
+	WebDriver driver;
+	
+	public GenericMethods(WebDriver driver) {
+		this.driver = driver;
+	}
+	
+	public WebElement getElement(String locator, String type) {
+		type = type.toLowerCase();
+		if (type.equals("id")) {
+			System.out.println("Element found with id: " + locator);
+			return this.driver.findElement(By.id(locator));
+		}
+		else if (type.equals("xpath")) {
+			System.out.println("Element found with xpath: " + locator);
+			return this.driver.findElement(By.xpath(locator));
+		}
+		else if (type.equals("css")) {
+			System.out.println("Element found with css: " + locator);
+			return this.driver.findElement(By.cssSelector(locator));
+		}
+		else if (type.equals("linktext")) {
+			System.out.println("Element found with linktext: " + locator);
+			return this.driver.findElement(By.linkText(locator));
+		}
+		else if (type.equals("partiallinktext")) {
+			System.out.println("Element found with partiallinktext: " + locator);
+			return this.driver.findElement(By.partialLinkText(locator));
+		}
+		else {
+			System.out.println("Locator type not supported");
+			return null;
+		}
+	}
+}
+-----------------------------------------------------------------
+109. Generic Method To Find Element List
+------------------------------------------
+public class ElementListDemo {
+	private WebDriver driver;
+	private String baseUrl;
+	private GenericMethods gm;
+
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "https://letskodeit.teachable.com/pages/practice";
+		gm = new GenericMethods(driver);
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+
+	@Test
+	public void testMethod() throws Exception {
+		driver.get(baseUrl);
+		List<WebElement> elementList = gm.getElementList("//input[@type='text']", "xpath");
+		int size = elementList.size();
+		System.out.println("Size of the element list is: " + size);
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		Thread.sleep(2000);
+		//driver.quit();
+	}
+}
+-------------
+package usefulmethods;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class GenericMethods {
+	WebDriver driver;
+	
+	public GenericMethods(WebDriver driver) {
+		this.driver = driver;
+	}
+	
+	public List<WebElement> getElementList(String locator, String type) {
+		type = type.toLowerCase();
+		if (type.equals("id")) {
+			System.out.println("Element found with id: " + locator);
+			return this.driver.findElements(By.id(locator));
+		}
+		else if (type.equals("xpath")) {
+			System.out.println("Element found with xpath: " + locator);
+			return this.driver.findElements(By.xpath(locator));
+		}
+		else if (type.equals("css")) {
+			System.out.println("Element found with xpath: " + locator);
+			return this.driver.findElements(By.cssSelector(locator));
+		}
+		else if (type.equals("linktext")) {
+			System.out.println("Element found with xpath: " + locator);
+			return this.driver.findElements(By.linkText(locator));
+		}
+		else if (type.equals("partiallinktext")) {
+			System.out.println("Element found with xpath: " + locator);
+			return this.driver.findElements(By.partialLinkText(locator));
+		}
+		else {
+			System.out.println("Locator type not supported");
+			return null;
+		}
+	}
+
+}
+--------------------------------------------------------------
+110. How To Check If Element Is Present
+----------------------------------------
+public class isElementPresentDemo {
+	private WebDriver driver;
+	private String baseUrl;
+	private GenericMethods gm;
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "https://letskodeit.teachable.com/pages/practice";
+		gm = new GenericMethods(driver);
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+	@Test
+	public void testMethod() throws Exception {
+		driver.get(baseUrl);
+		boolean result1 = gm.isElementPresent("name", "id");
+		System.out.println("Is Element Present: " + result1);
+		boolean result2 = gm.isElementPresent("name-not-present", "id");
+		System.out.println("Is Element Present: " + result2);
+	}
+	@After
+	public void tearDown() throws Exception {
+		Thread.sleep(2000);
+		driver.quit();
+	}
+}
+--------------
+public class GenericMethods {
+	WebDriver driver;
+	public GenericMethods(WebDriver driver) {
+		this.driver = driver;
+	}	
+	public List<WebElement> getElementList(String locator, String type) {
+		type = type.toLowerCase();
+		List<WebElement> elementList = new ArrayList<WebElement>();
+		if (type.equals("id")) {
+			elementList = this.driver.findElements(By.id(locator));
+		}
+		else if (type.equals("name")) {
+			elementList = this.driver.findElements(By.name(locator));
+		}
+		else if (type.equals("xpath")) {
+			elementList = this.driver.findElements(By.xpath(locator));
+		}
+		else if (type.equals("css")) {
+			elementList = this.driver.findElements(By.cssSelector(locator));
+		}
+		else if (type.equals("classname")) {
+			elementList = this.driver.findElements(By.className(locator));
+		}
+		else if (type.equals("tagname")) {
+			elementList = this.driver.findElements(By.tagName(locator));
+		}
+		else if (type.equals("linktext")) {
+			elementList = this.driver.findElements(By.linkText(locator));
+		}
+		else if (type.equals("partiallinktext")) {
+			elementList = this.driver.findElements(By.partialLinkText(locator));
+		}
+		else {
+			System.out.println("Locator type not supported");
+		}
+		if (elementList.isEmpty()) {
+			System.out.println("Element not found with " + type +": " + locator);
+			
+		} else {
+			System.out.println("Element found with " + type +": " + locator);
+		}
+		return elementList;
+	}
+
+	public boolean isElementPresent(String locator, String type) {
+		List<WebElement> elementList = getElementList(locator, type);
+		int size = elementList.size();
+		if (size > 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+}
+-------------------------------------------------------------------------
+111. Generic Methods -> Code Refactoring
+------------------------------------------
+Re-factored Code is as above method GenericMethods();
+-----------------------------------------------------
+********************************************************************
+Section: 18                                                  0 / 6
+Selenium WebDriver -> Wait Types - Handling Synchronization Issues
+********************************************************************
+--------------------------------------------------
+112. Implicit Wait Vs Explicit Wait
+-------------------------------------
+Wait Types
+Implicit Wait:
+If	elements are not immediately available, an implicit	wait tells Web Driver to poll the DOM for a	certain	amount of time.
+The	default	setting	is 0. Once set, the	implicit wait is set for the duration of the Web Driver	object. This means that	we 
+can tell Selenium WebDriver that we would like it to wait for a certain amount of time before throwing an exception that 
+it cannot find the element on the page.
+
+Explicit Wait:
+It is the custom one. It will be used if we	want the execution to wait for some time until some	condition achieved.
+An explicit	waits is what we can define	to wait	for	a certain condition	to occur before	proceeding further in the code.
+These are the available	expected conditions:
+• alertIsPresent
+• elementSelectionStateToBe
+• elementToBeClickable
+• elementToBeSelected
+• frameToBeAvailableAndSwitchToIt
+• invisibilityOfElementLocated
+• presenceOfElementLocated
+• textToBePresentInElementLocated
+• textToBePresentInElementValue
+• titleContains
+• titleIs
+• visibilityOfElementLocated
+All	Expected Conditions:
+https://seleniumhq.github.io/selenium/docs/api/java/org/openqa/selenium/support/ui/ExpectedConditions.html
+
+Selenium WebDriver Official	Link:
+http://www.seleniumhq.org/docs/04_webdriver_advanced.jsp
+WebDriverWait wait = new WebDriverWait(driver, timeout);
+element = wait.until(
+ExpectedConditions.elementToBeClickable(locator));
+------------------------------------------------------
+113. Implicit Wait *** Practical Example 
+-----------------------------------------
+public class ImplicitWaitDemo {
+	private WebDriver driver;
+	private String baseUrl;
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "https://letskodeit.teachable.com/pages/practice";
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+	}
+	@Test()
+	public void test() throws Exception {
+		driver.get(baseUrl);
+		driver.findElement(By.linkText("Login")).click();
+		driver.findElement(By.id("user_email")).sendKeys("test");
+	}
+	@After
+	public void tearDown() throws Exception {
+		Thread.sleep(3000);
+		driver.quit();
+	}
+----------------------------------------------------------------
+114. Explicit Wait *** Practical Example 
+-----------------------------------------
+driver.get(baseUrl);
+		WebElement loginLink = driver.findElement(By.linkText("Login"));
+		loginLink.click();
+		WebDriverWait wait = new WebDriverWait(driver, 3);
+		WebElement emailField = wait.until(
+				ExpectedConditions.visibilityOfElementLocated(By.id("user_email")));
+		emailField.sendKeys("test");
+--------------------------------------------------------------------------
+115. Generic Method To Work With Explicit Wait - Part 1
+---------------------------------------------------------
+public class ExplicitWaitWithUtilityDemo {
+	private WebDriver driver;
+	private String baseUrl;
+	WaitTypes wt;
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "https://letskodeit.teachable.com/pages/practice";
+		wt = new WaitTypes(driver);
+		driver.manage().window().maximize();
+	}
+	@Test()
+	public void test() throws Exception {
+		driver.get(baseUrl);
+		WebElement loginLink = driver.findElement(By.linkText("Login"));
+		loginLink.click();
+		WebElement emailField = wt.waitForElement(By.id("user_email"), 3);
+		emailField.sendKeys("test");
+	}
+	@After
+	public void tearDown() throws Exception {
+		Thread.sleep(3000);
+		driver.quit();
+	}
+}
+----------------
+public class WaitTypes {
+	WebDriver driver;
+	
+	public WaitTypes(WebDriver driver) {
+		this.driver = driver;
+	}
+	public WebElement waitForElement(By locator, int timeout) {
+		WebElement element = null;
+		try {
+			System.out.println("Waiting for max:: " + timeout + " seconds for element to be available");
+			WebDriverWait wait = new WebDriverWait(driver, 3);
+			element = wait.until(
+					ExpectedConditions.visibilityOfElementLocated(locator));
+			System.out.println("Element appeared on the web page");	
+		} catch(Exception e) {
+			System.out.println("Element not appeared on the web page");
+		}
+		return element;
+	}
+}
+-------------------------------------------------------------
+116. Generic Method To Work With Explicit Wait - Part 2
+--------------------------------------------------------
+public WaitTypes(WebDriver driver) {
+		this.driver = driver;
+	}
+	
+	public WebElement waitForElement(By locator, int timeout) {
+		WebElement element = null;
+		try {
+			System.out.println("Waiting for max:: " + timeout + " seconds for element to be available");
+			
+			WebDriverWait wait = new WebDriverWait(driver, 3);
+			element = wait.until(
+					ExpectedConditions.visibilityOfElementLocated(locator));
+			System.out.println("Element appeared on the web page");	
+		} catch(Exception e) {
+			System.out.println("Element not appeared on the web page");
+		}
+		return element;
+	}
+	
+	public void clickWhenReady(By locator, int timeout) {
+		try {
+			WebElement element = null;
+			System.out.println("Waiting for max:: " + timeout + " seconds for element to be clickable");
+			
+			WebDriverWait wait = new WebDriverWait(driver, 3);
+			element = wait.until(
+					ExpectedConditions.elementToBeClickable(locator));
+			element.click();
+			System.out.println("Element clicked on the web page");	
+		} catch(Exception e) {
+			System.out.println("Element not appeared on the web page");
+		}
+	}
+----------------------------------------------------------------------
+All Generic Methods:
+------------------------
+
+public class ExplicitWaitWithUtilityDemo {
+	private WebDriver driver;
+	private String baseUrl;
+	WaitTypes wt;
+
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "https://letskodeit.teachable.com/pages/practice";
+		wt = new WaitTypes(driver);
+
+		// Maximize the browser's window
+		driver.manage().window().maximize();
+	}
+	
+	@Test()
+	public void test() throws Exception {
+		driver.get(baseUrl);
+		WebElement loginLink = driver.findElement(By.linkText("Login"));
+		loginLink.click();
+		
+		WebElement emailField = wt.waitForElement(By.id("user_email"), 3);
+		emailField.sendKeys("test");
+		
+		wt.clickWhenReady(By.name("commit"), 3);
+		
+		//driver.findElement(By.id("user_email")).sendKeys("test");
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		Thread.sleep(3000);
+		driver.quit();
+	}
+}
+-------------
+public class GenericMethods {
+	WebDriver driver;
+	
+	public GenericMethods(WebDriver driver) {
+		this.driver = driver;
+	}
+	
+	public WebElement getElement(String locator, String type) {
+		type = type.toLowerCase();
+		if (type.equals("id")) {
+			System.out.println("Element found with id: " + locator);
+			return driver.findElement(By.id(locator));
+		}
+		else if (type.equals("name")) {
+			System.out.println("Element found with name: " + locator);
+			return driver.findElement(By.name(locator));
+		}
+		else if (type.equals("xpath")) {
+			System.out.println("Element found with xpath: " + locator);
+			return driver.findElement(By.xpath(locator));
+		}
+		else if (type.equals("css")) {
+			System.out.println("Element found with css: " + locator);
+			return driver.findElement(By.cssSelector(locator));
+		}
+		else if (type.equals("classname")) {
+			System.out.println("Element found with classname: " + locator);
+			return driver.findElement(By.className(locator));
+		}
+		else if (type.equals("tagname")) {
+			System.out.println("Element found with tagname: " + locator);
+			return driver.findElement(By.tagName(locator));
+		}
+		else if (type.equals("linktext")) {
+			System.out.println("Element found with link text: " + locator);
+			return driver.findElement(By.linkText(locator));
+		}
+		else if (type.equals("partiallinktext")) {
+			System.out.println("Element found with partial link text: " + locator);
+			return driver.findElement(By.partialLinkText(locator));
+		}
+		else {
+			System.out.println("Locator type not supported");
+			return null;
+		}
+	}
+	
+	public List<WebElement> getElementList(String locator, String type) {
+		type = type.toLowerCase();
+		List<WebElement> elementList = new ArrayList<WebElement>();
+		if (type.equals("id")) {
+			elementList = driver.findElements(By.id(locator));
+		}
+		else if (type.equals("name")) {
+			elementList = driver.findElements(By.name(locator));
+		}
+		else if (type.equals("xpath")) {
+			elementList = driver.findElements(By.xpath(locator));
+		}
+		else if (type.equals("css")) {
+			elementList = driver.findElements(By.cssSelector(locator));
+		}
+		else if (type.equals("classname")) {
+			elementList = driver.findElements(By.className(locator));
+		}
+		else if (type.equals("tagname")) {
+			elementList = driver.findElements(By.tagName(locator));
+		}
+		else if (type.equals("linktext")) {
+			elementList = driver.findElements(By.linkText(locator));
+		}
+		else if (type.equals("partiallinktext")) {
+			elementList = driver.findElements(By.partialLinkText(locator));
+		}
+		else {
+			System.out.println("Locator type not supported");
+		}
+		if (elementList.isEmpty()) {
+			System.out.println("Element not found with " + type +": " + locator);
+			
+		} else {
+			System.out.println("Element found with " + type +": " + locator);
+		}
+		return elementList;
+	}
+
+	public boolean isElementPresent(String locator, String type) {
+		List<WebElement> elementList = getElementList(locator, type);
+		
+		int size = elementList.size();
+		
+		if (size > 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public WebElement waitForElement(By locator, int timeout) {
+		WebElement element = null;
+		try {
+			System.out.println("Waiting for max:: " + timeout + " seconds for element to be available");
+			
+			WebDriverWait wait = new WebDriverWait(driver, 3);
+			element = wait.until(
+					ExpectedConditions.visibilityOfElementLocated(locator));
+			System.out.println("Element appeared on the web page");	
+		} catch(Exception e) {
+			System.out.println("Element not appeared on the web page");
+		}
+		return element;
+	}
+	
+	public void clickWhenReady(By locator, int timeout) {
+		try {
+			WebElement element = null;
+			System.out.println("Waiting for max:: " + timeout + " seconds for element to be clickable");
+			
+			WebDriverWait wait = new WebDriverWait(driver, 3);
+			element = wait.until(
+					ExpectedConditions.elementToBeClickable(locator));
+			element.click();
+			System.out.println("Element clicked on the web page");	
+		} catch(Exception e) {
+			System.out.println("Element not appeared on the web page");
+		}
+	}
+}	
+-------------------------------------------------------------------------------
+117 Interview Questions
+---------------------------
+What are the different types of	waits available	in Selenium	
+WebDriver With Java	Programming	Language?
+There are 2 types of wait
+• Implicit	Wait
+• Explicit	Wait
+
+What is	the	difference	between	implicit wait and explicit wait?
+Implicit Wait:
+If elements	are	not	immediately	available, an implicit wait tells Web Driver to	poll the DOM for a certain amount of time.
+The	default	setting	is 0. Once set, the	implicit wait is set for the duration of the Web Driver	object.	This means that	we
+can tell Selenium WebDriver that we would like it to wait for a certain amount of time before throwing an exception that 
+it cannot find the element on the page.
+ 
+Explicit Wait:
+It is the custom one. It will be used if we	want the execution to wait for some	time until some	condition achieved.
+There can be instance when a particular	element	takes more than a minute to	load. In that case you definitely not 
+like to	set	a huge time	to Implicit	wait, as if	you	do this	your browser will going	to	wait for the same time for 
+every element.
+To avoid that situation	you	can	simply put a separate time on the required element only. By	following this your
+browser	implicit wait time would be	short for every	element	and	it would be large for specific element.
+
+What are some of the expected conditions?
+These are the available	expected conditions:
+• elementToBeClickable
+• presenceOfElementLocated
+• titleContains
+
+If you use Implicit	Wait of	10 seconds and explicit	wait of	20 seconds,	how	much time Selenium WebDriver will wait before
+timing	out?
+http://www.seleniumhq.org/docs/04_webdriver_advanced.jsp
+************************************
+Section: 19              0 / 5
+Selenium WebDriver -> Advanced
+************************************
+----------------------------------------------------
+118. Calendar Selection - working with date pickers
+----------------------------------------------------
+119. Calendar Selection *** Practical Example ***
+--------------------------------------------------
+public class CalendarSelection {
+	private WebDriver driver;
+	private String baseUrl;
+
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "http://www.expedia.com/";
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+
+    @Test
+	public void test1() throws Exception {
+		driver.get(baseUrl);
+		// Click flights tab
+		driver.findElement(By.id("tab-flight-tab")).click();
+		// Find departing field
+		WebElement departingField = driver.findElement(By.id("flight-departing"));
+		// Click departing field
+		departingField.click();
+		Thread.sleep(3000);
+		// Find the date to be selected
+		WebElement dateToSelect = driver.findElement(By.xpath("//section[@class='cal-month'][position()=1]//a[text()='31']"));
+		// Click the date
+		dateToSelect.click();
+	}
+	
+	@After
+	public void tearDown() throws Exception {
+		Thread.sleep(3000);
+		driver.quit();
+	}
+}
+---------------------------------------------------
+120. Calendar Selection *** Real Time Example ***
+---------------------------------------------------
+public class CalendarSelection {
+	private WebDriver driver;
+	private String baseUrl;
+
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "http://www.expedia.com/";
+		// Maximize the browser's window
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+
+	public void test1() throws Exception {
+		driver.get(baseUrl);
+		// Click flights tab
+		driver.findElement(By.id("tab-flight-tab")).click();
+		// Find departing field
+		WebElement departingField = driver.findElement(By.id("flight-departing"));
+		// Click departing field
+		departingField.click();
+		Thread.sleep(3000);
+		// Find the date to be selected
+		WebElement dateToSelect = driver.findElement(By.xpath("//section[@class='cal-month'][position()=1]//a[text()='31']"));
+		// Click the date
+		dateToSelect.click();
+	}
+	
+	@Test
+	public void test2() throws Exception {
+		driver.get(baseUrl);
+		driver.findElement(By.id("tab-flight-tab")).click();
+		WebElement departingField = driver.findElement(By.id("flight-departing"));
+		departingField.click();
+		WebElement calMonth = driver.findElement(By.xpath("//section[@class='cal-month'][position()=1]"));
+		List<WebElement> allValidDates = calMonth.findElements(By.tagName("a"));
+		Thread.sleep(3000);
+		for (WebElement date : allValidDates) {
+			if (date.getText().equals("31")) {
+				date.click();
+				break;
+			}
+		}
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		Thread.sleep(3000);
+		driver.quit();
+	}
+}
+--------------------------------------------------------------------------------
+121. Autocomplete
+---------------------
+public class Autocomplete {
+	private WebDriver driver;
+	private String baseUrl;
+
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "http://www.southwest.com/";
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+
+	@Test
+	public void testAutocomplete() throws Exception {
+		driver.get(baseUrl);
+		String searchingText = "New York/Newark, NJ - EWR";
+		String partialText = "New York";
+
+		WebElement text = driver.findElement(By.id("air-city-departure"));
+		text.sendKeys(partialText);
+
+		WebElement element = driver.findElement(By.id("air-city-departure-menu"));
+		List<WebElement> results = element.findElements(By.tagName("li"));
+		int size = results.size();
+
+		System.out.println("The size of the list is: " + size);
+
+		for (int i = 0; i < size; i++) {
+			System.out.println(results.get(i).getText());
+		}
+
+		Thread.sleep(3000);
+		for (WebElement result : results) {
+			if (result.getText().equals(searchingText)) {
+				result.click();
+				System.out.println("Selected: " + result.getText());
+				break;
+			}
+		}
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		driver.quit();
+	}
+}
+-------------------------------------------------
+122. Capturing screenshots of a web page
+-----------------------------------------
+public class Screenshots {
+	private WebDriver driver;
+	private String baseUrl;
+
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "https://www.expedia.com
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+
+	@Test
+	public void testScreenshots() throws Exception {
+		driver.get(baseUrl);
+		driver.findElement(By.id("tab-flight-tab")).click();
+		// Find Elements
+		WebElement flight_origin = driver.findElement(By.id("flight-origin"));
+		WebElement flight_destination = driver.findElement(By.id("flight-destination"));
+		WebElement departure_date = driver.findElement(By.id("flight-departing"));
+		WebElement return_date = driver.findElement(By.id("flight-returning"));
+		WebElement search = driver.findElement(By.id("search-button"));
+		
+		// Send data to elements
+		flight_origin.sendKeys("New York");
+		departure_date.sendKeys("09/03/2014");
+		return_date.clear();
+		return_date.sendKeys("09/10/2014");
+		flight_destination.sendKeys("New York");
+		search.click();
+	}
+	
+	public static String getRandomString(int length) {
+		StringBuilder sb = new StringBuilder();
+		String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+		for (int i = 0; i < length; i++) {
+			int index = (int) (Math.random() * characters.length());
+			sb.append(characters.charAt(index));
+		}
+		return sb.toString();
+	}
+	
+	@After
+	public void tearDown() throws Exception {
+		String fileName = getRandomString(10) + ".png";
+		String directory = "//Users//anil.tomar//Desktop//";
+		File sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(sourceFile, new File(directory + fileName));
+		driver.quit();
+	}
+}
+-------------------------------------------------------------------
+*********************************************
+Section: 20                          0 / 5
+Selenium WebDriver -> JavaScript Execution
+*********************************************
+---------------------------------------
+123. Executing JavaScript Commands
+---------------------------------------
+import org.openqa.selenium.JavascriptExecutor;
+
+public class JavaScriptExecution {
+	private WebDriver driver;
+	String baseUrl;
+	private JavascriptExecutor js;
+
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "https://letskodeit.teachable.com/pages/practice";
+		js = (JavascriptExecutor) driver;
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}	
+	@Test
+	public void testJavaScriptExecution() throws Exception {
+		// Navigation
+		// driver.get(baseUrl);
+		js.executeScript("window.location = 'https://letskodeit.teachable.com/pages/practice';");
+		
+		// driver.get() method waits for the page to load completely before going to the next statement
+		// Adding Thread.sleep() because we are opening URL using js.executeScript() and it does not wait for the page to load completely
+		// If we do not add wait, then Selenium WebDriver will immediately try to find the element and it might have issues with just a little slow connection
+		Thread.sleep(3000);
+		// Finding element
+		// WebElement textBox = driver.findElement(By.id("name"));
+		WebElement textBox = (WebElement) js.executeScript("return document.getElementById('name');");
+		textBox.sendKeys("test");
+	}
+	
+	@After
+	public void tearDown() throws Exception {
+	}
+}
+----------------------------------------------------
+124. How To Find Size Of The Window
+125. How To Scroll Element Into View
+126. How To Click Element Using JavaScript Execution - Part 1
+127. How To Click Element Using JavaScript Execution - Part 2
+--------------------------------------------------------------
+public class JSOpen {
+	private WebDriver driver;
+	private JavascriptExecutor js;
+	String BaseUrl = "";
+
+	@BeforeTest
+	public void setup() {
+		System.setProperty("webdriver.chrome.driver",
+				"D:\\VaibhaV\\Selenium Setup\\eclipse\\WorkSpace\\JavaRunnable\\Resources\\chromedriver.exe");
+		driver = new ChromeDriver();
+		js = (JavascriptExecutor) driver;
+		//BaseUrl="www.google.com";
+		//driver.get(BaseUrl);
+		//driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+
+	@Test
+	public void openBrowser() throws InterruptedException {
+		System.out.println("..starting..");
+		js.executeScript("window.location = 'https://en.wikipedia.org';");
+		System.out.println("opened..");
+		Thread.sleep(2000);
+		 
+		/*WebElement editBox = (WebElement) js.executeScript("return document.getElementById('lst-ib');");
+		editBox.sendKeys("Done");*/
+		String TitleName = js.executeScript("return document.title;").toString();
+		System.out.println("the title is:"+TitleName);
+		//below is another method to use java script.
+		WebElement wb = driver.findElement(By.xpath("//input[@name='search']"));
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].value='Wikipedia';", wb);
+		
+		//Find Size of Window
+		long height = (Long) js.executeScript("return window.innerHeight;");
+		long width = (Long) js.executeScript("return window.innerWidth;");
+		//124. How To Find Size Of The Window
+		System.out.println("Height of window is : "+ height);
+		System.out.println("Width of window is : "+ width);
+		/*125. How To Scroll Element Into View
+		126. How To Click Element Using JavaScript Execution - Part 1*/
+		//Scroll Down
+		js.executeScript("window.scroll(0,576);");
+		Thread.sleep(2000);
+		//Scroll up
+		js.executeScript("window.scroll(0,-576);");
+		Thread.sleep(2000);
+		//Scroll element into view
+		WebElement commons = driver.findElement(By.xpath("//a[@class='external text'][@href='//commons.wikimedia.org/']"));
+		js.executeScript("arguments[0].scrollIntoView(true);", commons);
+	}
+	//127. How To Click Element Using JavaScript Execution - Part 2
+	@Test
+	public void openNewURL(){
+		driver.navigate().to("https://www.retailmenot.com/");
+		driver.findElement(By.xpath("//div[text()='Log In / Sign up']")).click();
+		WebElement chkBox = driver.findElement(By.xpath("//input[@id='subscribe']"));
+		System.out.println("Is CheckBox displayed:"+ chkBox.isDisplayed());
+		System.out.println("Is CheckBox Enabled:"+ chkBox.isEnabled());
+		System.out.println("Is CheckBox Selected:"+ chkBox.isSelected());
+		//below selenium method do not identify chkbox element hence get error as element not visible
+		//chkBox.click();//hence use below javascriptexecutor.
+		//System.out.println("Is CheckBox Selected:"+ chkBox.isSelected());
+		js.executeScript("arguments[0].click();", chkBox);
+		System.out.println("Is CheckBox Selected:"+ chkBox.isSelected());
+	}
+	@AfterClass
+	public void breakDown() throws InterruptedException{
+		Thread.sleep(1000);
+		driver.close();
+	}
+}
+------------------------------------------------------------------------------
+
+*************************************************
+Section: 18 								  6
+Selenium WebDriver -> Switch Window And IFrames
+*************************************************
+---------------------------------
+122. How To Switch Window Focus
+------------------------------------------------
+123. Switch To Window *** Practical Example ***
+------------------------------------------------
+public class SwitchWindow {
+	private WebDriver driver;
+	private String baseUrl;
+
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "http://letskodeit.teachable.com/pages/practice
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		driver.get(baseUrl);
+	}
+	@Test
+	public void test() throws InterruptedException {
+		// Get the handle
+		String parentHandle = driver.getWindowHandle();
+		System.out.println("Parent Handle: " + parentHandle);
+		// Find Open Window button
+		WebElement openWindow = driver.findElement(By.id("openwindow"));
+		openWindow.click();
+
+		// Get all handles
+		Set<String> handles = driver.getWindowHandles();
+
+		// Switching between handles
+		for (String handle: handles) {
+			System.out.println(handle);
+			if (!handle.equals(parentHandle)) {
+				driver.switchTo().window(handle);
+				Thread.sleep(2000);
+				WebElement searchBox = driver.findElement(By.id("search-courses"));
+				searchBox.sendKeys("python");
+				Thread.sleep(2000);
+				driver.close();
+				break;
+			}
+		}
+		// Switch back to the parent window
+		driver.switchTo().window(parentHandle);
+		driver.findElement(By.id("name")).sendKeys("Test Successful");
+	}
+	@After
+	public void tearDown() throws Exception {
+		Thread.sleep(2000);
+		driver.quit();
+	}
+}
+-----------------------------------------------
+124. How To Work With IFrames
+------------------------------------------------
+125. Switch To IFrame *** Practical Example ***
+------------------------------------------------
+public void test() throws InterruptedException {
+	Thread.sleep(3000);
+	// Switch to frame by Id
+	driver.switchTo().frame("courses-iframe");
+	// Switch to frame by name
+	//driver.switchTo().frame("iframe-name");
+	// Switch to frame by numbers
+	//driver.switchTo().frame(0);
+	WebElement searchBox = driver.findElement(By.id("search-courses"));
+	searchBox.sendKeys("python");
+	driver.switchTo().defaultContent();
+	Thread.sleep(6000);
+	driver.findElement(By.id("name")).sendKeys("Test Successful");
+------------------------------------
+126. Handling JavaScript Popup
+------------------------------------
+public class SwitchAlert {
+	private WebDriver driver;
+	private String baseUrl;
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "http://letskodeit.teachable.com/pages/practice";
+		// Maximize the browser's window
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		driver.get(baseUrl);
+	}
+	@Test
+	public void test1() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.id("name")).sendKeys("Anil");
+		driver.findElement(By.id("alertbtn")).click();
+		Thread.sleep(3000);
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+	}
+	@Test
+	public void test2() throws InterruptedException {
+		Thread.sleep(1000);
+		driver.findElement(By.id("name")).sendKeys("Anil");
+		driver.findElement(By.id("confirmbtn")).click();
+		Thread.sleep(3000);
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+		//alert.dismiss();
+	}
+	@After
+	public void tearDown() throws Exception {
+		Thread.sleep(2000);
+		driver.quit();
+	}
+}
+****************************************************
+Section: 19 								   5
+Selenium WebDriver -> Working With Actions Class
+****************************************************
+-------------------------
+128. Mouse Hover Actions
+-------------------------
+public class MouseHoverActions {
+	private WebDriver driver;
+	private String baseUrl;
+	JavascriptExecutor jse;
+	@Before
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "https://letskodeit.teachable.com/pages/practice";
+		jse = (JavascriptExecutor)driver;
+
+		// Maximize the browser's window
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+	}
+	@Test()
+	public void testMouseHoverActions() throws Exception {
+		driver.get(baseUrl);
+		jse.executeScript("window.scrollBy(0, 600)");
+		Thread.sleep(2000);
+		
+		WebElement mainElement = driver.findElement(By.id("mousehover"));
+		
+		Actions action = new Actions(driver);
+		//below step just hover over the main element as we see there is no click() action
+		action.moveToElement(mainElement).perform();
+		Thread.sleep(2000);
+		//After hover over the main element below step click on subElement
+		WebElement subElement = driver.findElement(By.xpath("//div[@class='mouse-hover-content']//a[text()='Top']"));
+		action.moveToElement(subElement).click().perform();
+	}
+	@After
+	public void tearDown() throws Exception {
+		Thread.sleep(2000);
+		driver.quit();
+	}
+}
+-------------------------------------------------
+129. How To Drag And Drop Element On A Web Page
+-------------------------------------------------
+public void testDragAndDrop() throws Exception {
+		driver.get(baseUrl);
+		Thread.sleep(2000);
+		driver.switchTo().frame(0);
+
+		WebElement fromElement = driver.findElement(By.id("draggable"));
+		WebElement toElement = driver.findElement(By.id("droppable"));
+		
+		Actions action = new Actions(driver);
+		
+		// Drag and drop
+		//action.dragAndDrop(fromElement, toElement).build().perform();
+		
+		// Click and hold, move to element, release, build and perform
+		action.clickAndHold(fromElement).moveToElement(toElement).release().build().perform();
+	}
+-------------------------------------------------
+130. Working With Sliders Actions
+---------------------------------------
+public void testSliderActions() throws Exception {
+		driver.get(baseUrl);
+		driver.switchTo().frame(0);
+		Thread.sleep(3000);
+		
+		// Using the actions class
+		WebElement element = driver.findElement(By.xpath("//div[@id='slider']/span"));
+		Actions action = new Actions(driver);
+		action.dragAndDropBy(element, 100, 0).perform();
+	}
+--------------------------------------------
+***************************************
+Section: 23						0 / 4
+Selenium WebDriver - Key Press Events
+***************************************
+-----------------------------------------
+136. Introduction
+137. How To Press Keyboard Keys
+138. How To Send A Key Combination
+139. KeyPress Events Using Actions Class
+-----------------------------------------
+Combination of key is called as Keys Chord
+
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+public class KeyPressEvents {
+	private WebDriver driver;
+	private String BaseURL ="https://letskodeit.teachable.com";
+	@BeforeClass
+	public void setUp(){
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		driver= new ChromeDriver();
+		driver.get(BaseURL);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		//driver.manage().window().maximize();
+	}
+	@Test (priority =0)
+	public void pressKeyBoard() throws InterruptedException{
+		driver.findElement(By.xpath("//a[contains(@href,'/sign_in')]")).click();
+		driver.findElement(By.id("user_email")).sendKeys("a.b@c.com");
+		Thread.sleep(2000);
+		//Below step is input from keyboard: TAB
+		driver.findElement(By.id("user_email")).sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+	}
+	@Test (priority=1)
+	public void findActiveElement(){
+		//Below step is to find element using cursor
+		driver.switchTo().activeElement().sendKeys("qwert");
+		System.out.println("ID Attribute of active element is : "+ driver.switchTo().activeElement().getAttribute("id"));//user_password
+		System.out.println("Class Attribute of active element is : "+ driver.switchTo().activeElement().getAttribute("class"));//form-control input-hg
+	}
+	@Test (priority =2)
+	public void keyChord() throws InterruptedException{
+		driver.findElement(By.xpath("//body")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
+		Thread.sleep(2000);		
+	}
+	@Test (priority =3)
+	public void keyChordByActions() throws InterruptedException{
+		Actions action = new Actions(driver);
+		action.keyDown(Keys.CONTROL).sendKeys(Keys.F5).keyUp(Keys.CONTROL).build().perform();
+		Thread.sleep(2000);
+		action.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
+		Thread.sleep(2000);		
+	}
+}
+--------------------------------------------
+
+**********************
+Section: 20        5
+Automation Framework
+**********************
+-------------------------------------------
+144. Find all links on a web page - BONUS
+-------------------------------------------
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+public class FindLinks {
+	private WebDriver driver;
+	private String baseUrl;
+	@BeforeClass
+	public void setUp() throws Exception {
+		System.setProperty("webdriver.chrome.driver",
+				"D:\\VaibhaV\\Selenium Setup\\eclipse\\WorkSpace\\JavaRunnable\\Resources\\chromedriver.exe");
+		driver = new ChromeDriver();
+		baseUrl = "https://www.expedia.com/";
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+	@Test
+	public void testFindLinks() {
+		driver.get(baseUrl);
+		FindLinks fl= new FindLinks();
+		fl.navigateToFlightsTab(driver);
+		
+		List<WebElement> linksList = clickableLinks(driver);
+		for (WebElement link : linksList) {
+			String href = link.getAttribute("href");
+			try {
+				System.out.println("URL " + href + " returned " + linkStatus(new URL(href)));
+			}
+			catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+	public static void navigateToFlightsTab(WebDriver driver) {
+		driver.findElement(By.id("header-history")).click();
+		/*WebElement element = driver.findElement(By.id("tab-flight-tab"));
+		element.click();*/
+	}
+	
+	public static List<WebElement> clickableLinks(WebDriver driver) {
+		List<WebElement> linksToClick = new ArrayList<WebElement>();
+		List<WebElement> elements = driver.findElements(By.tagName("a"));
+		elements.addAll(driver.findElements(By.tagName("img")));
+		
+		for (WebElement e : elements) {
+			if (e.getAttribute("href") != null) {
+				linksToClick.add(e);
+			}
+		}
+		return linksToClick;
+	}
+	
+	public static String linkStatus(URL url) {
+		// http://download.java.net/jdk7/archive/b123/docs/api/java/net/HttpURLConnection.html#getResponseMessage%28%29
+		try {
+			HttpURLConnection http = (HttpURLConnection) url.openConnection();
+			http.connect();
+			String responseMessage = http.getResponseMessage();
+			http.disconnect();
+			return responseMessage;
+		}
+		catch (Exception e) {
+			return e.getMessage();
+		}
+	}
+	
+	@AfterClass
+	public void tearDown() throws Exception {
+	}
+}
+-----------------------------------------------------
+****************************************
+Section: 21							6
+Logging Infrastructure - Using Log4j2
+****************************************
+--------------------------
+145. Log4j2 Introduction
+---------------------------------
+Log4j 2.x version
+Log4j API that can be used to create logging infra structure in	your tests.
+
+Why	logging	is important in	any	application?	
+Logging	is very	important to any application. It helps us is quick debugging, easy maintenance by collecting information about the execution.
+
+Advantages of Log4j
+• Log4j	allows you to have a very good logging infrastructure with minimal efforts.
+• Allows categorizing logs at different logging	levels (Trace, Debug, Info,	Warn, Error	and	Fatal).
+• Provides control to format the output of the logs.
+• It has multiple appenders	styles,	which allows to	direct logs	to different outputs styles like a file, console or	a database.
+• Logging can be set at runtime using configuration	files.
+Log4j consists of three main components	
+Logger: This is a class, which helps you log information at different logging levels.
+Appenders: Appenders are objects, which	help Logger	objects	write logs to different	outputs.
+Appenders can specify a	file, console or a database	as the output location.
+Layouts: Layout	class helps	us define how the log information should appear	in the outputs.
+
+https://logging.apache.org/log4j/2.0/download.html
+https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core/2.7
+https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api/2.7
+---------------------------------
+146. Using Default Configuration
+---------------------------------
+Log4j will check the system	property “log4j.configurationFile” for the configuration file path.
+In case no system property is defined the configuration	order takes	below precedence:
+• Property ConfigurationFactory	will look for log4j2-test.properties in	the classpath.
+• YAML ConfigurationFactory	will look for log4j2-test.yaml or log4j2-test.yml in the classpath.
+• JSON ConfigurationFactory	will look for log4j2-test.jsn or log4j2-test.json in the classpath.
+• XML ConfigurationFactory will	look for log4j2-test.xml in	the	classpath.
+• Property ConfigurationFactory	will look for log4j2.properties on the classpath
+• YAML ConfigurationFactory	will look for log4j2.yml or	log4j2.yaml in the classpath.
+• JSON ConfigurationFactory	will look for log4j2.jsn or	log4j2.json in the classpath.
+• XML ConfigurationFactory will	look for log4j2.xml in the classpath.
+• If no	configuration file was provided, the DefaultConfiguration takes	place and that would lead you for set of default behaviors:
+o Root logger will be used.
+o Root logger level	will be	set	to ERROR.
+o Root logger will propagate logging messages into console.
+o PatternLayout	is set to be %d{HH:mm:ss.SSS} [%t] %-5level	%logger{36}	-%msg%n
+• ALL
+• TRACE
+• DEBUG
+• INFO
+• WARN
+• ERROR
+• FATAL
+
+------------------------------------------------
+147. Using Configuration File - Console Logging
+------------------------------------------------
+Log 	Level When It Should Be	Used
+OFF 	When no	events will	be logged
+FATAL 	When a severe error	will prevent the application from continuing
+ERROR 	When an	error in the application, possibly recoverable
+WARN 	When an	event that might possible lead to an error
+INFO 	When an	event for informational	purposes
+DEBUG 	When a general debugging event required
+TRACE 	When a fine	grained	debug message, typically capturing the flow	through	the	application
+ALL 	When all events	should be logged
+
+Create a 'resources' folder in a project in that create a Log4j2.xml file.
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<Console name="Console">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %c{1} -%msg%n"/>
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level="trace">
+			<AppenderRef ref="Console"/>
+		</Root>
+	</Loggers>
+</Configuration>
+--------------
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class LoggingConsole {
+
+	private static final Logger log = LogManager.getLogger(LoggingConsole.class.getName());
+
+	public static void main(String[] args) {
+		log.debug("Debug Message Logged");
+		log.error("Error Message Logged");
+		log.fatal("Fatal Message Logged");	
+	}
+}
+---------------------------------------------
+148. Using Configuration File - File Logging
+---------------------------------------------
+Log4j2.xml file as below:
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Properties>
+		<Property name="basePath">./logs</Property>
+	</Properties>
+	<Appenders>
+		<RollingFile name="File" fileName="${basePath}/app.log" filePattern="${basePath}/app-%d{yyyy-MM-dd}.log">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %c{1} -%msg%n"/>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+				<SizeBasedTriggeringPolicy size="100 KB"/>
+			</Policies>
+		</RollingFile>
+		<Console name="Console">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %c{1} -%msg%n"/>
+		</Console>
+	</Appenders>
+	<Loggers>
+        <Root level="trace">
+			<AppenderRef ref="File"/>
+		</Root>
+	</Loggers>
+</Configuration>
+************************************
+Section: 23						7
+TestNG -> Annotations And Asserts
+************************************
+package testclasses;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import appcode.SomeClassToTest;
+
+public class TestNG_Asserts {
+	
+	@Test
+	public void testSum() {
+		System.out.println("\nRunning Test -> testSum");
+		SomeClassToTest obj = new SomeClassToTest();
+		int result = obj.sumNumbers(1, 2);
+		Assert.assertEquals(result, 3);
+	}
+	
+	@Test
+	public void testStrings() {
+		System.out.println("\nRunning Test -> testStrings");
+		String expectedString = "Hello World";
+		SomeClassToTest obj = new SomeClassToTest();
+		String result = obj.addStrings("Hello", "World");
+		Assert.assertEquals(result, expectedString);
+	}
+	
+	@Test
+	public void testArrays() {
+		System.out.println("\nRunning Test -> testArrays");
+		int[] expectedArray = {1, 2, 3, 4};
+		SomeClassToTest obj = new SomeClassToTest();
+		int[] result = obj.getArray();
+		Assert.assertEquals(result, expectedArray);
+		System.out.println("\nEnd Test -> testArrays");
+	}
+}
+-------------------------------------
+147. TestNG Soft Asserts
+-------------------------------
+import org.testng.asserts.SoftAssert;
+import org.testng.annotations.Test;
+import appcode.SomeClassToTest;
+
+public class TestNG_SoftAsserts {
+	
+	@Test
+	public void testSum() {
+		SoftAssert sa = new SoftAssert();
+		System.out.println("\nRunning Test -> testSum");
+		SomeClassToTest obj = new SomeClassToTest();
+		int result = obj.sumNumbers(1, 2);
+		sa.assertEquals(result, 2);
+		System.out.println("\nLine after assert 1");
+		sa.assertEquals(result, 3);
+		System.out.println("\nLine after assert 2");
+		sa.assertAll();
+	}
+}
+-------------------------------------------------------
+148. Method And Class Annotations
+------------------------------------
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+
+public class TestNG_MethodClassAnnotations {
+	
+	@BeforeClass
+	public void setUp() {
+		System.out.println("\nThis runs once before class");
+	}
+	
+	@AfterClass
+	public void cleanUp() {
+		System.out.println("\nThis runs once after class");
+	}
+	
+	@BeforeMethod
+	public void beforeMethod() {
+		System.out.println("\nThis runs before every method");
+	}
+
+	@AfterMethod
+	public void afterMethod() {
+		System.out.println("\nThis runs after every method");
+	}
+	
+	@Test
+	public void testMethod1() {
+		System.out.println("\nRunning Test -> testMethod1");
+	}
+	
+	@Test
+	public void testMethod2() {
+		System.out.println("\nRunning Test -> testMethod2");
+	}
+}
+--------------------------------------
+149. Running A Test Suite
+-----------------------------
+<suite name="Regression TestSuite">
+<test name="Application Test">
+	<classes>
+		<class name="testclasses.TestNG_TestClass1"></class>
+		<class name="testclasses.TestNG_TestClass2"></class>
+	</classes>
+</test>
+</suite>
+--------------------------------------------
+150. BeforeSuite And AfterSuite Annotations
+--------------------------------------------
+//Below is BAse test suite which is extended in each class.
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
+
+public class BaseTestSuite {
+
+	@BeforeClass
+	public void beforeClass() {
+		System.out.println("\nBaseTestSuite -> before class");
+	}
+
+	@AfterClass
+	public void afterClass() {
+		System.out.println("\nBaseTestSuite -> after class");
+	}
+
+	@BeforeSuite
+	public void beforeSuite() {
+		System.out.println("\nBaseTestSuite -> before suite");
+	}
+
+	@AfterSuite
+	public void afterSuite() {
+		System.out.println("\nBaseTestSuite -> after suite");
+	}
+}
+---------------------------------------------------
+151. BeforeTest And AfterTest Annotations
+-------------------------------------------
+//BeforeTest And AfterTest are related to the test tag not to any class.
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Complete TestSuite">
+<test name="Application Test 1">
+	<classes>
+		<class name="regressionsuite.TestNG_TestClass1"></class>
+	</classes>
+</test>
+<test name="Application Test 2">
+	<classes>
+		<class name="regressionsuite.TestNG_TestClass2"></class>
+	</classes>
+</test>
+</suite>
+---------------------------------
+*********************************
+Section: 24				  6
+TestNG -> Advanced Features
+*********************************
+-----------------------------------------------------
+152. Prioritizing Test Methods In A Desired Sequence
+-----------------------------------------------------
+153. How To Group Test Methods - Part 1
+---------------------------------------
+//Add alwaysRun=true to BeforeClass and AfterClass : ex; @BeforeClass(alwaysRun=true)
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Regression TestSuite">
+<test name="GroupsDemo">
+<groups>
+	<run>
+		<include name="bikes"></include>
+	</run>
+</groups>
+	<classes>
+		<class name="testclasses.TestNG_Grouping"></class>
+	</classes>
+</test>
+</suite>
+--------------
+public class TestNG_Grouping {
+	
+	@BeforeClass(alwaysRun=true)
+	public void beforeClass() {
+		System.out.println("Before Class");
+	}
+	@Test(groups = {"cars", "suv"})
+	public void testBMWX6() {
+		System.out.println("Running Test - BMW X6");
+	}
+	@Test(groups = {"cars", "sedan"})
+	public void testAudiA6() {
+		System.out.println("Running Test - Audi A6 ");
+	}
+	@Test(groups = { "bikes" })
+	public void testNinja() {
+		System.out.println("Running Test - Kawasaki Ninja");
+	}
+	@Test(groups = { "bikes" })
+	public void testHondaCBR() {
+		System.out.println("Running Test - Honda CBR");
+	}
+	@AfterClass(alwaysRun=true)
+	public void afterClass() {
+		System.out.println("After Class");
+	}
+}
+---------------------------------------------
+154. How To Group Test Methods - Part 2
+----------------------------------------
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Regression TestSuite">
+<test name="GroupsDemo">
+<groups>
+	<define name="all">
+		<include name="bikes"></include>
+		<include name="suv"></include>
+		<include name="sedan"></include>
+	</define>
+	<define name="nobikes">
+		<include name="suv"></include>
+		<include name="sedan"></include>
+	</define>
+	<run>
+		<include name="all"></include>
+	</run>
+</groups>
+	<classes>
+		<class name="testclasses.TestNG_Grouping"></class>
+	</classes>
+</test>
+</suite>
+------------------------------------------
+155. Understanding Dependent Test Methods
+------------------------------------------
+public class TestNG_DependentTests {
+	
+	SomeClassToTest obj;
+	@BeforeClass
+	public void setUp() {
+		obj = new SomeClassToTest();
+		System.out.println("before class");
+	}
+	@AfterClass
+	public void cleanUp() {
+		System.out.println("after class");
+	}
+	@Test(dependsOnMethods={ "testMethod2" }, alwaysRun=true)
+	public void testMethod1() {
+		System.out.println("testMethod1");
+	}
+	@Test
+	public void testMethod2() {
+		System.out.println("testMethod2");
+		int result = obj.sumNumbers(1, 2);
+		Assert.assertEquals(result, 2);
+	}
+	@Test(dependsOnMethods={ "testMethod1" })
+	public void testMethod3() {
+		System.out.println("testMethod3");
+	}
+	@Test
+	public void testMethod4() {
+		System.out.println("testMethod4");
+	}
+}
+-------------------------------------------------
+156. How To Disable And Timeout Test Methods
+----------------------------------------------
+public class TestNG_EnableTimeout {
+	
+	@BeforeClass
+	public void setUp() {
+		System.out.println("before class");
+	}
+	
+	@AfterClass
+	public void cleanUp() {
+		System.out.println("after class");
+	}
+	
+	@Test(enabled=false)
+	public void testMethod1() {
+		System.out.println("testMethod1");
+	}
+	
+	@Test(timeOut=300)
+	public void testMethod2() throws InterruptedException {
+		System.out.println("testMethod2");
+		Thread.sleep(200);
+	}
+}
+----------------------------------------------
+157. How To Preserve Order Of Execution
+---------------------------------------------
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Preserve Enable TestSuite">
+<test name="Test 1" preserve-order="true">
+	<classes>
+		<class name="testclasses.TestNG_Preserve2"></class>
+		<class name="testclasses.TestNG_Preserve1"></class>
+	</classes>
+</test>
+
+<test name="Test 2" enabled="false">
+	<classes>
+		<class name="testclasses.TestNG_Preserve2"></class>
+		<class name="testclasses.TestNG_Preserve1"></class>
+	</classes>
+</test>
+</suite>
+-----------------------------------------------
+************************************
+Section: 25						2
+TestNG -> Parameters And Parallel
+************************************
+-----------------------------------------------
+158. How To Provide Parameters To Test Methods
+-----------------------------------------------
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parameters TestSuite">
+<test name="Test 1">
+<parameter name="browser" value="firefox"></parameter>
+<parameter name="platform" value="mac"></parameter>
+<parameter name="response" value="201,200"></parameter>
+	<classes>
+		<class name="testclasses.TestNG_Parameters"></class>
+	</classes>
+</test>
+</suite>
+-------------------
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+public class TestNG_Parameters {
+	@BeforeClass
+	@Parameters({"browser", "platform"})
+	public void setUp(String browser, String platform) {
+		System.out.println("TestNG_Parameters -> Setup");
+		System.out.println("1. Parameter value from xml file: " + browser);
+		System.out.println("2. Parameter value from xml file: " + platform);
+	}
+	@Test
+	@Parameters({"response"})
+	public void testMethod1(String response) throws InterruptedException {
+		String[] stringArray = response.split(",");
+		System.out.println("TestNG_Parameters -> testMethod1");
+		System.out.println("Response from xml file: " + response);
+		System.out.println("stringArray[0] from xml file: " + stringArray[0]);
+		System.out.println("stringArray[1] from xml file: " + stringArray[1]);
+	}
+}
+-----------------------------------
+159. How To Run Tests In Parallel
+-----------------------------------
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parallel TestSuite" parallel="methods" thread-count="2">
+<test name="Test 1">
+	<classes>
+		<class name="testclasses.TestNG_Parallel1"></class>
+	</classes>
+</test>
+<test name="Test 2">
+	<classes>
+		<class name="testclasses.TestNG_Parallel2"></class>
+	</classes>
+</test>
+</suite>
+--------------------------------------------------
+********************************************************
+Section: 26											2
+TestNG -> Parameters And Parallel - Practice Exercise
+********************************************************
+------------------------------------------------------
+160. TestNG Pracitce Exercise Question
+------------------------------------------------------------------------
+161. Practice Exercise Solution - Selenium WebDriver Practical Example
+------------------------------------------------------------------------
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parallel TestSuite" parallel="tests" thread-count="2">
+<test name="Firefox Test">
+<parameter name="browser" value="firefox"></parameter>
+	<classes>
+		<class name="testclasses.TestNG_SeleniumParametersParallelExample"></class>
+	</classes>
+</test>
+<test name="Chrome Test">
+<parameter name="browser" value="chrome"></parameter>
+	<classes>
+		<class name="testclasses.TestNG_SeleniumParametersParallelExample"></class>
+	</classes>
+</test>
+</suite>
+------------------------
+public class TestNG_SeleniumParametersParallelExample {
+	
+	WebDriver driver;
+	String baseURL;
+	
+	@BeforeClass
+	@Parameters({"browser"})
+	public void setUp(String browser) {
+		baseURL = "https://letskodeit.teachable.com";
+		if (browser.equalsIgnoreCase("firefox")) {
+			System.setProperty("webdriver.gecko.driver", 
+					"/Users/atomar/Documents/workspace_personal/libs/geckodriver");
+			driver = new FirefoxDriver();
+		} else if (browser.equalsIgnoreCase("chrome")) {
+			System.setProperty("webdriver.chrome.driver", 
+					"/Users/atomar/Documents/workspace_personal/libs/chromedriver");
+			driver = new ChromeDriver();
+		}
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get(baseURL);
+	}
+	
+	@Test
+	public void testLogin() throws InterruptedException {
+		WebElement loginLink = driver.findElement(By.xpath("//a[contains(@href,'/sign_in')]"));
+		loginLink.click();
+		WebElement emailField = driver.findElement(By.id("user_email"));
+		emailField.sendKeys("test@email.com");
+		WebElement passwordField = driver.findElement(By.id("user_password"));
+		passwordField.sendKeys("abcabc");
+		WebElement loginButton = driver.findElement(By.name("commit"));
+		loginButton.click();
+	}
+	
+	@AfterClass
+	public void cleanUp() {
+		driver.quit();
+	}
+}
+----------------------------------------------
+*************************
+Section: 27			  2
+TestNG -> DataProviders
+*************************
+--------------------------------
+162. DataProviders - Part 1
+------------------------------
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+public class TestNG_DataProviders {
+	
+	@DataProvider(name="inputs")
+	public Object[][] getData() {
+		return new Object[][] {
+			{"bmw", "m3"},
+			{"audi", "a6"},
+			{"benz", "c300"}
+		};
+	}
+	@Test(dataProvider="inputs")
+	public void testMethod1(String input1, String input2) {
+		System.out.println("Input 1: " + input1);
+		System.out.println("Input 2: " + input2);
+	}
+}
+--------------------------------
+163. DataProviders - Part 2
+------------------------------
+import org.testng.annotations.DataProvider;
+
+public class TestData {
+	
+	@DataProvider(name="inputs")
+	public Object[][] getData() {
+		return new Object[][] {
+			{"bmw", "m3"},
+			{"audi", "a6"},
+			{"benz", "c300"}
+		};
+	}
+}
+------------------------------------------
+public class TestNG_DataProviders {
+
+	@Test(dataProvider="inputs", dataProviderClass=TestData.class)
+	public void testMethod1(String input1, String input2) {
+		System.out.println("Input 1: " + input1);
+		System.out.println("Input 2: " + input2);
+	}
+}
+----------------------------------------
+***********************
+Section: 28         1
+TestNG -> ITestResult
+***********************
+---------------------------
+164. ITestResult Interface
+---------------------------
+import org.testng.annotations.Test;
+import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+
+public class TestNG_ITestResultDemo {
+	@Test
+	public void testMethod1() {
+		System.out.println("Running -> testMethod1");
+		Assert.assertTrue(false);
+	}
+	@Test
+	public void testMethod2() {
+		System.out.println("Running -> testMethod2");
+		Assert.assertTrue(true);
+	}
+	@AfterMethod
+	public void afterMethod(ITestResult testResult) {
+		if (testResult.getStatus() == ITestResult.FAILURE) {
+			System.out.println("Failed: " + testResult.getMethod().getMethodName());
+		}
+		if (testResult.getStatus() == ITestResult.SUCCESS) {
+			System.out.println("Successful: " + testResult.getName());
+		}
+	}
+}
+--------------------------------------
+********************
+Section: 29 	  4
+TestNG -> Listeners
+********************
+-----------------------------
+165. IInvokedMethodListener
+-----------------------------
+import org.testng.IInvokedMethod;
+import org.testng.IInvokedMethodListener;
+import org.testng.ITestResult;
+
+public class CustomListener1 implements IInvokedMethodListener {
+	@Override
+	public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
+		// Before every method in the Test Class
+		System.out.println("beforeInvocation: " + testResult.getTestClass().getName() + 
+				" => " + method.getTestMethod().getMethodName());
+	}
+	@Override
+	public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
+		// After every method in the Test Class
+		System.out.println("afterInvocation: " + testResult.getTestClass().getName() + 
+				" => " + method.getTestMethod().getMethodName());
+	}
+}
+-------------------
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+import listenerspackage.CustomListener1;
+
+@Listeners(CustomListener1.class)
+public class TestNG_ListenersTest1 {
+	@BeforeClass
+	public void setUp() {
+		System.out.println("Code in before class");
+	}
+	@AfterClass
+	public void cleanUp() {
+		System.out.println("Code in after class");
+	}
+	@Test
+	public void testMethod1() {
+		System.out.println("Code in testMethod1");
+		Assert.assertTrue(true);
+	}
+	@Test
+	public void testMethod2() {
+		System.out.println("Code in testMethod2");
+		Assert.assertTrue(false);
+	}
+}
+-------------------
+<suite name="Listeners TestSuite">
+<test name="Application Test">
+	<classes>
+		<class name="testclasses.TestNG_ListenersTest1"></class>
+	</classes>
+</test>
+</suite>
+-----------------------
+166. ITestListener
+-----------------------
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Listeners TestSuite">
+<test name="Application Test 1">
+	<classes>
+		<class name="testclasses.TestNG_ListenersTest2"></class>
+	</classes>
+</test>
+<test name="Application Test 2">
+	<classes>
+		<class name="testclasses.TestNG_ListenersTest2"></class>
+	</classes>
+</test>
+</suite>
+-------------------
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestNGMethod;
+import org.testng.ITestResult;
+
+public class CustomListener2 implements ITestListener {
+	@Override
+	public void onTestStart(ITestResult result) {
+		// When test method starts
+		System.out.println("onTestStart -> Test Name: " + result.getName());
+	}
+	@Override
+	public void onTestSuccess(ITestResult result) {
+		// If test method is successful
+		System.out.println("onTestSuccess -> Test Name: " + result.getName());
+	}
+	@Override
+	public void onTestFailure(ITestResult result) {
+		// If test method is failed
+		System.out.println("onTestFailure -> Test Name: " + result.getName());
+	}
+	@Override
+	public void onTestSkipped(ITestResult result) {
+		// If test method is failed
+	}
+	@Override
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+		// Ignore this
+	}
+	@Override
+	public void onStart(ITestContext context) {
+		// Before <test> tag of xml file
+		System.out.println("onStart -> Test Tag Name: " + context.getName());
+		ITestNGMethod methods[] = context.getAllTestMethods();
+		System.out.println("These methods will be executed in this test tag:");
+		for (ITestNGMethod method : methods) {
+			System.out.println(method.getMethodName());
+		}
+	}
+	@Override
+	public void onFinish(ITestContext context) {
+		// After <test> tag of xml file
+		System.out.println("onFinish -> Test Tag Name: " + context.getName());
+	}
+}
+-----------------
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import listenerspackage.CustomListener2;
+
+@Listeners(CustomListener2.class)
+public class TestNG_ListenersTest2 {
+	@BeforeClass
+	public void setUp() {
+		System.out.println("Code in before class");
+	}
+	@AfterClass
+	public void cleanUp() {
+		System.out.println("Code in after class");
+	}
+	@Test
+	public void testMethod1() {
+		System.out.println("Code in testMethod1");
+		Assert.assertTrue(true);
+	}
+	@Test
+	public void testMethod2() {
+		System.out.println("Code in testMethod2");
+		Assert.assertTrue(false);
+	}
+}
+-----------------------
+167. ISuiteListener
+----------------------
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Listeners TestSuite">
+<listeners>
+	<listener class-name="listenerspackage.CustomListener3"></listener>
+</listeners>
+<test name="Application Test 1">
+	<classes>
+		<class name="testclasses.TestNG_ListenersTest1"></class>
+	</classes>
+</test>
+<test name="Application Test 2">
+	<classes>
+		<class name="testclasses.TestNG_ListenersTest2"></class>
+	</classes>
+</test>
+</suite>
+------------------------------------
+import org.testng.ISuite;
+import org.testng.ISuiteListener;
+
+public class CustomListener3 implements ISuiteListener {
+	@Override
+	public void onStart(ISuite suite) {
+		// When <suite> tag starts
+		System.out.println("onStart: before suite starts");
+	}
+	@Override
+	public void onFinish(ISuite suite) {
+		// When <suite> tag completes
+		System.out.println("onFinish: after suite completes");
+	}
+}
+------------------------------------------
+168. TestNG Listeners - Code Refactoring
+------------------------------------------
+import org.testng.IInvokedMethod;
+import org.testng.IInvokedMethodListener;
+import org.testng.ISuite;
+import org.testng.ISuiteListener;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestNGMethod;
+import org.testng.ITestResult;
+
+public class CustomListeners implements IInvokedMethodListener, ITestListener, ISuiteListener {
+	@Override
+	public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
+		// Before every method in the Test Class
+		System.out.println("beforeInvocation: " + testResult.getTestClass().getName() + 
+				" => " + method.getTestMethod().getMethodName());
+	}
+	@Override
+	public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
+		// After every method in the Test Class
+		System.out.println("afterInvocation: " + testResult.getTestClass().getName() + 
+				" => " + method.getTestMethod().getMethodName());
+	}
+	@Override
+	public void onTestStart(ITestResult result) {
+		// When test method starts
+		System.out.println("onTestStart -> Test Name: " + result.getName());
+	}
+	@Override
+	public void onTestSuccess(ITestResult result) {
+		// If test method is successful
+		System.out.println("onTestSuccess -> Test Name: " + result.getName());
+	}
+	@Override
+	public void onTestFailure(ITestResult result) {
+		// If test method is failed
+		System.out.println("onTestFailure -> Test Name: " + result.getName());
+	}
+	@Override
+	public void onTestSkipped(ITestResult result) {
+		// If test method is failed
+	}
+	@Override
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+		// Ignore this
+	}
+	@Override
+	public void onStart(ITestContext context) {
+		// Before <test> tag of xml file
+		System.out.println("onStart -> Test Tag Name: " + context.getName());
+		ITestNGMethod methods[] = context.getAllTestMethods();
+		System.out.println("These methods will be executed in this test tag:");
+		for (ITestNGMethod method : methods) {
+			System.out.println(method.getMethodName());
+		}
+	}
+	@Override
+	public void onFinish(ITestContext context) {
+		// After <test> tag of xml file
+		System.out.println("onFinish -> Test Tag Name: " + context.getName());
+	}
+	@Override
+	public void onStart(ISuite suite) {
+		// When <suite> tag starts
+		System.out.println("onStart: before suite starts");
+	}
+	@Override
+	public void onFinish(ISuite suite) {
+		// When <suite> tag completes
+		System.out.println("onFinish: after suite completes");
+	}
+}
+-----------------
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+//import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+//@Listeners(CustomListener1.class)
+public class TestNG_ListenersTest1 {
+	@BeforeClass
+	public void setUp() {
+		System.out.println("TestNG_ListenersTest1 -> Code in before class");
+	}
+	@AfterClass
+	public void cleanUp() {
+		System.out.println("TestNG_ListenersTest1 -> Code in after class");
+	}
+	@Test
+	public void testMethod1() {
+		System.out.println("TestNG_ListenersTest1 -> Code in testMethod1");
+		Assert.assertTrue(true);
+	}
+	@Test
+	public void testMethod2() {
+		System.out.println("TestNG_ListenersTest1 -> Code in testMethod2");
+		Assert.assertTrue(false);
+	}
+}
+-------------------
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+//import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+//@Listeners(CustomListener2.class)
+public class TestNG_ListenersTest2 {
+	@BeforeClass
+	public void setUp() {
+		System.out.println("TestNG_ListenersTest2 -> Code in before class");
+	}
+	@AfterClass
+	public void cleanUp() {
+		System.out.println("TestNG_ListenersTest2 -> Code in after class");
+	}
+	@Test
+	public void testMethod1() {
+		System.out.println("TestNG_ListenersTest2 -> Code in testMethod1");
+		Assert.assertTrue(true);
+	}
+	@Test
+	public void testMethod2() {
+		System.out.println("TestNG_ListenersTest2 -> Code in testMethod2");
+		Assert.assertTrue(false);
+	}
+}
+-----------------
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Listeners TestSuite">
+<listeners>
+	<listener class-name="listenerspackage.CustomListeners"></listener>
+</listeners>
+<test name="Application Test 1">
+	<classes>
+		<class name="testclasses.TestNG_ListenersTest1"></class>
+	</classes>
+</test>
+<test name="Application Test 2">
+	<classes>
+		<class name="testclasses.TestNG_ListenersTest2"></class>
+	</classes>
+</test>
+</suite>
+--------------------------
+******************************************
+Section: 30							   1
+TestNG -> Reporter Logs and HTML Reports
+******************************************
+--------------------------------
+169. TestNG Reporters And Logs
+--------------------------------
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression TestSuite">
+<test name="Application Test">
+	<classes>
+		<class name="testclasses.TestNG_ReportsAndLogs"></class>
+	</classes>
+</test>
+</suite>
+----------------
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.Assert;
+import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
+
+public class TestNG_ReportsAndLogs {
+	@BeforeClass
+	public void setUp() {
+		Reporter.log("TestNG_ReportsAndLogs -> This runs once before class", true);
+	}
+	@AfterClass
+	public void cleanUp() {
+		Reporter.log("TestNG_ReportsAndLogs -> This runs once after class", true);
+	}
+	@BeforeMethod
+	public void beforeMethod() {
+		Reporter.log("TestNG_ReportsAndLogs -> This runs before every method", true);
+	}
+	@AfterMethod
+	public void afterMethod() {
+		Reporter.log("TestNG_ReportsAndLogs -> This runs after every method", true);
+	}
+	@Test
+	public void testMethod1() {
+		Reporter.log("TestNG_ReportsAndLogs -> testMethod1", true);
+	}
+	@Test
+	public void testMethod2() {
+		Reporter.log("TestNG_ReportsAndLogs -> testMethod2", true);
+		Assert.assertTrue(false);
+	}
+	@Test(dependsOnMethods={ "testMethod2" })
+	public void testMethod3() {
+		Reporter.log("TestNG_ReportsAndLogs -> testMethod3", true);
+	}
+}
+---------------------------
+**************************************
+Section: 31						   7
+Extent Reports -> Advanced Reporting
+**************************************
+---------------------------------------------------
+170. Advanced Reporting Introduction And Features
+---------------------------------------------------
+---------------------------------------------------
+172. Advanced Reporting - Practical Example
+---------------------------------------------------
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+public class SeleniumLoginTest {
+	
+	private WebDriver driver;
+	private String baseUrl;
+	ExtentReports report;
+	ExtentTest test;
+
+	@BeforeClass
+	public void beforeClass() {
+		baseUrl = "http://www.letskodeit.com/";
+		report = new ExtentReports("//Users//atomar//Desktop//logintest.html");
+		test = report.startTest("Verify Welcome Text");
+		driver = new FirefoxDriver();
+		test.log(LogStatus.INFO, "Browser Started...");
+
+		// Maximize the browser's window
+		driver.manage().window().maximize();
+		test.log(LogStatus.INFO, "Browser Maximized");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get(baseUrl);
+		test.log(LogStatus.INFO, "Web application opened");
+	}
+	
+	@Test
+	public void test1_validLoginTest() throws Exception {
+		WebElement signupLink = driver.findElement(By.id("comp-iiqg1vggactionTitle"));
+		signupLink.click();
+		test.log(LogStatus.INFO, "Clicked on signup link");
+		
+		WebElement loginLink = driver.findElement(By.id("signUpDialogswitchDialogLink"));
+		loginLink.click();
+		test.log(LogStatus.INFO, "Clicked on login link");
+		
+		WebElement emailField = driver.findElement(By.xpath("//div[@id='memberLoginDialogemail']//input"));
+		emailField.sendKeys("test@email.com");
+		test.log(LogStatus.INFO, "Enter email");
+		
+		WebElement passwordField = driver.findElement(By.xpath("//div[@id='memberLoginDialogpassword']//input"));
+		passwordField.sendKeys("abcabc");
+		test.log(LogStatus.INFO, "Enter password");
+		
+		WebElement goButton = driver.findElement(By.id("memberLoginDialogsubmitButton"));
+		goButton.click();
+		test.log(LogStatus.INFO, "Clicked Go button");
+		
+		Thread.sleep(3000);
+		
+		WebElement welcomeText = null;
+		
+		try {
+			welcomeText = driver.findElement(By.xpath("//div[text()='Hello test@email.com']"));
+		}
+		catch (NoSuchElementException e) {
+			System.out.println(e.getMessage());
+		}
+		Assert.assertTrue(welcomeText != null);
+		test.log(LogStatus.PASS, "Verified Welcome Text");
+	}
+	
+	@AfterClass
+	public void afterClass() {
+		driver.quit();
+		report.endTest(test);
+		report.flush();
+	}
+}
+------------------------------------------------
+173. Attaching Screenshots To Advanced Reports
+------------------------------------------------
+package utilities;
+
+import java.io.File;
+import java.io.IOException;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+
+public class Screenshots {
+	public static String takeScreenshot(WebDriver driver, String fileName) throws IOException {
+		fileName = fileName + ".png";
+		String directory = "//Users//atomar//Desktop//";
+		File sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(sourceFile, new File(directory + fileName));
+		String destination = directory + fileName;
+		return destination;
+	}
+}
+-----------------
+package extenreports;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+import utilities.Screenshots;
+
+public class LoginTestWithScreenshot {
+	private WebDriver driver;
+	private String baseUrl;
+	ExtentReports report;
+	ExtentTest test;
+
+	@BeforeClass
+	public void beforeClass() {
+		baseUrl = "http://www.letskodeit.com/";
+		report = new ExtentReports("//Users//atomar//Desktop//logintest.html");
+		test = report.startTest("Verify Welcome Text");
+		driver = new FirefoxDriver();
+		test.log(LogStatus.INFO, "Browser Started...");
+
+		// Maximize the browser's window
+		driver.manage().window().maximize();
+		test.log(LogStatus.INFO, "Browser Maximized");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get(baseUrl);
+		test.log(LogStatus.INFO, "Web application opened");
+	}
+	@Test
+	public void test1_validLoginTest() throws Exception {
+		WebElement signupLink = driver.findElement(By.id("comp-iiqg1vggactionTitle"));
+		signupLink.click();
+		test.log(LogStatus.INFO, "Clicked on signup link");
+		
+		WebElement loginLink = driver.findElement(By.id("signUpDialogswitchDialogLink"));
+		loginLink.click();
+		test.log(LogStatus.INFO, "Clicked on login link");
+		
+		WebElement emailField = driver.findElement(By.xpath("//div[@id='memberLoginDialogemail']//input"));
+		emailField.sendKeys("test1@email.com");
+		test.log(LogStatus.INFO, "Enter email");
+		
+		WebElement passwordField = driver.findElement(By.xpath("//div[@id='memberLoginDialogpassword']//input"));
+		passwordField.sendKeys("abcabc");
+		test.log(LogStatus.INFO, "Enter password");
+		
+		WebElement goButton = driver.findElement(By.id("memberLoginDialogsubmitButton"));
+		goButton.click();
+		test.log(LogStatus.INFO, "Clicked Go button");
+		
+		Thread.sleep(3000);
+		
+		WebElement welcomeText = null;
+		
+		try {
+			welcomeText = driver.findElement(By.xpath("//div[text()='Hello test@email.com']"));
+		}
+		catch (NoSuchElementException e) {
+			System.out.println(e.getMessage());
+		}
+		Assert.assertTrue(welcomeText != null);
+		test.log(LogStatus.PASS, "Verified Welcome Text");
+	}
+	
+	@AfterMethod
+	public void tearDown(ITestResult testResult) throws IOException {
+		if (testResult.getStatus() == ITestResult.FAILURE) {
+			String path = Screenshots.takeScreenshot(driver, testResult.getName());
+			String imagePath = test.addScreenCapture(path);
+			test.log(LogStatus.FAIL, "Verify Welcome Text Failed", imagePath);
+		}
+		driver.quit();
+		report.endTest(test);
+		report.flush();
+	}
+}
+----------------------------------------------------
+174. Multiple Test Cases *** Practical Example ***
+----------------------------------------------------
+<suite name="Extent TestSuite">
+
+<test name="FireFox Test">
+	<classes>
+		<class name="extentreports.Test1"></class>
+		<class name="extentreports.Test2"></class>
+	</classes>
+</test>
+</suite>
+---------------
+package extentreports;
+
+import com.relevantcodes.extentreports.ExtentReports;
+
+public class ExtentFactory {
+	public static ExtentReports getInstance() {
+		ExtentReports extent;
+		String Path = "//Users//atomar//Desktop//report-demo.html";
+		extent = new ExtentReports(Path, false);
+		extent
+	     .addSystemInfo("Selenium Version", "2.52")
+	     .addSystemInfo("Platform", "Mac");
+
+		return extent;
+	}
+}
+----------------
+package extentreports;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+public class Test1 {
+	
+	private WebDriver driver;
+	private String baseUrl;
+	ExtentReports report;
+	ExtentTest test;
+
+	@BeforeClass
+	public void beforeClass() {
+		baseUrl = "http://www.letskodeit.com/";
+		report = ExtentFactory.getInstance();
+		test = report.startTest("Verify Welcome Text");
+		driver = new FirefoxDriver();
+		test.log(LogStatus.INFO, "Browser Started...");
+
+		// Maximize the browser's window
+		driver.manage().window().maximize();
+		test.log(LogStatus.INFO, "Browser Maximized");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get(baseUrl);
+		test.log(LogStatus.INFO, "Web application opened");
+	}
+	
+	@Test
+	public void test1_validLoginTest() throws Exception {
+		WebElement signupLink = driver.findElement(By.id("comp-iiqg1vggactionTitle"));
+		signupLink.click();
+		test.log(LogStatus.INFO, "Clicked on signup link");
+		
+		WebElement loginLink = driver.findElement(By.id("signUpDialogswitchDialogLink"));
+		loginLink.click();
+		test.log(LogStatus.INFO, "Clicked on login link");
+		
+		WebElement emailField = driver.findElement(By.xpath("//div[@id='memberLoginDialogemail']//input"));
+		emailField.sendKeys("test@email.com");
+		test.log(LogStatus.INFO, "Enter email");
+		
+		WebElement passwordField = driver.findElement(By.xpath("//div[@id='memberLoginDialogpassword']//input"));
+		passwordField.sendKeys("abcabc");
+		test.log(LogStatus.INFO, "Enter password");
+		
+		WebElement goButton = driver.findElement(By.id("memberLoginDialogsubmitButton"));
+		goButton.click();
+		test.log(LogStatus.INFO, "Clicked Go button");
+		
+		Thread.sleep(3000);
+		
+		WebElement welcomeText = null;
+		
+		try {
+			welcomeText = driver.findElement(By.xpath("//div[text()='Hello test@email.com']"));
+		}
+		catch (NoSuchElementException e) {
+			System.out.println(e.getMessage());
+		}
+		Assert.assertTrue(welcomeText != null);
+		test.log(LogStatus.PASS, "Verified Welcome Text");
+	}
+	
+	@AfterClass
+	public void afterClass() {
+		driver.quit();
+		report.endTest(test);
+		report.flush();
+	}
+}
+-----------------------------
+package extentreports;
+
+import org.testng.annotations.Test;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterClass;
+
+public class Test2 {
+	ExtentReports report;
+	ExtentTest test;
+	@BeforeClass
+	public void beforeClass() {
+		report = ExtentFactory.getInstance();
+		test = report.startTest("Test2 Class -> Verification");
+	}
+	@Test
+	public void testMethod() {
+		test.log(LogStatus.INFO, "Test2 -> testMethod Started...");
+		test.log(LogStatus.INFO, "Test2 -> testMethod Continuing...");
+		test.log(LogStatus.INFO, "Test2 -> testMethod End...");
+	}
+	@AfterClass
+	public void afterClass() {
+		report.endTest(test);
+		report.flush();
+	}
+}
+---------------------------------------
+175. Reporting With Page Object Model
+---------------------------------------
+package extentreports;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+public class LoginTest {
+	
+	private WebDriver driver;
+	private String baseUrl;
+	ExtentReports report;
+	ExtentTest test;
+	HomePage hp;
+
+	@BeforeClass
+	public void beforeClass() {
+		baseUrl = "http://www.letskodeit.com/";
+		report = ExtentFactory.getInstance();
+		test = report.startTest("Verify Welcome Text");
+		driver = new FirefoxDriver();
+		hp = new HomePage(driver, test);
+		test.log(LogStatus.INFO, "Browser Started...");
+
+		// Maximize the browser's window
+		driver.manage().window().maximize();
+		test.log(LogStatus.INFO, "Browser Maximized");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get(baseUrl);
+		test.log(LogStatus.INFO, "Web application opened");
+	}
+	
+	@Test
+	public void test1_validLoginTest() throws Exception {
+		hp.login("test@email.com", "abcabc");
+		
+		Thread.sleep(3000);
+		
+		boolean result = hp.isWelcomeTextPresent();
+
+		Assert.assertTrue(result);
+		test.log(LogStatus.PASS, "Verified Welcome Text");
+	}
+	
+	@AfterClass
+	public void afterClass() {
+		driver.quit();
+		report.endTest(test);
+		report.flush();
+	}
+}
+-----------------------------
+package extentreports;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+public class HomePage {
+	
+	ExtentTest test;
+	WebDriver driver = null;
+
+	public HomePage(WebDriver driver, ExtentTest test) {
+		this.driver = driver;
+		this.test = test;
+	}
+	
+	public void clickSignUpLink() {
+		WebElement signupLink = driver.findElement(By.id("comp-iiqg1vggactionTitle"));
+		signupLink.click();
+		test.log(LogStatus.INFO, "Clicked on signup link");
+	}
+	
+	public void clickLoginLink() {
+		WebElement loginLink = driver.findElement(By.id("signUpDialogswitchDialogLink"));
+		loginLink.click();
+		test.log(LogStatus.INFO, "Clicked on login link");
+	}
+	
+	public void enterEmail(String email) {
+		WebElement emailField = driver.findElement(By.xpath("//div[@id='memberLoginDialogemail']//input"));
+		emailField.sendKeys(email);
+		test.log(LogStatus.INFO, "Enter email");
+	}
+	
+	public void enterPassword(String password) {
+		WebElement passwordField = driver.findElement(By.xpath("//div[@id='memberLoginDialogpassword']//input"));
+		passwordField.sendKeys(password);
+		test.log(LogStatus.INFO, "Enter password");
+	}
+	
+	public void clickGoLink() {
+		WebElement goButton = driver.findElement(By.id("memberLoginDialogsubmitButton"));
+		goButton.click();
+		test.log(LogStatus.INFO, "Clicked Go button");
+	}
+	
+	public boolean isWelcomeTextPresent() {
+		WebElement welcomeText = null;
+		try {
+			welcomeText = driver.findElement(By.xpath("//div[text()='Hello test@email.com']"));
+			if (welcomeText != null) {
+				return true;
+			}
+		}
+		catch (NoSuchElementException e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+		return false;
+	}
+	
+	public void login(String email, String password) {
+		clickSignUpLink();
+		clickLoginLink();
+		enterEmail(email);
+		enterPassword(password);
+		clickGoLink();
+	}
+}
+---------------------------------------------
+
+
+
+
+**************************************************************** 
+ Section 34. Build Management With Maven
+****************************************************************
+189. Maven Features and Advantages
+> Software project management tool
+> Maven can manage a project's build, reporting and documentaion from a central piece of information
+> Maven creates a project hierarchy for us.
+> Creates a segregation between different classes and tests.
+
+Objective of Maven;
+> Making the build process easy
+> Providing uniform build system
+> Providing quality project information
+> Providing guidelines for best practices development
+> Allowing transparent migration to new features
+
+190. Setup and Installation (MAC and Windows)
+Maven Installation and Setup 9/2/15 5:24 PM 
+Maven is Java based tool, so the very first requirement is to have JDK installed on your machine. System Requirement Java 1.5 or above  
+Step 1 - verify Java installation on your machine java –version  
+Step 2: Set JAVA environment Windows: JAVA_HOME=C:\Program Files\Java\jdk1.8.0_60 PATH=%JAVA_HOME%\bin MAC: Document Uploaded  
+Step 3: Download Maven archive Download Maven 2.2.1 from http://maven.apache.org/download.html Zip file for windows tar.gz file for MAC  
+Step 4: Extract the Maven archive Extract the archive, to the directory you wish to install Maven 3.3.3. The subdirectory apache-maven-2.2.1 will be created from the archive. 
+Recommended Location: Windows: C:\Program Files\Apache\apache-maven-3.3.3 MAC: /usr/local/apache-maven  
+Step 5: Set Maven environment variables Windows: Set the environment variables using system properties.  
+M2_HOME=C:\Program Files\Apache\apache-maven-3.3.3 M2=%M2_HOME%\bin MAVEN_OPTS=-Xms256m -Xmx512m  
+MAC: Open command terminal and set environment variables. 
+export M2_HOME=/usr/local/apache-maven/apache-maven-2.2.1 export M2=$M2_HOME/bin export MAVEN_OPTS=-Xms256m -Xmx512m  
+Step 6: Add Maven bin directory location to system path Windows: Append the string ;%M2% to the end of the system variable, Path. MAC: export PATH=$M2:$PATH  
+Step 8: Verify Maven installation mvn --version 
+
+Steps  to  set  Java  Home  on  MAC:     
+Execute  this  command  “echo  $JAVA_HOME”  or  “/usr/libexec/java_home”,  if  it  returns  the  location   where  java  is  installed  then  most  likely  you  are  good  and  you  do  not  need  to  set  java  home.     
+You  can  follow  these  steps  to  set  the  environment.    
+1. Open  terminal  on  MAC  
+2. Execute  command  “which  java”  
+3. On  my  system  it  outputs   “/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/bin/java”  
+4. If  your  system  outputs  something  like  /usr/bin/java,  which  can  be  a  symbolic  link  to  the  real   location,  then  execute  ls  –l  `which  java`  
+5. The  output  should  be  something  like  “/usr/bin/java  -­‐>   /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/bin/java”  
+6. Execute  command  “vi  ~/.bash_profile”  to  open  the  bash  profiles  file  
+7. Type  “export   JAVA_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home”  
+8. Save  and  quit  the  file  using  the  series  of  commands.  Hit  ESC  then  type  “!wq”  and  hit  enter  key  
+9. Type  “source  ~/.bash_profile”  
+10. Type  “echo  $JAVA_HOME”  and  it  should  return  the  path  
+11. If  it  does  not  return  the  path  then  reboot  the  system
+
+191. Creating And Importing Maven Project
+
+Archetype : It is a kind of template provided by Maven.
+Group ID: Unique ID of the organisation
+Artifact ID; Its a name of project which we gonna work on. It create jar or war files
+Package : it is GroupId.AtifactID 
+Problem: Could not resolve Archetype:
+Solution: Go to Window --> Preferences --> Maven --> User Settings --> select the actual path of settings.xml
+Ex: C:\Users\varde\Downloads\Selenium Setup\apache-maven-3.5.0\conf\settings.xml
+
+Create Maven Project; It create scr/main/java for application dev(App.java). and "scr/test/java" for testing (AppTest.java).
+pom.xml
+
+192. Maven Local And Central Repositories
+Local repository: ex; C:\Users\varde\.m2\repository
+Central Repository; https://mvnrepository.com/
+If any jar or its version is not available then it is downloaded from central repository.
+Requirement of any jar or its version is checked into pom.xml
+
+193. POM Explanation - Core Of Maven
+groupId
+artifactId
+version
+packaging ex : jar , war, zip
+
+command to download Maven Dependencies: -> mvn dependency:sources
+or -> mvn test
+mvn dependency:resolve -DClassifier=javadoc
+
+194. Build Lifecycle And Maven Commands
+What is Build Lifecycle? 
+A build life cycle consists of a sequence of build phases, and each build phase consists of a sequence of goals. 
+When you run Maven you pass a command to Maven. 
+This command is the name of a build life cycle, phase or goal. 
+If a life cycle is executed, all build phases in that life cycle are executed. 
+If a build phase is executed, all build phases before it are executed too.  
+Phase                       Description 
+prepare-resources      Resource copying. 
+Compile          	   Source code compilation. 
+Package                Creates JAR file mentioned in packaging in POM.xml. 
+Install                Installs the package in maven repository.  
+A goal represents a specific task which contributes to the building of a project.  
+
+Clean Lifecycle 
+1. pre-clean 
+2. clean 
+3. post-clean 
+Its clean:clean goal deletes the output of a build by deleting the build directory. 
+Thus when mvn clean command executes, Maven deletes the build directory.  
+
+Site Lifecycle 
+Maven Site plugin is generally used to create fresh documentation to create reports, deploy site etc. 
+
+Phases 
+pre-site 
+site 
+post-site 
+site-deploy  
+
+Default (or Build) Lifecycle  
+
+Lifecycle Phase 	Description 
+
+validate 			
+Validates whether project is correct and all necessary information is available to build. 
+
+initialize 
+Initializes build state, for example set properties 
+
+compile 
+Compile the source code of the project.
+ 
+test-compile 
+Compile the test source code into the test destination directory. 
+
+test 
+Run tests using a suitable unit testing framework(Junit is one). 
+
+package 
+Take the compiled code and package it in its distributable format, such as a JAR, WAR, or EAR file.
+ 
+verify 
+Run any check-ups to verify the package is valid and meets quality criteria. 
+
+install 
+Install the package into the local repository, which can be used as a dependency in other projects locally. 
+
+deploy 
+Copies the final package to the remote repository for sharing with other developers and projects. 
+
+
+195. Maven Project Migration
+Ex; of pom.xml:
+<?xml version="1.0"?>
+-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+<modelVersion>4.0.0</modelVersion>
+<groupId>com.expedia</groupId>
+<artifactId>flightsbooking</artifactId>
+<version>0.0.1-SNAPSHOT</version>
+<packaging>jar</packaging>
+<name>flightsbooking</name>
+-<properties>
+<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
+-<dependencies>
+-<dependency>
+<groupId>org.seleniumhq.selenium</groupId>
+<artifactId>selenium-java</artifactId>
+<version>2.46.0</version>
+</dependency>
+-<dependency>
+<groupId>org.testng</groupId>
+<artifactId>testng</artifactId>
+<version>6.8.7</version>
+</dependency>
+-<dependency>
+<groupId>log4j</groupId>
+<artifactId>log4j</artifactId>
+<version>1.2.17</version>
+</dependency>
+</dependencies>
+</project>
+
+Copy dependencies in pom.xml
+
+196. Maven TestNG Integration And Maven Profiles
+
+
+197. Where To Find TestNG Reports In Maven?
+Project ->target->surefire-reports->index.html
+
+****************************************************************
+Section: 35 Continuous Integration With Jenkins
+****************************************************************
+198. Jenkins Features And Advantages
+What is continious Integration?
+Jenkins Objective:
+Its is an open source CI tool
+Continuous builds with Maven or Gradle
+Run a shell script
+Continuous deployments
+Continuous testing
+Archive the build results
+
+199. Jenkins Setup And Installation
+download jenkins(jenkins-ci.org)
+get Java Web Archive(.war) Latest and Greatest
+Java 7 is required.
+go to location of jenkins .war file and do as 
+java -jar jenkins.war
+in browser hit below;
+https://localhost:8080
+if 8080 is busy then hit below command for new port:
+java -jar jenkins.war --httpPort=8081
+
+200. Jenkins Configuration
+java path and Maven path to configure:
+Manage JenKins->Configure System
+scroll down
+JDK:
+Name: 
+Java_Home:
+
+Maven;
+NAme
+MAVEN_PATH
+
+Jenkins URL:
+https://localhost:8080/
+
+Email Notification;
+
+201. Securing Jenkins: http://localhost:8080/login?from=%2F
+
+Admin access and other user access.(Role based access control)
+Manage Jenkins -> Configure Global Security -> Enable Security -> 
+Simple is ... Jenkins own user Database (Whats LDAP? )
+In Authorisation select 'Matrix based security' 
+for Anonymous give read access
+User / group to add; admin then give all privilages.
+
+Local repository: ex; C:\Users\varde\.jenkins
+in this folder where all files are exctracted when we run the .war file of jenkins.
+
+If we make changes in config file then we can see those in jenkins; user can be deleted from config file.
+
+
+202. Jenkins Plugins Management:
+
+MAven
+Git
+ANT
+cvs
+subversion
+
+Click on MAnage Jenkis -> Configure System
+Avilable plugins are:
+MAven , Ant, CVS, Subversion (it is by default), 
+
+Click on MAnage Jenkis -> Manage Plugins
+Updates Available Installed Advance
+
+
+203. Jenkins Git Integration:
+
+to run jenkins : java -jar jenkins.war
+Click on MAnage Jenkis -> Manage Plugins -> Search git Plugin -> 
+select it and click on install without restart.
+GIT Client pugin
+SCM API Plugin
+GIT plugin
+
+On first page click on NEw Item:
+GIve Project NAme:
+In 'Source Code MAnagement' Git to be displayed.
+
+
+204. Building A Maven Project Using Jenkins:
+
+New item  -> select Maven -> 
+
+in Root POM paste POM file path.
+in Eclipe right click on POM file -> properties -> copy path and paste in Root POM
+
+In Goals and options : test -PSanityTest
+
+All things seen in maven are seen in console output 
+
+205. Building A Freestyle Project Using Jenkins:
+
+************************************************************************************
+https://www.youtube.com/watch?v=eSG4fhedbDw : Cambrige listening test for practice
+
+https://www.ieltsadvantage.com/writing-task-2/ 
+https://www.youtube.com/user/ieltsliz 
+http://www.ieltsbuddy.com/ 
+************************************************************************************

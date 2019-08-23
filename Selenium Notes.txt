@@ -1,0 +1,287 @@
+//What is selenium?
+//Does selenium support automation of pages made in PHP and HTML?
+	//Selenium is independent of language used in developing website.
+//Does selenium support automation of application made in java only?
+//Does selenium support desktp application automation?: NO
+//Does selenium has execution engine?
+	//No , Used TestNG or Junit
+//Does selenium has excel reading method?
+	//NO, external jar like Apache POI or JXL are used.
+//What is the components of selenium?
+	//Selenium IDE, RC(deprecated), WebDriver
+//What are limitation of selenium?
+/* Selenium support testing of only webbased applications.
+Mobile application can not be tested in selenium.
+Captcha and Bar code readers cannot be tested using selenium.
+Reports can only be generated using third party tools like TestNG or Junit
+As Selenium is a free tool, thus there is no vendor support though the user can find numerous helping communities.
+User is expected to posses prior programming language knowledge.
+*/
+//What are different types of locators in Selenium?
+/*
+ID,
+ClassName
+Name
+TagName
+LinkText
+PartialLinkText
+Xpath
+CSS Selector
+*/
+//What is selenium Grid?
+-------------------------------------------
+public static void main(String[]args){
+	WebDriver driver = new FirefoxDriver();
+	
+//What deos mean by implictlyWait?
+	// implictlyWait is applicable for the entire page.
+	driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+	
+//What deos mean by expliciteWait?
+	// expliciteWait is applicable only for the selected element.
+	WebDriverWait wait = new WebDriverWait(driver,60);
+	wait.until(ExpectedConditions.elementToBeSelected(driver.findElement(By.xpath(""))));
+	
+//What is polling interval?
+	WebDriverWait wait1 = new WebDriverWait(driver,60);
+	wait1.pollingEvery(5, TimeUnit.SECONDS);
+	wait1.until(ExpectedConditions.elementToBeSelected(driver.findElement(By.xpath(""))));
+//What is FluentWait?
+	WebElement wait2 = new FluentWait<WebDriver>(driver).withTimeout(60, TimeUnit.SECONDS).pollingEvery(5, TimeUnit.SECONDS)
+			.ignoring(NoSuchElementException.class)
+			.unit(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath(""))));
+	wait2.click();
+	
+//What is java script wait?
+//What is thread.sleep?
+	Thread.sleep(2000);
+	
+//What is pageLoadTimeout?
+	driver.manage().timeouts().pageLoadTimeout(120,TimeUnit.SECONDS);
+	
+//What is Java script Ready state?
+	ExpectedCondition<Boolean> javascriptWait = new ExpectedCondition<Boolean>(){
+		public Boolean apply(WebDriver driver){
+			return ((JavaScriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+		}
+	}
+	try{
+		System.out.println("Waiting for page to laod...");
+		WebDriverWait wait = new WebDriverWait(driver,60);
+		wait.until(javascriptWait);
+	}catch(Throwable error){
+		System.out.println("Timeout waiting for Page Laod request to complete after " + 60 + "seconds");
+		Assert.assertFalse(true, "Timeout waiting for Page Laod request to complete ");
+	}
+}	
+-------------------------------------------
+public static void main(String[]args){
+	WebDriver driver = new FirefoxDriver();
+	
+//How to enter data in text box?
+	driver.findElement(By.cssSelector("")).sendkeys("");
+	
+//How to click on link?
+	driver.findElement(By.cssSelector("")).click();
+	
+//How to check element is displayed or not?
+	try{
+		driver.findElement(By.xpath("")).isDisplayed():
+		return true;
+	} catch (Exception e){
+		return false;
+	}
+//How to check checkbox is selected or not?
+	driver.findElement(By.xpath("")).isSelected():
+	//or
+	driver.findElement(By.xpath("")).getAttribute("class").contains("checked");
+	
+//What is method to find element on UI?
+//What is method to find all elements on UI?
+	driver.findElements(By.tagName("//a")).size();
+	
+//How to get URL of current window?
+	driver.getCurrentUrl();
+	
+//How to get title of page?
+	driver.getTitle();
+}
+-------------------------------------------
+//How to get window id on run time:
+//Also How to handle multiple windows:
+
+public static void main(String[]args){
+	WebDriver driver = new FirefoxDriver();
+	
+	Set<String> windowsId = driver.getWindowHandles();
+	Iterator<String> itr = windowsId.iterator();
+	ArrayList<String> ids = new ArrayList<String>();
+		While(itr.hasNext()){
+			ids.add(itr.next());
+			}
+			
+		driver.switchTo().window(ids.get(3));
+		driver.findElement(By.xpath("")).is Displayed();
+		driver.close();
+		
+		driver.switchTo().window(ids.get(2));
+		driver.close();
+		
+		driver.switchTo().window(ids.get(0));
+		
+//How to maximize window:
+		driver.manage().window().maximize();
+		
+//How to get Coordinates of Window :
+		Point position = driver.manage().window().getPosition();
+		position.getX();
+		position.getY();
+//How to get element Coordinates wrt left Window :
+		Point location = driver.findElement(By.xpath("")).getLocation();
+		location.getX();
+		location.getY();
+		}
+}
+------------------------------------
+//How to do mouse over?
+public static void main(String[]args){
+	WebDriver driver = new FirefoxDriver();
+	
+	Actions action = new Action(driver);
+	action.moveToElement(driver.findElement(By.xpath(""))).build().perform();
+	
+//How to do drag drop?
+	Actions action1 = new Actions(driver);
+	WebElement source = driver.findElement(By.xpath(""));
+	WebElement target = driver.findElement(By.xpath(""));
+	action1.dragAndDrop(source, target);
+	
+//another method to do drag drop
+	action1.clickAndHold(driver.findElement(By.xpath("")))
+	.moveToElement(driver.findElement(By.xpath(""))).release(driver.findElement(By.xpath("")));
+	
+	action1.build().perform();
+//another method to do drag drop
+	action1.moveToElement(driver.findElement(By.xpath(".//*[@id='draggable']")));
+	action1.keyDown(Keys.CONTROL);
+	action1.moveToElement(driver.findElement(By.xpath(".//*[@id='droppable']")));
+	action1.keyUp(Keys.CONTROL);
+	action1.build().perform()
+	
+//How to do double click?
+	Actions action2 = new Actions(driver);
+	
+	action2.moveToElement(driver.findElement(By.xpath("")))doubleClick();
+	
+//How Keys class works?
+	Actions action3 = new Actions(driver);
+	
+	action3.sendKeys(Keys.ENTER);
+	action3.sendKeys(Keys.F6);
+}
+-------------------------------------
+//How to work with alert?
+public static void main(String[]args){
+	WebDriver driver = new FirefoxDriver();
+	
+	driver.switchTo().alert();
+	alert.accept();
+	alert.dismiss();
+	
+//How to work with iframe?
+	driver.findElements(By.tagName("iframe")).size();
+	//iframe by index
+	driver.switchTo().frame(0);
+	//iframe by name
+	driver.switchTo().frame("framename");
+	//iframe by webelement
+	driver.switchTo().frame(driver.findElement(By.className("")));
+	
+//How to work with select?
+	Select select = new Select(driver.findElement(By.xpath("")));
+	select.selectByIndex(1);
+	select.selectByValue("valueName");
+	select.selectByVisibleText("textName");
+	
+	select.deselectAll();
+	select.deselectByIndex(1);
+	select.deselectByValue("valueName");
+	select.deselectByVisibleText("textName");
+	
+//How to execute java script?
+	WebDriver dr = new FirefoxDrievr();
+	EventFiringWebDriver driver1 = new EventFiringWebDriver(dr);
+	driver1.executeScript("document.getElementById(\"idName\")");
+	driver1.executeScript("document.getElementById(\"inputSuccess\").value=\"test\"");
+	
+	//OR
+	JavascriptExecutor javascript =((JavascriptExecutor)driver).executeScript(args0, args1);
+	
+	
+}
+-------------------------------------
+//How do you work with properties file?
+public static void main(String[] args) throws IOException{
+	Properties OR = new Properties();
+	File file = new File(System.getProperty("user.dir")+"/src/test/java/selenium/questionandAnswers/or.properties");
+	FileInputStream input = new FileInputStream(file);
+	OR.load(input);
+	System.out.println(OR.getProperty("userName"));
+	
+//What are the java script function for selenium object location?
+	//following-sibling
+	//preceding-sibling
+	//starts-with()
+	//ends-with()
+	//following
+	//preceding
+	//contains
+	
+	//in css as below
+	//nth-child(1)
+	//$(starts-with)
+	//^(ends with)
+}
+-------------------------------------
+//How many test script do you write in a day?
+//What are your role and Responsibilities?
+/*
+1. Involved in evaluating Selenium for WebUI Automation
+2. Involved in designing and implementing a selenium web Driver automation framework built using selenium web Driver + TestNG as Execution engine.
+3. Involved in designing automation scripts.
+4. Performed automated Regression Testing, in coordination with manual testing team.
+5. Updated and maintained various test artifacts in the Test Automation Framework depending on the changes required.
+*/
+//How many team members you have in a Team?
+//Is it possible to automate in sprint?
+//How do you execute test script?
+//What is the sorce code management you use?
+//do you do parallel testing?
+//<Suite name = "basicAnnotations" parallel= "classes" thread-count="3">
+//What is your challenge in automation?
+
+-------------------------------------
+//What are the methods of excel reader?
+public static void main(String[] args) throws IOException{
+	FileInputStream fis;
+	XSSFWorkbook workbook;
+	XSSFSheet sheet;
+	XSSFRow row;
+	XSSFCell cell;
+	
+	fis = new FileInputStream(/rsc/main/java/com/automation/fb/data/test.xls");
+	workbook = new XSSFWorkbook(fis);
+	int index = workbook.getSheetIndex("LoginTest");
+	sheet = workbook.getSheetAt(index);
+	row = sheet.getRow(0);
+	row.getLastCellNum();
+	cell= row.getCell(3);
+	if (cell.getCellType()== Cell.CELL_TYPE_STRING){
+		cell.getStringCellValue();
+	}else if (cell.getCellType()== Cell.CELL_TYPE_NUMERIC){
+		String.valueOf(cell.getNumericCellValue());
+	}else if (cell.getCellType()== Cell.CELL_TYPE_BOOLEAN){
+		String.valueOf(cell.getBooleanCellValue());
+	}
+}
+-------------------------------------
