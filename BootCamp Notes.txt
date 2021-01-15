@@ -1,0 +1,3908 @@
+
+Angela:
+HTML:
+
+Docs: MDN, w3schools, https://devdocs.io/
+https://unicode-table.com/en/
+
+https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/
+
+Topics: <title>, 
+learn meta tag
+Topics: <h1>, <p>, <em> vs <i>, <strong> vs <bold>
+
+Topics: <ol>(ordered list), <ul>(unordered list)
+<ol type="i" start="7">
+  <li>Introduction</li>
+  <li>List of Greivances</li>
+  <li>Conclusion</li>
+</ol> 
+
+Topics: <img> (https://crop-circle.imageonline.co/)
+<img src="https://developer.mozilla.org/static/img/favicon144.png" alt="MDN logo" target="_blank">
+
+Topics: HTML Tables
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">The table header</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>The table body</td>
+            <td>with two columns</td>
+        </tr>
+    </tbody>
+</table>
+
+    <table>
+        <tr>
+            <td><strong>One</strong></td>
+            <td><strong>Two</strong></td>
+        </tr>
+        <tr>
+            <td><strong>Three</strong></td>
+            <td><strong>Four</strong></td>
+        </tr>
+    </table>
+	
+Resume Example: http://www.pascalvangemert.nl/#/profile
+
+Method 2: Access Emoji in Windows 10 Using Keyboard Shortcut
+	Put the cursor in any text field you’d like to insert an emoji. This could be Microsoft Word, Chrome, or Notepad app.
+	Press the WIN + . (full stop) keyboard shortcut, or else the WIN + ; (semicolon). Either will open an emoji picker over the text field.
+
+Topics: <form>
+<form action="" method="POST" class="form-example">
+        <div class="form-example">
+            <label for="name">Enter your name: </label>
+            <input type="text" name="name" id="name" required>
+        </div>
+        <div class="form-example">
+            <label for="email">Enter your email: </label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        <div class="form-example">
+            <label for="password">Enter your password: </label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <div>
+            <label for="tentacles">Number of tentacles (10-100):</label>
+            <input type="number" id="tentacles" name="tentacles" min="10" max="100">
+        </div>
+        <div>
+            <label for="tentacles">type:button</label>
+            <input class="favorite styled" type="button" value="Add to favorites">
+        </div>
+        <div class="form-example">
+            <input type="submit" value="Subscribe!">
+        </div>
+        <div class="form-example">
+            <p>Choose your monster's features:</p>
+
+            <div>
+                <input type="checkbox" id="scales" name="scales" checked>
+                <label for="scales">Scales</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="horns" name="horns">
+                <label for="horns">Horns</label>
+            </div>
+        </div>
+        <div class="form-example">
+            <input type="color" value="#ff0000!">
+        </div>
+        <div class="form-example">
+            <input type="date" value="2020-07-22">
+        </div>
+        <div class="form-example">
+            <input type="datetime-local" value="2020-07-22T19:30">
+        </div>
+        <div class="form-example">
+            <input type="number" value="7">
+        </div>
+        <div class="form-example">
+            <input type="file">
+        </div>  
+        <div class="form-example">
+            <input type="hidden" value="gfhthth!">
+        </div>
+        <div class="form-example">
+            <label for="phone">Enter your phone number:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+            <small>Format: 123-456-7890</small>
+        </div>
+        <div class="form-example">
+            <input type="range" value="30">
+        </div>
+    </form>
+
+=====================================================================================
+CSS:
+
+https://www.seanhalpin.design/
+=====================================================================================
+Inline CSS:
+style="background-color: lemonchiffon;"
+=====================================================================================
+Internal CSS:
+    <style>
+        body {
+            background-color: lightpink
+        }
+
+        hr {
+            /* background-color: white; */
+            /* border-style: none; */
+            /* height: 2px; */
+            /* width: 30%; */
+            border-style: dotted none none;
+            border-color: grey;
+            border-width: 5px;
+        }
+    </style>
+=====================================================================================	
+External CSS:
+<link rel="stylesheet" href="./css/styles.css">
+=====================================================================================
+Debug CSS Code:
+importance of css is as per : => Inline css, Internal css, External css
+=====================================================================================
+Anatomy of css:
+selector{property:value;}
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
+=====================================================================================
+CSS Selectors:
+
+class = "testClass"
+.testClass{
+	background-color: green;
+}
+
+id = "testId"
+#testId{
+	background-color: green;
+}
+
+pseudo-class:
+:hover
+
+img:hover {
+  background-color: gold;
+}
+=====================================================================================
+Intermediate CSS:
+
+https://emojipedia.org/
+https://getemoji.com/
+
+Favicon:
+https://www.favicon.cc/
+=====================================================================================
+https://colorhunt.co/
+
+by default body has 8px, make it 0px to get all screen.
+
+Box Model for website styling:
+margin: It keeps distance from other element.
+border: border size lies outside an element.
+padding: padding is part of background-color and its outside element.
+http://markusvogl.com/web1/interactive_box_model/css_box_demo.html
+=====================================================================================
+Display Property:
+	Block
+	Inline
+	Inline-Block
+	None
+	
+Common Block Elements:
+	Paragraphs <p>
+	Headers <h1>
+	Divisions <div>
+	List and ListItems <ul> <ol> <li>
+	Forms <forms>
+
+Common Inline Elements:
+	<a> tags
+	<img> images
+	<span> 
+
+One can not change width of Inline Elements.
+
+display : none (completely disappeared)
+visibility : hidden (can not see but position is secured)
+=====================================================================================
+CSS Static and Relative Positioning:
+
+3 rules:
+	1. Content is everything.
+	2. Order comes from the code.
+	3. children sit on parents.
+		Z-axis
+
+Position:		
+	Static : to go along with html rules.
+	Relative : it is with respect to static position. it does not affect any other element, left and right are w.r.t. y-axis
+	Absolute : it is w.r.t. parent element. , left and right are w.r.t. parent element.
+	Fixed : remains at same position while scrolling.
+	
+Relative :
+<div class="red">
+  <h1>Red<h1>
+</div>
+<div class="orange">
+  <h1>Orange<h1>
+</div>
+<div class="yellow">
+  <h1>Yellow<h1>
+</div>
+
+.red{
+  background-color: red;
+  width: 100px;
+  height: 100px;
+  display : inline-block;
+  position: relative;
+  left:110px;
+}
+.orange{
+  background-color: orange;
+  width: 100px;
+  height: 100px;
+  display : inline-block;
+  position: relative;
+  left:110px;
+}
+.yellow{
+  background-color: yellow;
+  width: 100px;
+  height: 100px;
+  display : inline-block;
+  position: relative;
+  right: 202px;
+}
+=====================================================================================
+absolute and static:
+body{
+    margin: 0;
+}
+
+.red {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  top: 0;
+}
+.orange {
+  background-color: orange;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 100px;
+  top: 100px;
+}
+.yellow {
+  background-color: yellow;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 200px;
+  top: 200px;
+}
+
+=====================================================================================
+Centering Elements:
+body{
+    margin:0;
+    text-align: center;
+}
+
+h1{
+    margin: 0 auto;
+    width: 130px;
+}
+
+=====================================================================================
+https://www.flaticon.com/
+https://giphy.com/
+=====================================================================================
+CSS Sizing:
+100% = 16px = 1em
+
+https://www.frontendmentor.io/
+https://cssbuttoncreator.com/
+=====================================================================================
+body {
+  color: #40514e;
+  margin: 0;
+  text-align: center;
+  font-family: "Merriweather", serif;
+}
+
+.top-container {
+  background-color: #d4f3ef;
+  position: relative;
+  padding-top: 100px;
+  /* background-color: #f8efd4;
+    background-color: #edc988;
+    background-color: #de4463;
+    background-color: #821752; */
+}
+
+.subTitle {
+  font-weight: normal;
+  margin-top: 0;
+}
+
+h1 {
+  margin: 0 auto;
+  /* width: 130px; */
+  font-family: "Sacramento", cursive;
+  font-size: 4rem;
+  color: #821752;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  color: #821752;
+}
+h3 {
+  font-family: "Montserrat", sans-serif;
+  color: #821752;
+}
+.middle-container {
+  background-color: #ffcbcb;
+  position: relative;
+  top: -4px;
+}
+.bottom-container {
+  background-color: #de4463;
+  padding: 0.5rem;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.top-cloud {
+  position: absolute;
+  right: 25%;
+  top: 50px;
+}
+.bottom-cloud {
+  position: absolute;
+  left: 25%;
+  bottom: 300px;
+}
+.mountain-img {
+  margin-bottom: 0;
+}
+.pro {
+  text-decoration: underline;
+}
+
+.footer-link {
+  color: #ffcbcb;
+  font-size: 1rem;
+  margin-left: 16px;
+  margin-right: 16px;
+  text-decoration: none;
+  transition-duration: 0.4s;
+}
+.footer-link:hover{
+    font-size: 2rem;
+    /* color: #821752; */
+}
+.contact-link {
+  font-family: "Montserrat", sans-serif;
+  color: #821752;
+}
+.copyright {
+  color: #ffcbcb;
+  font-size: 0.7rem;
+  margin-top: 1rem;
+}
+.skill-row {
+  width: 50%;
+  margin: 50px auto;
+  text-align: left;
+  line-height: 2;
+  padding: 25px 0;
+}
+.computer-img {
+  border-radius: 100%;
+  width: 25%;
+  float: left;
+  margin-right: 20px;
+}
+.chillies-img {
+  width: 25%;
+  float: right;
+  margin-left: 20px;
+}
+.profile-img {
+  border-radius: 100%;
+  margin: 50px 0 50px;
+}
+.profile {
+  width: 50%;
+  margin: 0 auto 25px;
+  line-height: 2;
+}
+.contact-me {
+  width: 50%;
+  margin: 25px auto 62px;
+  padding: 0 0 60px;
+  line-height: 2;
+}
+hr {
+  border-style: dotted solid;
+  border-width: 10px 0 0 0;
+  border-color: grey;
+  width: 15%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.btn {
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+  padding: 12px 28px;
+  border-radius: 8px;
+  background-color: #ffcbcb;
+  color: black;
+  border: 2px solid #821752;
+  transition-duration: 0.4s;
+}
+.btn:hover {
+  background-color: #821752; /* Green */
+  color: #ffcbcb;
+}
+.contact-para {
+  margin-bottom: 3rem;
+}
+
+=====================================================================================
+Bootstrap:
+
+Wireframe:
+https://sneakpeekit.com/
+https://balsamiq.com/
+
+=====================================================================================
+Bootstrap Navbar:
+	<div class="container-fluid">
+      <!-- Nav Bar -->
+      <nav class="navbar navbar-expand-lg navbar-dark ">
+        <a class="navbar-brand" href="">tindog</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navbarTogglerDemo02">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Download</a>
+            </li>
+          </ul>
+        <div>
+      </nav>
+	</div>
+=====================================================================================
+Grid:
+	
+	xl: extra large
+	lg: large (desktop)
+	md: medium (tablet)
+	sm: small (mobile)
+	
+	col-lg-2: on lg screen number of columns will be 12/2 i.e. 6
+	col-md-4: on md screen number of columns will be 12/4 i.e. 3
+	col-lg-6: on lg screen number of columns will be 12/6 i.e. 2
+	
+	<section>
+        <div class="row">
+          <div class="col-6 bg-info">col-6 bg-info</div>
+          <div class="col-3 bg-warning">col-3 bg-warning</div>
+          <div class="col-2 bg-success">col-2 bg-success</div>
+          <div class="col-1 bg-danger">col-1 bg-danger</div>
+        </div>
+        <div class="row">
+          <div class="col-lg-2 col-md-4 col-sm-6 bg-info">col-lg-2 col-md-3</div>
+          <div class="col-lg-2 col-md-4 col-sm-6 bg-warning">col-lg-2 col-md-3</div>
+          <div class="col-lg-2 col-md-4 col-sm-6 bg-success">col-lg-2 col-md-3</div>
+          <div class="col-lg-2 col-md-4 col-sm-6 bg-danger">col-lg-2 col-md-3</div>
+          <div class="col-lg-2 col-md-4 col-sm-6 bg-primary">col-lg-2 col-md-3</div>
+          <div class="col-lg-2 col-md-4 col-sm-6 bg-secondary">col-lg-2 col-md-3</div>
+        </div>
+    </section>
+	  
+	  
+      <div class="row">
+        <div class="col-lg-6">
+          <h1>Meet new and interesting dogs nearby.</h1>
+          <button type="button">Download</button>
+          <button type="button">Download</button>
+        </div>
+        <div class="col-lg-6">
+          <img src="images/iphone6.png" alt="iphone-mockup">
+        </div>
+      </div>
+=====================================================================================
+Bootstrap Containers:
+	container
+	container-fluid
+	
+	.container-fluid{
+		padding: 3% 15%;
+	}
+	
+	
+=====================================================================================
+Font Awesome:
+<script src="https://kit.fontawesome.com/4437f0f9ff.js" crossorigin="anonymous"></script>
+
+<i class="fab fa-google-play" wiid="C10661"></i>
+
+.icon{
+    color: #ef8172;
+    margin-bottom: 1rem;
+    transition-duration: 0.4s;
+}
+.icon:hover{
+    color: #ff4c68;
+    font-size: 6rem;
+}
+=====================================================================================
+Bootstrap Button:
+        <div class="col-lg-6">
+          <h1>Meet new and interesting dogs nearby.</h1>
+          <button type="button" class="btn btn-dark btn-lg download-button"><i class="fab fa-apple" wiid="C8632"></i>
+            Download</button>
+          <button type="button" class="btn btn-outline-light btn-lg download-button"><i class="fab fa-google-play"
+              wiid="C10661"></i> Download</button>
+        </div>
+		
+		.download-button{
+			margin: 5% 3% 5% 0;
+		}
+=====================================================================================
+Bootstrap Image:
+	<div class="col-lg-6">
+        <img class="title-image mx-auto d-block" src="images/iphone6.png" alt="iphone-mockup">
+    </div>
+=====================================================================================
+In below, font awesome size is given by fa-4x and color is implemented using class icon.
+
+  <section id="features" >
+    <div class="row mx-auto text-center">
+      <div class="feature-box col-lg-4">
+        <i class="icon fas fa-check-circle fa-4x" wiid="C16586"></i>
+        <h3>Easy to use.</h3>
+        <p>So easy to use, even your dog could do it.</p>
+      </div>
+      <div class="feature-box col-lg-4">
+        <i class="icon fas fa-bullseye fa-4x" wiid="C28762"></i>
+        <h3>Elite Clientele</h3>
+        <p>We have all the dogs, the greatest dogs.</p>
+      </div>
+      <div class="feature-box col-lg-4">
+        <i class="icon fas fa-heart fa-4x" wiid="C36578"></i>
+        <h3>Guaranteed to work.</h3>
+        <p>Find the love of your dog's life or your money back.</p>
+      </div>
+    </div>
+  </section>
+=====================================================================================
+Carousel Section:
+
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" data-interval=1000
+      data-pause="hover">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <!-- <img class="d-block w-100 bg-danger carouselitem" src="" alt="First slide"> -->
+          <h2>I no longer have to sniff other dogs for love. I've found the hottest Corgi on TinDog. Woof.</h2>
+          <img class="testimonial-image text-center mx-auto d-block" src="images/dog-img.jpg" alt="dog-profile">
+          <em>Pebbles, New York</em>
+        </div>
+        <div class="carousel-item">
+          <!-- <img class="d-block w-100 bg-info carouselitem" src="" alt="Second slide"> -->
+          <h2 class="testimonial-text">My dog used to be so lonely, but with TinDog's help, they've found the love of
+            their life. I think.</h2>
+          <img class="testimonial-image text-center mx-auto d-block" src="images/lady-img.jpg" alt="lady-profile">
+          <em>Beverly, Illinois</em>
+        </div>
+        <div class="carousel-item">
+          <!-- <img class="d-block w-100 bg-primary carouselitem" src="" alt="Third slide"> -->
+          <h2 class="testimonial-text">A boy can learn a lot from a dog: obedience, loyalty, and the importance of turning around three times before lying down.</h2>
+          <img class="puppy-image testimonial-image text-center mx-auto d-block" src="images/puppies.jpg"
+             alt="puppies-profile">
+          <em>Random, Puppies</em>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+=====================================================================================
+https://bootsnipp.com/
+
+Bootstrap Cards:
+
+Each of card should be in card-deck.
+but Grid is better than card-deck.
+
+card 
+card-header
+card-body
+card-footer
+card-deck
+
+    <div class="row text-center">
+      <!-- <div class="card-deck mb-3 text-center"> -->
+      <div class="col-lg-4 col-md-6">
+        <div class="pricing-section card mb-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-bold">Chihuahua</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">Free</h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>5 Matches Per Day</li>
+              <li>10 Matches Per Day</li>
+              <li>Unlimited App Usage</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-outline-dark">Sign up for free</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="pricing-section card mb-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-bold">Labrador</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$49 <small class="text-muted">/ mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Unlimited Matches</li>
+              <li>Unlimited Messages</li>
+              <li>Unlimited App Usage</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-dark">Get started</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="pricing-section card mb-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-bold">Mastiff</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$99 <small class="text-muted">/ mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Pirority Listing</li>
+              <li>Unlimited Matches</li>
+              <li>Unlimited Messages</li>
+              <li>Unlimited App Usage</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-dark">Contact us</button>
+          </div>
+        </div>
+      </div>
+    </div>
+=====================================================================================
+Z-Index:
+
+When position is not static, we can provide z-index to the element. (absolute, relative and fixed)
+if parent element is not relative then body is considered as parent for an absolute element.
+=====================================================================================
+Media Queries:
+@media (max-width: 1028px){
+    .title-image{
+        width: 60%;
+        transform: rotate(0);
+        position: static;
+        right: 30%;
+    }
+}
+=====================================================================================
+Navigation to a particular section in a page:
+	Use id to navigate to a particular section in a page
+		<a class="nav-link" href="#footer">Contact</a>
+=====================================================================================
+Combining Selectors:
+	selector1, selector2 {
+	}
+	h1, h2, h3, h4 {
+	
+	}
+	h1, p, .class {
+	
+	}
+
+Hierarchical Selectors: 
+	this works for parent child hierarchie, it has space between two elements
+	div p .class {
+	
+	}
+	
+Combined Selectors:
+	No parent child hierarchie, it has no space between two elements.
+	div.class {
+	
+	}
+	
+Priority goes like : id, class then tags
+
+=====================================================================================
+Web Design Principles:
+	Color Theory
+	Typography
+	User Interface (UI) Design
+	User Experience (UX)
+
+=====================================================================================
+https://www.dailyui.co/
+https://collectui.com/
+https://www.canva.com/
+=====================================================================================
+Java script:
+
+Chrome: snippet
+=====================================================================================
+Data Types:
+typeof()
+
+=====================================================================================
+Variables:
+
+Strings:
+	length : name.length
+	
+	slice() : name.slice(0,3)
+	name.toUpperCase()
+	name.toLowerCase()
+	
+=====================================================================================
+Arithmetic:
+	modulo: 6%4 =2
+	
+humanAge = (dogAge - 2)*4+21
+
+=====================================================================================
+Increment and Decrement
+x= x+1 : x++
+x= x-1 : x--
+x= x+3 : x+=3
+x= x-3 : x-=3
+x= x/3 : x/=3
+x= x*3 : x*=3
+
+=====================================================================================
+Math.floor() : this rounds up to the base complete number.
+
+=====================================================================================
+Random Number Generation: Math.random()
+
+	let n = Math.floor(Math.random()* 6)+1;
+	console.log(n);
+	
+
+=====================================================================================
+Flow Chart: draw.io  https://app.diagrams.net/
+=====================================================================================
+function isLeap(year) {
+/**************Don't change the code above****************/
+    //Write your code here.    
+	if(year%4 === 0){
+		if(year%100 === 0){
+			if(year%400 === 0){
+				return "Leap year."
+			}else{
+				return "Not leap year."
+		}
+		}else{
+			return "Leap year."
+		}
+	}else{
+		return "Not leap year."
+	}
+/**************Don't change the code below****************/    
+}
+=====================================================================================
+Collections:
+	Arrays:
+		var fruits=["Carrot", "Banana", "Ashguard"]
+		fruits.includes("Banana");
+		
+	array.push() : this push value at the end of an array.
+	array.pop() : this removes value from the end of an array.
+=====================================================================================
+function whosPaying(names) {
+    let arrayIndex = Math.floor(Math.random()* names.length)
+    return names[arrayIndex] + " is going to buy lunch today!"
+}
+=====================================================================================
+while loop:
+let i = 0
+while(i<=100){
+	console.log(`Current value of i is $(i).`);
+	i++;
+}
+=====================================================================================
+for loop:
+	for(let i=0; i<=100; i++){
+		console.log(`Current value of i is $(i).`);
+	}
+=====================================================================================
+fibonacci series:
+	function fibonacciGenerator (n) {
+		if(n===1){
+			let output = [0];
+			return output;
+		}
+		else if(n===2){
+			let output = [0, 1];
+			return output;
+		}
+		else{
+			let output = [0, 1];
+			for(let i=3; i<=n; i++){
+				output.push(output[output.length-2]+ output[output.length-1])
+			}
+			return output;
+		}
+	}
+=====================================================================================
+DOM : Document Object Model:
+
+HTML Tree Generator
+=====================================================================================
+document.getElementsByTagName("");
+document.getElementsByClassName("");
+document.getElementById("")
+document.getElementById("").innerHTML= "Test"
+document.querySelector("h1")
+document.querySelector("#title")
+document.querySelector(".btn")
+
+Combining Selectors:
+document.querySelector("li a")
+
+If properties are in same element, then no spaces:
+document.querySelector("li.item")
+
+querySelector: it can get only one element
+querySelectorAll: it can capture more than one element
+
+document.querySelector("li a").style.color = "red";
+
+document.querySelector("button").style.backgroundColor="yellow"
+=====================================================================================
+document.querySelector("button").classList;
+document.querySelector("button").classList.add("invisible")
+document.querySelector("button").classList.remove("invisible")
+document.querySelector("button").classList.toggle("invisible") : add or remove
+=====================================================================================
+document.querySelector("h1").innerHTML="<em>Good bye<em>" : This can change even html between element tags
+document.querySelector("h1").textContent="Good bye" : This can change only text between element tags
+=====================================================================================
+Manipulate Attributes:
+document.querySelector("a").attributes;
+document.querySelector("a").getAttribute("href");
+document.querySelector("a").setAttribute("href", "https://www.google.com");
+=====================================================================================
+
+Dicee Challenge:
+
+
+let randomNumber = () => Math.floor(Math.random() * 6) + 1;
+
+console.log(randomNumber())
+
+let refreshMe = () =>{
+    let randomNumber1 = randomNumber()
+    let randomNumber2 = randomNumber()
+    
+    let displayMessage = () => {
+        if (randomNumber1 > randomNumber2) {
+            return `🚩Player 1 Wins!!`
+        } else if (randomNumber1 < randomNumber2) {
+            return `Player 2 Wins!!🚩`
+        } else {
+            return `Its a Draw!!`
+        }
+    }
+
+    document.querySelector(".img1").setAttribute("src", `images/dice${randomNumber1}.png`)
+    document.querySelector(".img2").setAttribute("src", `images/dice${randomNumber2}.png`)
+    document.querySelector("h1").textContent = displayMessage();
+}
+
+https://www.w3schools.com/jsref/dom_obj_style.asp
+
+=====================================================================================
+Drum Kit Challenge:
+
+https://developer.mozilla.org/en-US/docs/Web/Events
+
+	addEventListner:
+	let handleClick = () => alert("I was clicked.")
+
+	for (let i = 0; i < document.querySelectorAll(".drum").length; i++){
+		document.querySelectorAll(".drum")[i].addEventListener("click", handleClick)
+	}
+	
+	anonymous function: dont have name.
+
+=====================================================================================
+Higher Order Function:
+	passing function as a parameter to the another function 
+	
+	addNum = (num1, num2)=> num1 + num2;
+	multiNum = (num1, num2)=> num1 * num2;
+	opeNum = (num1, num2, operator)=> operator(num1, num2);
+	opeNum(2,3,addNum);
+	opeNum(2,3,multiNum);
+=====================================================================================
+Play Sounds on a Website:
+	var audio = new Audio('audio_file.mp3');
+	audio.play();
+
+body {
+  background-image: url("img_tree.gif"), url("paper.gif");
+  background-repeat: no-repeat, repeat;
+  background-color: #cccccc;
+}
+
+Target current element :
+	let handleClick = () => {
+		alert("Alert : I was clicked.")
+	}
+	for (let i = 0; i < document.querySelectorAll(".drum").length; i++) {
+		document.querySelectorAll(".drum")[i].addEventListener("click", (event) => {
+			console.log(event.target)
+			console.log(event.target.innerHTML)
+			event.target.style.backgroundColor = "red";
+			event.target.style.color = "white";
+			var audio = new Audio("sounds/tom-1.mp3");
+			audio.play();
+			// handleClick()
+		})
+	}
+=====================================================================================
+JavaScript Objects:
+let houseKeeper1 = {
+    yearsOfExperience : 13,
+    name : "Tomy",
+    cleaningAct : ["bathroom", "loby", "bedroom"]
+}
+
+Constructor function:
+function HouseKeeper(yearsOfExperience, name, cleaningAct){
+    this.yearsOfExperience = yearsOfExperience;
+    this.name = name;
+    this.cleaningAct= cleaningAct;
+}
+
+let hk = new HouseKeeper(12, "Jerry", "anything")
+console.log(hk);
+=====================================================================================
+Switch Statement:
+		switch (btnText) {
+            case "w":
+                var audio = new Audio("sounds/tom-1.mp3");
+                audio.play();
+                break;
+            case "a":
+                var audio = new Audio("sounds/tom-2.mp3");
+                audio.play();
+                break;
+            case "s":
+                var audio = new Audio("sounds/tom-3.mp3");
+                audio.play();
+                break;
+            case "d":
+                var audio = new Audio("sounds/tom-4.mp3");
+                audio.play();
+                break;
+            case "j":
+                var audio = new Audio("sounds/snare.mp3");
+                audio.play();
+                break;
+            case "k":
+                var audio = new Audio("sounds/crash.mp3");
+                audio.play();
+                break;
+            case "l":
+                var audio = new Audio("sounds/kick-bass.mp3");
+                audio.play();
+                break;
+
+            default:
+                console.log("btnText", btnText);
+        }
+=====================================================================================
+Methods:
+function HouseKeeper(yearsOfExperience, name, cleaningAct){
+    this.yearsOfExperience = yearsOfExperience;
+    this.name = name;
+    this.cleaningAct= cleaningAct;
+    this.clean = ()=> alert("Cleaning in progress...")
+}
+let hk = new HouseKeeper(12, "Jerry", "anything")
+hk.clean()
+
+=====================================================================================
+Keyboard Event Listners:
+	document.addEventListener("keydown",(e)=> {
+		console.log(e.key)
+		playSound(e.key.toLowerCase())
+	})
+=====================================================================================
+Callback Function:
+	Respond to an Event: (181)
+=====================================================================================
+Adding Animation to Website:
+	btnAnimation = (btnText) => {
+		let activeBtn = document.querySelector(`.${btnText}`);
+		activeBtn.classList.add("pressed");
+		setTimeout(() => {
+			activeBtn.classList.remove("pressed");
+		}, 200)
+	}
+=====================================================================================
+JQuery:
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+If JQuery cdn is placed in head tag, then use below code to wait for document upload.
+	$(document).ready(function(){
+		$("h1").css("color","yellow");
+	})
+=====================================================================================
+Minification to reduce file size:
+	https://www.minifier.org/
+=====================================================================================
+Selecting Elements in JQuery:
+
+	$("h1")
+	$("p")
+	$(".class")
+	$("#id")
+	$(".class p")
+	$("#id.test")
+	multiple elements are selected with same JQuery.
+=====================================================================================
+Manipulate styles with JQuery:
+
+get value:
+	console.log($("h1").css("font-size"))
+	console.log($("h1").css("color"))
+set value:
+	$("h1").css("color", "green")
+	
+Add Class:
+$("h1").addClass("big-title")
+
+Remove Class:
+setTimeout(() => {
+    $("h1").removeClass("big-title")
+}, 2000)
+
+$("h1").hover(
+    () => { $("h1").addClass("big-title") },
+    () => { $("h1").removeClass("big-title") }
+)
+
+check class:
+$("h1").hasClass("big-title")
+=====================================================================================
+Manipulate Text with JQuery:
+	$("h1").text("Bye!")
+
+	$("button").html("<em>Hey!<em>")
+=====================================================================================
+Manipulate Attributes with JQuery:
+	console.log($("img").attr("src"))
+	$("img").attr("src", "images/kick.png")
+	console.log($("img").attr("src"))
+	
+	console.log($("a").attr("href"))
+	$("a").attr("href", "https://www.yahoo.com")
+	console.log($("a").attr("href"))
+	
+Get all classes from element:
+	$("h1").attr("class")
+=====================================================================================
+Add Event Listners using JQuery:
+	$("h1").click(()=>$("h1").css("color","purple"))
+
+$("input").keypress((e)=>{
+    console.log(e)
+    $("h1").html(e.key)
+})
+
+$("body").keypress((e)=>{
+    $("h1").html(e.key)
+})
+
+Adding event listner using on.
+$("h1").on("mouseover", ()=>{
+    $("h1").css("font-size", "1rem")
+})
+=====================================================================================
+Adding and Removing elements using JQuery:
+Adding Element:
+	before(): it will add element before the opening tag of selected element.
+	after(): it will add element after the closing tag of selected element.
+	prepend(): it will add element just before the containt of selected element.
+	append(): it will add element just after the containt of selected element.
+
+	$("h1").before("<button>before</button>")
+	$("h1").after("<button>after</button>")
+	$("h1").prepend("<button>prepend</button>")
+	$("h1").append("<button>append</button>")
+	
+Remove an Element:
+	$("h1").remove()
+=====================================================================================
+Website Animation:
+	$("h1").hide()
+	$("h1").show()
+	$("h1").toggle
+	$("h1").fadeOut()
+	$("h1").fadeIn()
+	$("h1").fadeToggle()
+	$("h1").slideUp()
+	$("h1").slideDown()
+	$("h1").slideToggle()
+	
+	$("h1").animate({opacity:0.5})
+	$("h1").animate({margin: 20px})
+	
+Chaining:
+	$("h1").slideUp().slideDown().animate({opacity:0.5})
+	
+	$("button").on("click", ()=>{
+		$("h1").slideUp().slideDown().css("font-size", "5rem").animate({opacity:0.5})
+	})
+=====================================================================================
+git remote add origin https://github.com/vaibhav-arde/tindog.git
+=====================================================================================
+=====================================================================================
+Unix Command Line:
+
+https://hyper.is/
+echo $SHELL
+
+Bash Shell: Bash = Bourne Again Shell
+Shell --> Kernel 
+Shell are of two types:
+	GUI
+	Command Line
+
+Bash shell are command line interpreter for UNIX like OS.
+
+	
+	ls : list all folders
+	ls -a : list all folders includes hidden too.
+	pwd : present working directory.
+	cd : change directory
+	cd ~ or cd : takes us back to home/user directory(C:\Users\sheet)
+	cd .. : takes you back to parent directory
+	cd\ or cd/ : command takes you back to the root directory of the current drive (C:\Program Files\Git)
+	up and down arrow button : to use command line query history 
+	press alt and with cursor point to navigate
+	control + a : takes you to start of command
+	control + e : takes you to end of command
+	control + u : to clear current command without executing.
+	
+	mkdir test : create test folder
+	touch test.txt : creates a blank test.txt file
+	start test.txt : it will open test.txt file (in mac its open test.txt)
+	start code test.txt : it will open test.txt file in vscode
+	rm test.txt : deletes test.txt files
+	rm * : removes all files from current folder
+	
+	rm -r test : This removes folder
+	
+	ctrl + l or clear : this gives clearity on screen. shifted out of viewing.
+	uname : this gives flavour of unix
+	uname -a
+	uname -r : Kernel release version number.
+	tab is used for auto completion.
+	alis : 
+	vim : Press the esc key, then type :wq , which means w rite and quit. Want to exit without saving changes? Press the esc key, then type :q!
+	nano : ctrl + x to exit
+	date : display date
+	whoami : lets know login user
+	history > historyTest.txt : it paste history in following file.
+	head historyTest.txt : display top 10 records
+	tail historyTest.txt : display last 10 records
+	
+=====================================================================================
+NodeJS:
+Using NodeJS we can run js outside browser, we can create software for machines.
+
+=====================================================================================
+Node REPL (Read, Evaluate, Print, Loops):
+	node : to enter in REPL mode, its like console in browser.
+	.exit or ctrl + c two times : to exit REPL
+	
+	js expression
+	use variables
+	multiline code / loops
+	use (_) to get last result :  5+5; _+5
+	we can use editor mode
+		.editor : to enter in editor mode.
+		after Entering editor mode (^D to finish, ^C to cancel)
+	
+Note : 
+	to create a file vscode using cmd use below command
+		type nul > test.js
+	Hit two times tab to get help
+
+Native Node Modules:
+	https://nodejs.org/dist/latest-v14.x/docs/api/
+		const fs = require('fs')
+	
+NPM Package Manager :
+	Installing external node modules.
+	https://www.npmjs.com/
+
+Example:
+const superheroes = require('superheroes')
+
+console.log(superheroes.random())
+let sman = superheroes.all.filter(name => name.charAt(0) === "Z")
+console.log(sman)
+=====================================================================================
+TH: NodeJS core modules
+
+fs : File System
+
+const fs = require("fs");
+// Create a new file
+fs.writeFileSync("playGround/write.txt", "Creating a new file.\n")
+// Updating data of a file 
+fs.appendFileSync("playGround/write.txt", "Updating a file.")
+// Reading data from a file
+console.log(fs.readFileSync("playGround/write.txt"))
+// Node.js includes an additional data type called Buffer
+// (not available in browser's Javascript).
+// Buffer is mainly used to store binary data,
+// while reading from a file or receiving packets over the network.
+console.log(fs.readFileSync("playGround/write.txt").toString())
+// Renaming a file
+fs.renameSync("playGround/write.txt", "playGround/readWrite.txt")
+// Move a file at another location
+fs.renameSync("playGround/readWrite.txt", "readWritePaste.txt")
+// Copy a file at another location
+fs.copyFileSync("readWritePaste.txt", "playGround/readWriteCopy.txt")
+=====================================================================================
+
+const fs = require("fs");
+// Delete a file
+fs.unlinkSync("./playGround/fstest/write.txt")
+// Delete a folder
+fs.rmdirSync("./playGround/fstest")
+// Create a folder
+fs.mkdirSync("./playGround/fsTest")
+// Create a new file
+fs.writeFileSync("playGround/fsTest/write.txt", "Creating a new file.\n")
+// Updating data of a file 
+fs.appendFileSync("playGround/fsTest/write.txt", "Updating a file.")
+// Reading data from a file
+console.log(fs.readFileSync("playGround/fsTest/write.txt", "utf-8"))
+// Node.js includes an additional data type called Buffer
+// (not available in browser's Javascript).
+// Buffer is mainly used to store binary data,
+// while reading from a file or receiving packets over the network.
+// console.log(fs.readFileSync("playGround/write.txt").toString())
+// Renaming a file
+fs.renameSync("playGround/fsTest/write.txt", "playGround/fsTest/readWrite.txt")
+// Move a file at another location
+// fs.renameSync("playGround/readWrite.txt", "readWritePaste.txt")
+// Copy a file at another location
+// fs.copyFileSync("readWritePaste.txt", "playGround/readWriteCopy.txt")
+=====================================================================================
+https://nodejs.dev/learn
+
+const fs = require("fs");
+fs.access("./playGround/fsAsync", (error) => {
+    if (error) {
+        console.log("Directory does not exist", error)
+        fs.mkdir("./playGround/fsAsync", (error) => {
+            console.log("mkdir error", error)
+            console.log("Folder created")
+        })
+    } else {
+        console.log("Directory does exist")
+    }
+})
+
+fs.access("./playGround/fsAsync/write.txt", error => {
+    if (error) {
+        fs.writeFile("./playGround/fsAsync/write.txt", "\nWelcome to Async JS", (error) => {
+            console.log("writeFile error :", error)
+        })
+    } else {
+        fs.appendFile("./playGround/fsAsync/write.txt", "\nWelcome to Async JS", (error) => {
+            console.log("appendFile error :", error)
+        })
+    }
+})
+fs.readFile("./playGround/fsAsync/write.txt", "utf-8", (error, data) => {
+    console.log("readFile error :", error)
+    console.log("readFile data :", data)
+    fs.rename("./playGround/fsAsync/write.txt", "./playGround/fsAsync/readWrite.txt", (error) => {
+        console.log("rename error :", error)
+    })
+}) 
+
+=====================================================================================
+TH : NodeJS OS Module to get Operating System info
+const os = require("os")
+
+console.log("Arch : ", os.arch())
+console.log("EndOfLine",os.EOL)
+console.log("Free Memory : ",(os.freemem)/1024/1024/1024)
+console.log("Total Memory : ",(os.totalmem)/1024/1024/1024)
+console.log("Hostname : ",os.hostname())
+console.log("Platform : ",os.platform())
+console.log("tmpdir : ",os.tmpdir())
+console.log("OS : ",os.type())
+
+=====================================================================================
+TH : NodeJS Path module 
+const path = require("path")
+
+console.log(path.basename('/test/something.txt')); //something.txt
+console.log(path.basename('/test/something.txt', '.txt')) ;//something
+console.log(path.dirname('/test/something')) // /test
+console.log(path.dirname('/test/something/file.txt')) // /test/something
+console.log(path.extname('/test/something')) // ''
+console.log(path.extname('/test/something/file.txt')) // '.txt'
+console.log(path.isAbsolute('/test/something')) // true
+console.log(path.isAbsolute('./test/something')) // false
+const name = 'joe'
+console.log(path.join('/', 'users', name, 'notes.txt')) //'/users/joe/notes.txt'
+console.log(path.normalize('/users/joe/..//test.txt')) //'/users/test.txt'
+console.log(path.parse('/users/test.txt'))
+// {
+//     root: '/',
+//     dir: '/users',
+//     base: 'test.txt',
+//     ext: '.txt',
+//     name: 'test'
+//   }
+console.log(path.relative('/Users/joe', '/Users/joe/test.txt')) //'test.txt'
+console.log(path.relative('/Users/joe', '/Users/joe/something/test.txt'))//'something/test.txt'
+
+=====================================================================================
+TH : NodeJS Create and Export own modules:
+	module.exports = { var1, var2, var3}
+=====================================================================================
+TH : Creating server in Node.Js:
+	The http.createServer() method includes request and response parameters which is supplied by Node.JS
+	The request object can be used to get information about the current HTTP request e.g. url, request header, and data ${req.query.name}
+	The response object can be used to send a response for a current HTTP request.
+	If the response from the HTTP server is supposed to be displayed as HTML, you should include an HTTP header with the correct content type.
+	
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+    res.end("Hello from server");
+})
+
+server.listen(8000, "127.0.0.1", () => {
+    console.log("listening port no 8000");
+})
+=====================================================================================
+TH : NodeJS Routing:
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+    console.log("req.url", req.url)
+    // console.log("req.headers", req.headers)
+    switch (req.url) {
+        case "/":
+            res.writeHead(200, { 'Content-Type': 'text/html' })
+            res.end("Welcome to Home Page");
+            break;
+        case "/about":
+            res.writeHead(200, { 'Content-Type': 'text/html' })
+            res.end("Welcome to About Page");
+            break;
+        case "/contact":
+            res.writeHead(200, { 'Content-Type': 'text/html' })
+            res.end("Welcome to Contact Page");
+            break;
+
+        default:
+            res.writeHead(404, { 'Content-Type': 'text/html' })
+            res.end("Page not found");
+            break;
+    }
+})
+
+server.listen(8000, "127.0.0.1", () => {
+    console.log("listening port no 8000");
+})
+=====================================================================================
+TH : JSON 
+	JSON.stringify(obj) : to convert object into json
+	JSON.parse(json) : to convert json into object
+=====================================================================================
+TH : Events Module in NodeJS
+	NodeJS has built-in module called "Events"
+	using Events one can create-, fire-, and listen own events.
+	
+	example1: Registering for the event to be fired only one time using once.
+		const EventEmmitter = require("events")
+
+		const event = new EventEmmitter();
+
+		event.on("sayMyName", () => {
+			console.log("My name is VaibhaV")
+		})
+
+		event.emit("sayMyName")
+		
+	example2: Create an event emmiter instance and register a couple of callbacks
+		const EventEmmitter = require("events")
+
+		const event = new EventEmmitter();
+
+		event.on("sayMyName", () => {
+			console.log("My name is VaibhaV")
+		})
+		event.on("sayMyName", () => {
+			console.log("My name is Sheetal")
+		})
+		event.on("sayMyName", () => {
+			console.log("My name is Meera")
+		})
+
+		event.emit("sayMyName")
+		
+	example3: Registering for the event with callback parameters.
+		const EventEmmitter = require("events")
+
+		const event = new EventEmmitter();
+
+		event.on("checkPage", (sc, msg) => {
+			console.log(`Status code is ${sc}, and the page is ${msg}`)
+		})
+		event.emit("checkPage", 200, "ok")
+=====================================================================================
+TH : Streams and Buffer in NodeJS
+	Strams are objects that let you read data from a source or write data to a destination in continous fashion.
+	There are four types of streams
+=====================================================================================
+
+API for quotes: http://type.fit/api/quotes
+=====================================================================================
+TH : ExpressJS
+ExpressJS is a web application framework that provides you with a simple API to build websites webapps and back ends.
+Domain name is the root(/) in express
+	The callback function has 2 parameters, request(req) and response(res).
+	The request object(req) represents the HTTP request and has properties for request query string, parameters, body, HTTP headers, etc.
+	Similarly, the response object represents the HTTP response that the express app sends when it receives an HTTP request.
+	 
+	const express = require("express")
+	const app = express();
+	const port = 3000;
+
+	app.get("/", (req, res) => {
+		res.send("Hello from express!")
+	})
+	app.get("/about", (req, res) => {
+		res.status(200).send("Hello from about page")
+	})
+
+	app.listen(port, () => {
+		console.log(`listening on port at ${port}`)
+	})
+=====================================================================================
+TH : Send HTML & JSON Data as a Response using Express JS 
+
+Use res.write() to send single line of html. and atlast use res.send() to close connection.
+	app.get("/", (req, res) => {
+		res.write("Hello from express!")
+		res.write("Welcome to Home page.")
+		res.send()
+	})
+	
+Express converts javascript object in json when sent from res.send() or res.json()
+app.get("/json", (req, res) => {
+    res.send([{
+        id: 1,
+        name: "VaibhaV"
+    },{
+        id: 2,
+        name: "Sheetal"
+    }])
+})
+or
+app.get("/json", (req, res) => {
+    res.json([{
+        id: 1,
+        name: "VaibhaV"
+    },{
+        id: 2,
+        name: "Sheetal"
+    }])
+})
+=====================================================================================
+TH : Serving static website:
+Mechanism between request and response is known as Middleware.
+	express.static() built-in middleware function in Express
+	
+	const staticPath = path.join(__dirname, "../public")
+	// builtin middleware
+	app.use(express.static(staticPath))
+
+=====================================================================================
+TH : Template Engines (Pug, hbs, EJS) in Node JS 😍 | Add Dynamic Content in Express JS
+
+A template engine enables you to use static template files in your application. At runtime, the template engine replaces variables in a template file with actual values, and transforms the template into an HTML file sent to the client. This approach makes it easier to design an HTML page.
+
+Some popular template engines that work with Express are Pug, Mustache, and EJS. The Express application generator uses Jade as its default, but it also supports several others.
+
+npm i hbs
+views, the directory where the template files are located. Eg: app.set('views', './views'). This defaults to the views directory in the application root directory.
+mkdir views
+in views directory create index.hbs
+
+index.js is as below:
+
+const path = require("path")
+const express = require("express")
+const app = express();
+const port = 3000;
+
+// to set the view engine
+app.set("view engine", "hbs");
+
+const staticPath = path.join(__dirname, "../public")
+// builtin middleware
+// app.use(express.static(staticPath))
+
+// template engine route
+app.get("/", (req, res) => {
+    res.render('index', {
+        name:"VaibhaV"
+    })
+})
+
+app.get("/", (req, res) => {
+    res.write("<h1>Hello from express!</h1>")
+    res.write("<h1>Welcome to Home page.</h1>")
+    res.send()
+})
+app.get("/about", (req, res) => {
+    res.status(200).send("Hello from about page")
+})
+
+app.get("/json", (req, res) => {
+    res.send([{
+        id: 1,
+        name: "VaibhaV"
+    }, {
+        id: 2,
+        name: "Sheetal"
+    }])
+})
+app.listen(port, () => {
+    console.log(`listening on port at ${port}`)
+})
+
+index.hbs is as below:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBS ExpressJs</title>
+</head>
+<body>
+    <h1>This is rendered using hbs</h1>
+    <h2>My name is {{name}} </h2>
+</body>
+</html>
+=====================================================================================
+TH : Customizing the Views Directory in Express JS 
+const viewPath = path.join(__dirname, "../templateEng")
+app.set("views", viewPath)
+=====================================================================================
+TH : Using Partials 😍 in Express JS 
+
+In appropriate directory create header.hbs file or any file you need as partials.
+
+In index.js do below updates:
+	const hbs = require("hbs")
+	// set partials path
+	const partialsPath = path.join(__dirname, "../templateEng/partials")
+	hbs.registerPartials(partialsPath)
+
+In appropriate file where one need partials, call it in format as : {{>header}}
+
+=====================================================================================
+TH : Add 404 error page in Dynamic Website using Express JS
+	* is universal operator in express. 
+	
+	app.get("*", (req, res) => {
+		res.status(404).render("404", {
+			errorcomment: "Ooops!! No such page..."
+		})
+	})
+	
+	404.hbs page:
+	<body>
+		{{>header}}
+		<h1>{{errorcomment}}</h1>
+	</body>
+=====================================================================================
+
+Responding to Requests with HTML Files:
+	res.sendFile() is used to send file.
+	app.get("/", (req, res) => {
+		res.sendFile(__dirname + "/index.html")
+	})
+
+=====================================================================================
+Processing Post Requests with Body Parser
+	in form we have two imp parameters as : action and method
+	install body-parser package : npm i body-parser
+	body-parser has methods like .text(), .json(), .urlencoded()
+	use body-parser with express app: app.use(bodyParser.urlencoded({extended : true}))
+	
+	const app = express()
+	app.use(bodyParser.urlencoded({extended : true}))
+	
+	app.post("/", (req, res) => {
+		let num1 = Number(req.body.num1)
+		let num2 = Number(req.body.num2)
+		res.send(`<h1>Result of calculation is ${num1+ num2}</h1>`)
+	})
+	
+	app.get("/bmicalculator", (req, res) => {
+		res.sendFile(__dirname + "/bmiCalculator.html")
+	})
+	app.post("/bmicalculator", (req, res) => {
+		let weight = Number(req.body.weight)
+		let height = Number(req.body.height)
+		let bmi = (weight/(height*height)).toFixed(2)
+		res.send(`<h1>Your BMI is ${bmi}`)
+	})
+=====================================================================================
+API: Why Do We Need APIs
+
+=====================================================================================
+API Endpoints, Paths and Parameters:
+API URL : https://sv443.net/jokeapi/v2/joke/Programming?contains=test
+https://sv443.net/jokeapi/v2/joke/Programming?contains=test%20soft&amount=3
+	Endpoints : https://sv443.net/jokeapi/v2/joke
+	Paths : /Programming
+	Parameters :?contains=test
+	Authentication
+=====================================================================================
+1xx : Informational 
+2xx : Success
+3xx : Redirect
+4xx : Client errors
+404 : if path is incorrect
+401 : is authentication is wrong/fails
+5xx : server errors
+
+app.get("/", (req, res) => {
+    const url = "https://api.openweathermap.org/data/2.5/weather?q=kolhapur&appid=6dbb9aadaca36966430d9ed74d7c75d2&units=metric"
+    https.get(url, (response) => {
+        console.log("response statuscode is :", response.statusCode)
+        response.on("data", data => {
+            const weatherData = JSON.parse(data)
+            console.log(weatherData)
+            console.log(weatherData.main.temp)
+        })
+    })
+
+    res.send("Server is up and running!!")
+})
+=====================================================================================
+app.get("/", (req, res) => {
+    const url = "https://api.openweathermap.org/data/2.5/weather?q=kolhapur&appid=6dbb9aadaca36966430d9ed74d7c75d2&units=metric"
+    https.get(url, (response) => {
+        console.log("response statuscode is :", response.statusCode)
+        response.on("data", data => {
+            const weatherData = JSON.parse(data)
+            const temp = weatherData.main.temp
+            const desc = weatherData.weather[0].description
+            const icon = weatherData.weather[0].icon
+            const imageUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`
+            console.log(weatherData)
+            console.log("desc :", desc)
+            console.log("temp :", temp)
+            res.write(`<p>Current weather is : ${desc}</p>`)
+            res.write(`<h1>Temperature in Kolhapur is ${temp} degree celcius.</h1>`)
+            // res.write(`<img src=`+ imageUrl + `>`)
+            res.write(`<img src=${imageUrl}>`)
+            res.send()
+        })
+    })
+})
+=====================================================================================
+Setting up css in express server:
+	As in local files, in node server, html does not read css from same directory. 
+	We need to use app.use(express.static("public")) where public is name of folder, which will become static for express
+	then we need to provide path of css file after public folder.
+=====================================================================================
+MailChimp:
+API Key : c1ec247df4826cbb7b7829a152fb57bf-us2
+Unique Id : 7c818037b6
+
+https://mailchimp.com/developer/
+=====================================================================================
+Version Control Git:
+git status
+git add .
+git commit -m""
+git log
+
+=====================================================================================
+Working Directory => Staging Area => Local Repository
+Working Directory : it where git is initialised
+Staging Area : after git add files move to staging area, 
+Local Repository : after git commit files move to Local Repository
+=====================================================================================
+git diff filename : It gives difference between current file and last commited file.
+git checkout filename : it rollbacks to the last version, where last commit was done.
+=====================================================================================
+Push Existing Repository from the command line:
+git remote add origin urlOfGit : origin is simply name of remote it can be anything
+git push -u origin master : origin = name of remote, master = name of branch, it is default branch/main 
+=====================================================================================
+Gitignore:
+git rm --cached -r . : this means every thing in the current directory should be removed from the staging area.
+
+=====================================================================================
+Cloning:
+git clone repourl
+
+=====================================================================================
+Branching and Merging :
+git branch branchname : this will create a new branch branchname
+git branch : this will show all branches
+* on branch name indicates that its your current branch
+git checkout branchname : This will switch to new branch branchname
+git checkout master : to merge with master get back to master branch.
+git merge branchname : this will merge branchname to master branch
+
+=====================================================================================
+const express = require("express")
+const bodyParser = require("body-parser")
+
+const app = express()
+
+app.get("/", (req, res) => {
+    res.write("Hello \n")
+    const today = new Date();
+    today.getDay() === 6 || today.getDay() === 0 ?
+        res.write("Its a weekend") :
+        res.write("Lets Work, its weekday")
+
+    res.send()
+})
+
+app.listen(3000, () => { console.log("Server started on port 3000") })
+=====================================================================================
+EJS : Embedded JavaScript template
+ejs template format is <%= EJS %>
+
+npm i ejs
+const express = require("express")
+const bodyParser = require("body-parser")
+
+const app = express()
+app.set('view engine', 'ejs')
+=====================================================================================
+By Default all ejs/html files are kept in a folder named "views" 
+res.render("list", {test : test}) : in render function parameter list is name of ejs/html file available in views folder 
+and {test : test} is a object for template 
+
+app.get("/", (req, res) => {
+    // const today = (new Date()).getDay();
+    const today = Math.floor(Math.random() * 8)
+    let daydetails = {}
+    switch (today) {
+        case 0: daydetails = { toDay: "Sunday", weekDay: "Weekend" }
+            break;
+        case 1: daydetails = { toDay: "Monday", weekDay: "Weekday" }
+            break;
+        case 2: daydetails = { toDay: "Tuesday", weekDay: "Weekday" }
+            break;
+        case 3: daydetails = { toDay: "Wednsday", weekDay: "Weekday" }
+            break;
+        case 4: daydetails = { toDay: "Thursday", weekDay: "Weekday" }
+            break;
+        case 5: daydetails = { toDay: "Friday", weekDay: "Weekday" }
+            break;
+        case 6: daydetails = { toDay: "Saturday", weekDay: "Weekend" }
+            break;
+
+        default: console.log("Error : Wrong input day :( " + today)
+            daydetails = { toDay: `Wrong input day :( : ${today}`, weekDay: `${today}` }
+            break;
+    }
+    res.render("list", daydetails)
+})
+
+
+<body>
+    <% if(toDay === "Saturday" || toDay === "Sunday"){ %>
+    <h1 style="color: Purple">Its a <%= toDay %>, ... a <%= weekDay %> </h1>
+    <% }else{ %>
+    <h1 style="color: greenyellow">Its a <%= toDay %>, ... a <%= weekDay %> </h1>
+    <% } %>
+</body>
+=====================================================================================
+<% 'Scriptlet' tag:
+It allows to use if else statements in ejs/html file
+<body>
+    <% if(toDay === "Saturday" || toDay === "Sunday"){ %>
+    <h1 style="color: Purple">Its a <%= toDay %>, ... a <%= weekDay %> </h1>
+    <% }else{ %>
+    <h1 style="color: greenyellow">Its a <%= toDay %>, ... a <%= weekDay %> </h1>
+    <% } %>
+</body>
+
+=====================================================================================
+how-to-format-a-javascript-date:
+
+If you need slightly less control over formatting than the currently accepted answer, Date#toLocaleDateString can be used to create standard locale-specific renderings. The locale and options arguments let applications specify the language whose formatting conventions should be used, and allow some customization of the rendering.
+
+Options key examples:
+day:
+The representation of the day.
+Possible values are "numeric", "2-digit".
+weekday:
+The representation of the weekday.
+Possible values are "narrow", "short", "long".
+year:
+The representation of the year.
+Possible values are "numeric", "2-digit".
+month:
+The representation of the month.
+Possible values are "numeric", "2-digit", "narrow", "short", "long".
+hour:
+The representation of the hour.
+Possible values are "numeric", "2-digit".
+minute: The representation of the minute.
+Possible values are "numeric", "2-digit".
+second:
+The representation of the second.
+Possible values are "numeric", 2-digit".
+All these keys are optional. You can change the number of options values based on your requirements, and this will also reflect the presence of each date time term.
+
+Note: If you would only like to configure the content options, but still use the current locale, passing null for the first parameter will cause an error. Use undefined instead.
+
+For different languages:
+"en-US": For English
+"hi-IN": For Hindi
+"ja-JP": For Japanese
+You can use more language options.
+
+For example
+var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+var today  = new Date();
+
+console.log(today.toLocaleDateString("en-US")); // 9/17/2016
+console.log(today.toLocaleDateString("en-US", options)); // Saturday, September 17, 2016
+console.log(today.toLocaleDateString("hi-IN", options)); // शनिवार, 17 सितंबर 2016
+=====================================================================================
+Passing Data from Your Webpage to Your Server: 
+We can pass data from webpage to server by post method as below:
+    <form action="/" method="POST">
+        <input type="text" name="todoitem" placeholder="to do item.." required autofocus>
+        <button type="submit" name="button">Add</button>
+    </form>
+
+Then we can catch the sent data in server by creating app.post() method, here we need to use body-parser as below:
+	const bodyParser = require("body-parser")
+	app.use(bodyParser.urlencoded({ extended: true }))
+	
+	app.post("/", (req, res) => {
+		var item = req.body.todoitem
+		items.push(item)
+		res.redirect("/")
+	})
+
+res.redirect("/") redirects to app.get("/") method with latest changes
+items is an array of item created in app.js
+=====================================================================================
+app.js:
+const express = require("express")
+const bodyParser = require("body-parser")
+
+const app = express()
+app.set('view engine', 'ejs')
+app.use(bodyParser.urlencoded({ extended: true }))
+
+let items=[];
+app.get("/", (req, res) => {
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const hiDate = (new Date()).toLocaleDateString("hi-IN", options)
+    // const today = (new Date()).getDay();
+    const today = Math.floor(Math.random() * 8)
+    let daydetails = {}
+    switch (today) {
+        case 0: daydetails = { toDay: "Sunday", weekDay: "Weekend", Date: hiDate }
+            break;
+        case 1: daydetails = { toDay: "Monday", weekDay: "Weekday", Date: hiDate }
+            break;
+        case 2: daydetails = { toDay: "Tuesday", weekDay: "Weekday", Date: hiDate }
+            break;
+        case 3: daydetails = { toDay: "Wednsday", weekDay: "Weekday", Date: hiDate }
+            break;
+        case 4: daydetails = { toDay: "Thursday", weekDay: "Weekday", Date: hiDate }
+            break;
+        case 5: daydetails = { toDay: "Friday", weekDay: "Weekday", Date: hiDate }
+            break;
+        case 6: daydetails = { toDay: "Saturday", weekDay: "Weekend", Date: hiDate }
+            break;
+
+        default: console.log("Error : Wrong input day :( " + today)
+            daydetails = { toDay: `Wrong input day :( : ${today}`, weekDay: `${today}` }
+            break;
+    }
+    res.render("list", {...daydetails, todolist: items})
+})
+
+app.post("/", (req, res) => {
+    var item = req.body.todoitem
+    items.push(item)
+    res.redirect("/")
+})
+
+app.listen(3000, () => { console.log("Server started on port 3000") })
+
+----------------
+list.ejs:
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJS</title>
+</head>
+
+<body>
+    <% if(toDay === "Saturday" || toDay === "Sunday"){ %>
+    <h1 style="color: Purple">Its a <%= toDay %>, ... a <%= weekDay %> </h1>
+    <% }else{ %>
+    <h1 style="color: greenyellow">Its a <%= toDay %>, ... a <%= weekDay %> </h1>
+    <% } %>
+    <h1><%= Date %> </h1>
+    <form action="/" method="POST">
+        <input type="text" name="todoitem" placeholder="to do item.." required autofocus>
+        <button type="submit" name="button">Add</button>
+    </form>
+    <ul>
+        <% todolist.map(item =>{ %>
+            <ul><%= item %></ul>
+        <% }) %>
+    </ul>
+</body>
+
+</html>
+=====================================================================================
+The Concept of Scope in the Context of Javascript:
+three types of variables : let const and var
+	If we declare a var varible in if/else/ or any loop then it is accessible even ouside of it.
+	but if we declare a let or const varible in if/else/ or any loop then it is not accessible ouside of it, ie. they become local.
+
+	no variable is accesible outside function if it is declared in function ie. all become local.
+=====================================================================================
+Adding Pre-Made CSS Stylesheets to Your Website:
+we need to explicitely tell express about the files to serve by creating a folder named public. 
+	app.use(express.static("public"))
+	
+=====================================================================================
+Templating vs Layout:
+
+For second list of work items: 
+	Create a new array to store second list 
+	Create a new method : 
+		app.get("/work", (req, res) => {
+			res.render("list", { listTitle: "Work List", todolist: workItems })
+		})
+	but since we are using same ejs/html form, post request will route to "/" hence in app.post("/") use app.redirect() using if/else :
+	app.post("/", (req, res) => {
+		console.log(req.body)
+		var item = req.body.todoitem
+
+		if (req.body.list === "Work List") {
+			workItems.push(item)
+			res.redirect("/work")
+			console.log("Work Triggered")
+		} else {
+			items.push(item)
+			res.redirect("/")
+		}
+	})
+	
+For Layout / Partials:
+	Keep code in different files and to repetative use simply use following syntax to call it : <%- include("header") -%>
+	
+=====================================================================================
+Understanding Node Module Exports: How to Pass Functions and Data between File
+
+module.exports.getDate = getDate;
+above way is equal to 
+exports.getDate =()=>{}
+
+note: When object/array is declared as const then we can not reassign the value to it, but we can change the values of same array by pushing values in it or by changing the onject keys
+	like array.push('A') or object.key = 'otherValue'
+=====================================================================================
+Routing : https://expressjs.com/en/guide/routing.html
+
+Route Methods :
+Route paths :
+Route Parameters :
+Route parameters are named URL segments that are used to capture the values specified at their position in the URL. The captured values are populated in the req.params object, with the name of the route parameter specified in the path as their respective keys.
+
+Route path: /users/:userId/books/:bookId
+Request URL: http://localhost:3000/users/34/books/8989
+req.params: { "userId": "34", "bookId": "8989" }
+To define routes with route parameters, simply specify the route parameters in the path of the route as shown below.
+
+app.get('/users/:userId/books/:bookId', function (req, res) {
+  res.send(req.params)
+})
+
+The name of route parameters must be made up of “word characters” ([A-Za-z0-9_]).
+
+Since the hyphen (-) and the dot (.) are interpreted literally, they can be used along with route parameters for useful purposes.
+
+Route path: /flights/:from-:to
+Request URL: http://localhost:3000/flights/LAX-SFO
+req.params: { "from": "LAX", "to": "SFO" }
+Route path: /plantae/:genus.:species
+Request URL: http://localhost:3000/plantae/Prunus.persica
+req.params: { "genus": "Prunus", "species": "persica" }
+To have more control over the exact string that can be matched by a route parameter, you can append a regular expression in parentheses (()):
+
+Route path: /user/:userId(\d+)
+Request URL: http://localhost:3000/user/42
+req.params: {"userId": "42"}
+Because the regular expression is usually part of a literal string, be sure to escape any \ characters with an additional backslash, for example \\d+.
+=====================================================================================
+Lodash:
+npm i --save lodash
+const _ = require("lodash")
+		if(_.lowerCase(artical.postTitle) === _.lowerCase(urlParam)){
+		  console.log("artical.postTitle :", artical.postTitle)
+		  // console.log("urlParam :", urlParam)
+		  console.log("Match Found!")
+		}
+=====================================================================================
+Databases:
+SQL and NoSQL
+
+=====================================================================================
+SQL:
+
+CREATE TABLE products (
+	id INT NOT NULL,
+	name STRING,
+	price MONEY,
+	PRIMARY KEY (id)
+)
+
+insert into products 
+VALUES(1, "Pen", 1.20)
+
+update products
+set price = .80
+where id=2
+
+alter TABLE products
+add stocks INT
+
+UPDATE products
+set stocks=32
+where id=1
+
+delete FROM products where id =''
+
+=====================================================================================
+Understanding SQL Relationships, Foreign Keys and Inner Joins:
+
+=====================================================================================
+Hitesh Choudhary : MongoDB  
+
+WiredTiger Storage Engine
+
+No schema, collection
+
+Mocha and its need:
+	Asynchronous
+	Promises
+
+MongoDB umbrella:
+	community/enterprise
+	Atlas : MongoDB on cloud
+	Mobile
+	ops Manager
+	BI Connector
+	MongoDB charts
+	Compass - GUI
+	
+	Robomongo / Robo 3T GUI
+	
+	MongoDB Stitch
+	
+MongoDB installation:
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
+Open a Command Interpreter with Administrative privileges and run:
+	"C:\Program Files\MongoDB\Server\4.4\bin\mongo.exe"
+=====================================================================================
+Hitesh Choudhary : MongoDB CRUD
+show dbs
+use students : if not present before this crates an database named students and switch to it, If present before then simply switch to it.
+db : this shows current database used.
+> db.studentsData.insertOne(
+... {
+... "name": "Hitesh",
+... "email": "hitesh@hiteshchoudhary.com",
+... "contact": "9999999999",
+... "courseCount": 4,
+... "isVerified": true
+... }
+... ) : This insert one document in collection named studentsData.
+
+> db.studentsData.find() : this shows all documents available in collection named studentsData.
+> db.studentsData.find().pretty() : this shows all documents available in collection named studentsData, in a formatted way.
+> show collections : this will show all the collections available in current database.
+
+db.studentsData.insertMany([
+	{
+		"name": "Choudhary",
+		"email": "Hitesh@gmail.com",
+		"contact": "9999999888",
+		"courseCount": 2,
+		"isVerified": false
+	},
+	{
+		"name": "test",
+		"email": "test@gmail.com",
+		_id: "123-abc-w"
+	}
+])
+=====================================================================================
+Read or Queries the Documents into Collections:
+	db.collection.find(query, projection)
+	db.studentsData.find({contact : "9999999888"} ).pretty() : This shows all fields of document where "contact" is "9999999888"
+	db.studentsData.find({contact : "9999999888"}, {email:1} ).pretty() : email:1 means it will show/ project only email , but id come by default
+	db.studentsData.find({contact : "9999999888"}, {email:1, _id:0} ).pretty() : _id:0 means it will not show/ project id which is projected by default
+	db.studentsData.find({contact : "9999999888"}, {active:true} ).pretty().limit(1) : Because of .limit(1) This will show only 1 result.
+	db.studentsData.findOne({contact : "9999999888"}, {active:true} ) : Because of .findOne() This will show only 1 result.
+	db.studentsData.find({contact : "9999999888"}, {active:true} ).pretty().limit(1).skip(1) : This will skip first 1 document (.skip(1)) and will display next 1 documnet (.limit(1))
+	
+	atomic operator: $
+	updateOne syntax : db.collection_name.updateOne({filter},{update})
+	updateMany syntax : db.collection_name.updateMany({filter},{update})
+	db.studentsData.updateOne({courseCount:2},{$set:{fbloggedIn:"yes"}})
+	db.studentsData.updateMany({courseCount:2},{$set:{fbloggedIn:"no"}})
+	
+	deleteOne syntax : db.collection_name.deleteOne({filter})
+	deleteMany syntax : db.collection_name.deleteMany({filter})
+	db.studentsData.deleteMany({}) : this will delete all documents
+	> db.studentsData.deleteOne({name:"test"})
+	> db.studentsData.deleteMany({name:"test"})
+	
+	Greater than: $gt
+	> db.studentsData.find({courseCount:{$gt:2}}).pretty()
+	Less than: $lt
+	> db.studentsData.find({courseCount:{$lt:4}}).pretty()
+	
+=====================================================================================
+HC : Getting More Data:
+
+	Use of ForEach to print all data:
+	db.studentsData.find().forEach(student=>{printjson(student)})
+	
+	To filter data in Mongo and sent an array
+	db.studentsData.find({}, {email:1, _id:0}).toArray() : Here toArray() converts to an array
+
+=====================================================================================
+Schema in MongoDB:
+
+Modeling Database:
+	What are pre-defined databases?
+	Generated database?
+	Where you will need these data?
+	How much filter is there per query?
+	How many queries are being fired?
+	How often will you change the data?
+	
+=====================================================================================
+Relation in database mongoDB:
+
+=====================================================================================
+Mocha, Chai, Mongoose:
+
+app\student.js: 
+
+const mongoose = require("mongoose")
+const Schema = mongoose.Schema
+const StudentSchema = new Schema({
+    name : String
+})
+
+const Student = mongoose.model("student", StudentSchema)
+
+module.exports = Student
+=====================================================================================
+test\mo_helper_test.js:
+const mongoose = require("mongoose")
+mongoose.connect("mongodb://localhost/mongotube", {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connection
+    .once("open", ()=>console.log("Connected"))
+    .on("error", error => {console.log("Your Error", error)})
+
+=====================================================================================
+
+=====================================================================================
+Angela Yu:
+Install MongoDB on mac:
+https://blog.londonappbrewery.com/how-to-download-install-mongodb-on-mac-2895ccd2b5c1
+Install MongoDB on windows:
+https://medium.com/@LondonAppBrewery/how-to-download-install-mongodb-on-windows-4ee4b3493514
+=====================================================================================
+
+=====================================================================================
+TH : Connect NodeJS, ExpressJS to MongoDB using Mongoose
+
+const mongoose = require("mongoose")
+
+mongoose.connect("mongodb://localhost:27017/testmongo", { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log("database connection to testmongo db is successful"))
+    .catch((err)=> console.log("DB Connection error is :", err))
+=====================================================================================
+Schema:
+// A Mongoose schema defines the structure of the document, default values, validators, etc
+
+const playlistSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    courseType: String,
+    videos: Number,
+    author: String,
+    active: Boolean,
+    date: {
+        type: Date,
+        default: Date.now
+    }
+})
+
+=====================================================================================
+Model
+A Mongoose model is a wrapper on the Mongoose schema
+A Mongoose schema defines the structure of the document, default values, validators, etc
+where as Mongoose model provide an interface to the database for creating, quering, updating, deleting records etc.
+// collection creation
+const Playlist = new mongoose.model("Playlist", playlistSchema)
+=====================================================================================
+// Create/Insert a document
+Insert Single Document:
+
+const createDocument = async () => {
+    try{
+        const reactPlaylist = new Playlist({
+            name: "Node JS",
+            courseType: "Front End",
+            videos: 90,
+            author: "VaibhaV Arde",
+            active: true
+        })
+        const result = await reactPlaylist.save()
+        console.log(result)
+    }catch(err){
+        console.log(err)
+    }
+}
+createDocument();
+=====================================================================================
+Insert Many Document :
+
+const createDocument = async () => {
+    try{
+        const jsPlaylist = new Playlist({
+            name: "JavaScript",
+            courseType: "Front End",
+            videos: 150,
+            author: "VaibhaV Arde",
+            active: true
+        })
+        const expressPlaylist = new Playlist({
+            name: "Express JS",
+            courseType: "Back End",
+            videos: 40,
+            author: "VaibhaV Arde",
+            active: true
+        })
+        const mongoDBPlaylist = new Playlist({
+            name: "MongoDB",
+            courseType: "Database",
+            videos: 20,
+            author: "VaibhaV Arde",
+            active: true
+        })
+        const mongoosePlaylist = new Playlist({
+            name: "Mongoose",
+            courseType: "Database",
+            videos: 20,
+            author: "VaibhaV Arde",
+            active: true
+        })
+        const result = await Playlist.insertMany([jsPlaylist, expressPlaylist, mongoDBPlaylist, mongoosePlaylist])
+        console.log(result)
+    }catch(err){
+        console.log(err)
+    }
+}
+createDocument();
+=====================================================================================
+Read or Querying the Documents using Mongoose in Express App:
+
+const getDocument = async () => {
+    try {
+        const result = await Playlist.find({ courseType: "Front End" })
+            .select({ name: 1, author: 1, _id: 0 })
+            .limit(2)
+        console.log(result)
+    } catch (err) {
+        console.log(err)
+    }
+}
+getDocument()
+=====================================================================================
+MongoDB Comparison Query Operators using Mongoose and Node(Express JS)
+
+Comparison Query Operators
+
+Name	Description
+$eq	: Matches values that are equal to a specified value. : .find({ courseType: {$eq : "Front End"} })
+$gt	: Matches values that are greater than a specified value. : .find({ videos: {$gt : 90} })
+$gte : Matches values that are greater than or equal to a specified value. : .find({ videos: {$gte : 90} })
+$in	: Matches any of the values specified in an array. : .find({ videos: {$in : [40, 150]} })
+$lt	: Matches values that are less than a specified value. : .find({ videos: {$lt : 90} })
+$lte : Matches values that are less than or equal to a specified value. : .find({ videos: {$lte : 90} })
+$ne : Matches all values that are not equal to a specified value. : .find({ videos: {$ne : 90} })
+$nin : Matches none of the values specified in an array. : .find({ videos: {$nin : [90, 150]} })
+=====================================================================================
+MongoDB Logical Query Operators using Mongoose and Node(Express JS):
+Logical Query Operators
+
+Name	Description
+$and	Joins query clauses with a logical AND returns all documents that match the conditions of both clauses.
+	.find({ $and : [{ videos: { $in : [40, 150]} }, { courseType: "Back End" }] })
+$not	Inverts the effect of a query expression and returns documents that do not match the query expression.
+$nor	Joins query clauses with a logical NOR returns all documents that fail to match both clauses.
+$or		Joins query clauses with a logical OR returns all documents that match the conditions of either clause.
+	.find({ $or : [{ videos: { $in : [40, 150]} }, { courseType: "Back End" }] })
+=====================================================================================
+MongoDB Sorting and Count Query Methods using Mongoose:
+
+.estimatedDocumentCount()
+.countDocuments()
+.count() : deprecated
+
+.sort({name : 1}) : 1 is for ascending, from a to z
+.sort({name : -1}) : -1 is for .desceding, from z to a
+=====================================================================================
+MongoDB Update the Documents using Mongoose:
+Update Operators
+Name	Description
+$currentDate	Sets the value of a field to current date, either as a Date or a Timestamp.
+$inc	Increments the value of the field by the specified amount.
+$min	Only updates the field if the specified value is less than the existing field value.
+$max	Only updates the field if the specified value is greater than the existing field value.
+$mul	Multiplies the value of the field by the specified amount.
+$rename	Renames a field.
+$set	Sets the value of a field in a document.
+$setOnInsert	Sets the value of a field if an update results in an insert of a document. Has no effect on update operations that modify existing documents.
+$unset	Removes the specified field from a document.
+
+const updateDocument = async (_id) => {
+    try {
+        const result = await Playlist.updateOne(
+            { _id }, { $set: { courseType: "Back End" } }
+        )
+        console.log(result)
+    } catch (err) {
+        console.log(err)
+    }
+}
+updateDocument("5fb08e5fdf670921347e7c0b")
+
+=====================================================================================
+MongoDB Delete the Documents using Mongoose:
+
+const deleteDocument = async (_id) => {
+    try {
+        const result = await Playlist.deleteOne({_id})
+        console.log(result)
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+deleteDocument("5fb337224673963aecc9d328")
+
+=====================================================================================
+Mongoose Built-In Validation using MongoDB:
+
+Validation is defined in the SchemaType
+Validation is middleware.
+	required: true
+	
+const breakfastSchema = new Schema({
+  eggs: {
+    type: Number,
+    min: [6, 'Too few eggs'],
+    max: 12
+  },
+  bacon: {
+    type: Number,
+    required: [true, 'Why no bacon?']
+  },
+  drink: {
+    type: String,
+    enum: ['Coffee', 'Tea'],
+    required: function() {
+      return this.bacon > 3;
+    }
+  }
+});
+
+The unique Option is Not a Validator
+A common gotcha for beginners is that the unique option for schemas is not a validator. It's a convenient helper for building MongoDB unique indexes. 
+=====================================================================================
+Custom Validation using MongoDB:
+
+	videos: {
+		type: Number,
+		validate(value){
+			if(value<0){
+				throw new error ("Videos count should not be negative")
+			}
+		}
+	}
+=====================================================================================
+Using NPM Validator Package for Validation using MongoDB:
+
+import validator from 'validator';
+https://www.npmjs.com/package/validator
+
+email :{
+	type : String,
+	unique : true,
+	required : true,
+	validate(value){
+		it(!validator.isEmail(value){
+			throw new error ("Email is not valid")
+		}
+	}
+}
+	
+=====================================================================================
+"C:\Program Files\MongoDB\Server\4.4\bin\mongo.exe"
+=====================================================================================
+If You Have Forgotten to Quit the Mongod Server
+You can use CTRL + C in your Terminal to shut down your mongod connection.
+
+If you have closed down Terminal or Hyper and forgot to close down your mongod connection, you might get an error that says:
+
+2018-11-04T16:17:53.473+1300 E STORAGE  [initandlisten] Failed to set up listener: SocketException: Address already in use
+2018-11-04T16:17:53.474+1300 I CONTROL  [initandlisten] now exiting
+2018-11-04T16:17:53.474+1300 I CONTROL  [initandlisten] shutting down with code:48
+In this case, you'll have to follow these steps to manually shut down the mongod process:
+
+1. Open up a fresh Hyper Terminal tab
+
+2. Paste the command below into Hyper:
+
+sudo pkill -f mongod
+
+3. Now enter the password that you use to log on to the Mac.
+
+4. Open a new Hyper terminal, you should now be able to run the mongod command again.
+
+=====================================================================================
+AY : Mongoose :
+
+In Shell : To delete entire database : first switch to the database and then fire db.dropDatabase()
+
+=====================================================================================
+Book: Deep Work: Rules for focused success in a Distracted World
+=====================================================================================
+Connecting DB to todolist app: 
+
+npm i mongoose
+
+// below arrays will be replaced with mongoDB
+// let items = [];
+// let workItems = [];
+
+Connection with DB:
+mongoose.connect("mongodb://localhost:27017/todolistDB", { useNewUrlParser: true , useUnifiedTopology: true})
+
+Schema Creation:
+	const itemsSchema = {
+		name: String
+	}
+
+Model Creation:
+	const Item = mongoose.model("Item", itemsSchema)
+
+Inserting Items to DB:
+	const item1 = new Item({
+		name: "Learn"
+	})
+	const item2 = new Item({
+		name: "Build"
+	})
+	const item3 = new Item({
+		name: "Test"
+	})
+
+	const defaultItems = [item1, item2, item3]
+
+	Item.insertMany(defaultItems, (err) => {
+		if(err){
+			console.log("err at inserting many :", err)
+		}else{
+			console.log("All items inserted!")
+		}
+	})
+
+Getting DB items :
+
+	Item.find({}, (err, mongoItems) => {
+		if (err) {
+			console.log("Error to get the items:", err)
+		}
+		console.log("All mongoItems are :", mongoItems)
+	})
+	
+	or
+	
+	const getItems = async () => {
+		try {
+			const mongoItems = await Item.find()
+			.select({name:1, _id:0})
+			console.log("All getItems are :", mongoItems)
+		} catch (error) {
+			console.log("Error :", error)
+		}
+	}
+	getItems()
+=====================================================================================
+Adding items to DB:
+
+const insertOneItem = async (name) => {
+    try {
+        const result = await Item.insertMany([{ name }])
+        console.log("result", result)
+    } catch (err) {
+        console.log("err at inserting many :", err)
+    }
+}
+=====================================================================================
+Deleting Items:
+
+Added form on the checkbox:
+    <form action="/delete" method="POST">
+        <% todolist.map(oneItem =>{ %>
+        <div class="item">
+            <input type="checkbox" name="checkbox" value="<%= oneItem._id %>" onchange="this.form.submit()">
+            <p><%= oneItem.name %></p>
+        </div>
+        <% }) %>
+    </form>
+
+app.post("/delete", (req, res) => {
+    const checkedId = req.body.checkbox
+    deleteItem(checkedId)
+    res.redirect("/")
+})
+=====================================================================================
+wipe out perticular collection :
+	get in appropriate db, then show collections, then db.documentName.drop()
+
+Creating Custom Lists using Express Route:
+	
+app.get("/:customListName", (req, res) => {
+    const customListName = req.params.customListName
+    console.log("customListName is :", req.params.customListName)
+
+    List.findOne({ name: customListName }, (err, foundlist) => { 
+        if(!err){
+            if(!foundlist){
+                const list = new List({
+                    name: customListName,
+                    items: defaultItems
+                })
+                list.save()
+                res.redirect("/"+ customListName)
+            }else{
+                res.render("list", { listTitle: foundlist.name, todolist: foundlist.items })
+            }
+        }
+    })
+})
+
+=====================================================================================
+Adding items to custom lists:
+
+Listtitle/listname is passed through the submit button.:
+	<form class="item" action="/" method="POST">
+        <input type="text" name="todoitem" placeholder="new to do item.." required autofocus>
+        <button type="submit" name="list" value="<%= listTitle %>">+</button>
+    </form>
+
+
+app.post("/", (req, res) => {
+    console.log("Postbody is :",req.body)
+    var itemName = req.body.todoitem
+    var listName = req.body.list
+
+    const item = new Item({
+        name: itemName
+    })
+
+    console.log("listName typeof", (new Date(listName)).getTime())
+
+    if(!isNaN((new Date(listName)).getTime())){
+        console.log("I am a date")
+        // insertOneItem(item)
+        item.save()
+        res.redirect("/")
+    }else{
+        console.log("I am NOT a date")
+        List.findOne({ name: listName }, (err, foundlist) => {
+            foundlist.items.push(item)
+            foundlist.save()
+            res.redirect("/"+ listName)
+        })
+    }
+})
+=====================================================================================
+Deleting items from custom list:
+
+Problem Statement: Here we have only one input which is checkbox and it send value = _id to post method, but we need to send listname too.
+Solution : input with type = hidden.
+
+    <form action="/delete" method="POST">
+        <% todolist.map(oneItem =>{ %>
+        <div class="item">
+            <input type="checkbox" name="checkbox" value="<%= oneItem._id %>" onchange="this.form.submit()">
+            <p><%= oneItem.name %></p>
+        </div>
+        <% }) %>
+        <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+    </form>
+	
+	
+app.post("/delete", (req, res) => {
+    console.log("delete req.body :", req.body)
+    const checkedId = req.body.checkbox
+    const listName = req.body.listName
+
+    deleteItem(res, listName, checkedId)
+})
+
+const deleteItem = async (res, listName, _id) => {
+    console.log("delete listName :", listName);
+    if (!isNaN((new Date(listName)).getTime())) {
+        try {
+            const result = await Item.deleteOne({ _id })
+            console.log("result", result)
+            res.redirect("/")
+        } catch (err) {
+            console.log("err at deleting item :", err)
+        }
+    } else {
+        List.findOneAndUpdate({ name: listName }, { $pull: { items: { _id } } }, (err, foundlist) => {
+            if (!err) {
+                console.log("redirect path :","/" + listName);
+                res.redirect("/" + listName)
+                console.log("found one and update list is :", foundlist);
+            }
+        })
+    }
+}
+=====================================================================================
+Lodash:
+
+npm i lodash
+
+const customListName = _.capitalize(req.params.customListName)
+=====================================================================================
+Note : At the moment, when you compose a post and redirect to the root route, sometimes the post is not yet saved and doesn’t show up on the home page.
+
+Goal: Add a callback to the save method to only redirect to the home page once save is complete with no errors.
+	post.save(function(err){
+	   if (!err){
+		 res.redirect("/");
+	   }
+	})
+	
+
+=====================================================================================
+Build Your Own RESTful API From Scratch:
+
+HTTP verbs : GET POST PUT PATCH DELETE
+GET : Read : app.get("/", (req, res) => {})
+POST : Create : app.post("/", (req, res) => {})
+PUT : Update : app.put("/", (req, res) => {}) : this is to update entire request.
+PATCH : Update : app.patch("/", (req, res) => {}) : this is to update only changed part of request.
+DELETE : Delete : app.delete("/", (req, res) => {})
+=====================================================================================
+
+Postman:
+Postman is an interactive and automatic tool for verifying the API's of your project 
+
+=====================================================================================
+REST: REpresentational State Transfer
+It is a software that allows two applications to interact/communicate with each other over the internet and through various devices.
+
+A Restful API is an architecture style for an application program interface (API) that uses HTTP request to access and use data. REST is not a programming language.
+In REST endpoing url remain same only HTTP verb changes.
+
+=====================================================================================
+Create Your Own RESTFul API :
+
+mkdir REST
+$ cd REST/
+$ npm init -y
+npm i express mongoose validator 
+
+$ mkdir src
+
+$ touch app.js or type nul > app.js
+
+For post request using form i.e. with no api body was built in post method , but now body is captured from postman body so we need express.json() and express.urlencoded()
+Its is used for post and put requests. 
+express.json(): is a method built in express to recognise the incoming request object as a JSON object.This method is called as middleware in your application 
+using the code : app.use(express.json())
+
+app.js :
+const express = require("express");
+const app = express();
+require("./db/conn")
+const Student = require("./models/students")
+const port = process.env.PORT || 4000
+
+app.use(express.json())
+
+app.get("/", (req, res) => {
+    res.send("Hello from root!!")
+})
+app.post("/students", (req, res) => {
+    console.log("post req.body :", req.body);
+    const user = new Student(req.body)
+    user.save().then(() => {
+        res.status(201).send(user)
+    }).catch((e) => {
+        res.status(400).send(e)
+        // res.status(400).send("Error to save Post in DB :", e)
+    })
+})
+
+app.listen(port, () => {
+    console.log(`Server is running on port : ${port}`);
+})
+
+conn.js:
+const mongoose = require("mongoose")
+
+mongoose.connect("mongodb://localhost:27017/students-api", {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log("Connection to DB (students-api) is Successful :) !!");
+}).catch((e) => { 
+    console.log("Failed to connect with DB (students-api) :(", e);
+})
+
+students.js:
+const mongoose = require("mongoose")
+const validator = require("validator")
+
+const studentSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        minlength: 3
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: [true, "Email is already present!!"],
+        validate(value) {
+            if (!validator.isEmail(value)) {
+                throw new Error("Invalid Email");
+            }
+        }
+    },
+    phone: {
+        type: Number,
+        min: 10,
+        maxlength : 10,
+        unique: [true],
+        required: true
+    },
+    address:{
+        type: String,
+        required:true
+    }
+})
+
+// We will create a new collection
+const Student = new mongoose.model("Student", studentSchema)
+
+module.exports = Student
+=====================================================================================
+Use of async await:
+// post using promise
+// app.post("/students", (req, res) => {
+//     console.log("post req.body :", req.body);
+//     const user = new Student(req.body)
+//     user.save().then(() => {
+//         res.status(201).send(user)
+//     }).catch((e) => {
+//         res.status(400).send(e)
+//         // res.status(400).send("Error to save Post in DB :", e)
+//     })
+// })
+
+// post student data using async await
+app.post("/students", async (req, res) => {
+    try {
+        const user = new Student(req.body)
+        const createUser = await user.save()
+        res.status(201).send(createUser)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
+=====================================================================================
+
+// get all students data 
+app.get("/students", async (req, res) => {
+    try {
+        const studentsData = await Student.find()
+        res.send(studentsData)
+    } catch (error) {
+        console.log("Error to get Students data :", error);
+    }
+})
+
+// get individual student data
+app.get("/students/:id", async (req, res) => {
+    try {
+        const _id = req.params.id
+        console.log(_id)
+        const studentData = await Student.findById(_id)
+        res.send(studentData)
+    } catch (error) {
+        console.log("Error to get an individual Student data :", error);
+    }
+})
+
+=====================================================================================
+Handling DELETE Request in REST API using NodeJS & MongoDB:
+// delete individual student data
+app.delete("/students/:id", async (req, res) => { 
+    try {
+        const _id = req.params.id
+        console.log("_id is :",_id);
+        const deleteStudent = await Student.findByIdAndDelete(_id)
+        if(!_id){
+            console.log("If false _id :",_id);
+            res.status(400).send()
+        }
+        res.send(deleteStudent)
+    } catch (error) {
+        res.status(500).send(error)
+    }
+})
+
+=====================================================================================
+
+// Update student data by id
+app.patch("/students/:id", async (req, res) => {
+    try {
+        const _id = req.params.id
+        const updateStudents = await Student.findByIdAndUpdate(_id, req.body, {
+            new: true
+        })
+        res.send(updateStudents)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+=====================================================================================
+Adding Express Router in RESTful API:
+
+1. Create a new router:
+const router = new express.Router();
+
+2. We need to define the router:
+router.get("/vaibhav", (req, res)=>{
+	res.send("Learning router in api")
+})
+
+3. We need to register our router:
+app.use(router)
+
+Create a new folder in src called routers
+Create a new file in routers folder called student.js
+
+student.js:
+
+const express = require("express")
+const router = new express.Router()
+const Student = require("../models/students")
+
+
+router.get("/", (req, res) => {
+    res.send("Hello from root!!")
+})
+
+// post student data using async await
+router.post("/students", async (req, res) => {
+    try {
+        const user = new Student(req.body)
+        const createUser = await user.save()
+        res.status(201).send(createUser)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
+// get all students data 
+router.get("/students", async (req, res) => {
+    try {
+        const studentsData = await Student.find()
+        res.send(studentsData)
+    } catch (error) {
+        console.log("Error to get Students data :", error);
+    }
+})
+
+// get individual student data
+router.get("/students/:id", async (req, res) => {
+    try {
+        const _id = req.params.id
+        console.log("Individual id is :", _id)
+        const studentData = await Student.findById(_id)
+        res.send(studentData)
+    } catch (error) {
+        console.log("Error to get an individual Student data :", error);
+    }
+})
+
+// delete individual student data
+router.delete("/students/:id", async (req, res) => {
+    try {
+        const _id = req.params.id
+        console.log("_id is :", _id);
+        const deleteStudent = await Student.findByIdAndDelete(_id)
+        if (!_id) {
+            console.log("If false _id :", _id);
+            res.status(400).send()
+        }
+        res.send(deleteStudent)
+    } catch (error) {
+        res.status(500).send(error)
+    }
+})
+
+// Update student data by id
+router.patch("/students/:id", async (req, res) => {
+    try {
+        const _id = req.params.id
+        const updateStudents = await Student.findByIdAndUpdate(_id, req.body, {
+            new: true
+        })
+        res.send(updateStudents)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
+module.exports = router
+=====================================================================================
+Note: Sorting
+To sort records in output use .sort({sortbyname:1})
+	1 is used for ascending order
+	-1 is used for desceding order
+ex:
+app.get("/mens", async (req, res) => {
+    try {
+        const getRecords = await MensRanking.find({}).sort({"ranking":1})
+        res.status(200).send(getRecords)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+=====================================================================================
+Note: https://github.com/londonappbrewery/Build-Your-Own-RESTful-API
+
+HTML URL Encoding:
+https://www.w3schools.com/tags/ref_urlencode.ASP
+
+=====================================================================================
+
+Build-Your-Own-RESTful-API/app.js :
+
+//jshint esversion:6
+
+const express = require("express");
+const bodyParser = require("body-parser");
+const ejs = require("ejs");
+const mongoose = require('mongoose');
+
+const app = express();
+
+app.set('view engine', 'ejs');
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(express.static("public"));
+
+mongoose.connect("mongodb://localhost:27017/wikiDB", {
+  useNewUrlParser: true
+});
+
+const articleSchema = {
+  title: String,
+  content: String
+};
+
+const Article = mongoose.model("Article", articleSchema);
+
+/////////////////////////All Articles///////////////////////////////////
+
+app.route("/articles")
+
+
+.get(function(req, res){
+  Article.find(function(err, articles){
+    if (articles) {
+      const jsonArticles = JSON.stringify(articles);
+      res.send(jsonArticles);
+    } else {
+      res.send("No articles currently in wikiDB.");
+    }
+  });
+})
+
+.post(function(req, res){
+  const newArticle = Article({
+    title: req.body.title,
+    content: req.body.content
+  });
+
+  newArticle.save(function(err){
+    if (!err){
+      res.send("Successfully added a new article.");
+    } else {
+      res.send(err);
+    }
+  });
+})
+
+.delete(function(req, res){
+
+  Article.deleteMany(function(err){
+    if (!err){
+      res.send("Successfully deleted all the articles in wikiDB.");
+    } else {
+      res.send(err);
+    }
+  });
+
+});
+
+
+/////////////////////////Individual Articles///////////////////////////////////
+
+app.route("/articles/:articleTitle")
+
+.get(function(req, res){
+  const articleTitle = req.params.articleTitle;
+  Article.findOne({title: articleTitle}, function(err, article){
+    if (article){
+      const jsonArticle = JSON.stringify(article);
+      res.send(jsonArticle);
+    } else {
+      res.send("No article with that title found.");
+    }
+  });
+})
+
+.patch(function(req, res){
+  const articleTitle = req.params.articleTitle;
+  Article.update(
+    {title: articleTitle},
+    {content: req.body.newContent},
+    function(err){
+      if (!err){
+        res.send("Successfully updated selected article.");
+      } else {
+        res.send(err);
+      }
+    });
+})
+
+.put(function(req, res){
+
+  const articleTitle = req.params.articleTitle;
+
+  Article.update(
+    {title: articleTitle},
+    {content: req.body.newContent},
+    {overwrite: true},
+    function(err){
+      if (!err){
+        res.send("Successfully updated the content of the selected article.");
+      } else {
+        res.send(err);
+      }
+    });
+})
+
+
+.delete(function(req, res){
+  const articleTitle = req.params.articleTitle;
+  LostPet.findOneAndDelete({title: articleTitle}, function(err){
+    if (!err){
+      res.send("Successfully deleted selected article.");
+    } else {
+      res.send(err);
+    }
+  });
+});
+
+
+app.listen(3000, function() {
+  console.log("Server started on port 3000");
+});
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+Section 32: Authentication & Security:
+
+https://github.com/londonappbrewery/Authentication-Secrets
+
+=====================================================================================
+405. Level 1 - Register Users with Username and Password:
+=====================================================================================
+407. Level 2 - Database Encryption
+This is about scrambling , key to encode message, so with same we can decrypt it.
+
+npm i mongoose-encryption
+
+var secret = process.env.SOME_LONG_UNGUESSABLE_STRING;
+
+var secret ="Thisisourlittlesecret"
+userSchema.plugin(encrypt, { secret: secret, encryptedFields: ["password"] });
+
+408. Using Environment Variables to Keep Secrets Safe :
+
+npm i dotenv
+Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env. 
+Storing configuration in the environment separate from code is based on The Twelve-Factor App methodology.
+
+Create a .env file and keep all environment variable in it.
+
+Create a .gitignore file and mention .env file in it.
+
+Note that while uploading to production we need to mention all environment variables manually.
+=====================================================================================
+409. Level 3 - Hashing Passwords
+
+npm i md5
+
+npm i bcrypt
+=====================================================================================
+411. Level 4 - Salting and Hashing Passwords with bcrypt:
+
+npm i bcrypt
+=====================================================================================
+412. Level 5 - What are Cookies and Sessions?:
+413. Using Passport.js to Add Cookies and Sessions:
+npm i passport passport-local passport-local-mongoose express-session
+=====================================================================================
+414. Level 6 - OAuth 2.0 & How to Implement Sign In with Google
+
+https://github.com/londonappbrewery/Authentication-Secrets
+=====================================================================================
+
+=====================================================================================
+React.js
+CodeSandbox 
+
+In public folder we have index.html and style.css files.
+In src folder we have index.js
+index.js:
+	import react and react-dom 
+	ReactDom.render("What to show" , "where to show")
+	React uses babel to convert modern js and jsx into plain js which every browser can understand.
+	render method can render only one html tag, hence wrap all tags in one div tag or <> </>
+	
+=====================================================================================
+JSX:
+	JSX allows us to insert HTML into JS, also in same HTML we can insert JS 
+	We can insert js in html by keeping it in {} ex:
+		const luckyN = '7'
+		<p>My Lucky Number is {luckyN}</p>
+	Note: Only expression can be written , no statements like if/else
+	Expression vs Statement
+
+import React from "react";
+import "./styles.css";
+
+export default function App() {
+  const luckyN = "7";
+  const fName = "VaibhaV";
+  const lName = "Arde";
+  return (
+    <div className="App">
+      <h1>My Favourite Food</h1>
+      <ul>
+        <li>Varana</li>
+        <li>Khuttaval</li>
+        <li>Tomato</li>
+      </ul>
+      <h1>Lucky Number</h1>
+      <p>
+        My name is {fName} {lName}
+      </p>
+      <p>My name is {`${fName} ${lName}`}</p>
+	  <p>
+        Created by {`${fName} ${lName}`} in year {new Date().getFullYear()}
+      </p>
+      <p>My Lucky Number is {luckyN}</p>
+      <p>My Random Number is {Math.floor(Math.random() * 10)}</p>
+    </div>
+  );
+}
+
+=====================================================================================
+Styling React Elements and JSX Attributes:
+
+Attribute names are camelCased in JSX.
+
+      <div>
+        <img
+          className="image"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAKXxG7yXe7pKloc8Gwf87aNc6UrLZi71MvQ&usqp=CAU"
+          alt="yoga1"
+        />
+        <img
+          className="image"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN_-57oIAi03rR2fewz_qPYKg9VALyeWYFvA&usqp=CAU"
+          alt="yoga2"
+        />
+        <img
+          className="image"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8D0hDnNx1wU7zP6CcrlNNz67h8hh1HdD-oQ&usqp=CAU"
+          alt="yoga3"
+        />
+      </div>
+=====================================================================================
+Inline Styling:
+In JSX inline styling to be provided as object.
+In JSX inline Styling should be done in {{}} ex: style={{color : "red"}}
+
+import React from "react";
+import "./styles.css";
+
+export default function App() {
+
+  const time = new Date().getHours();
+  let greetings;
+  const customStyle = {
+    color: ""
+  };
+  
+  time < 12
+    ? ((greetings = "Good Morning"), (customStyle.color = "orange"))
+    : time < 18
+    ? ((greetings = "Good Afternoon"), (customStyle.color = "red"))
+    : ((greetings = "Good Night"), (customStyle.color = "green"));
+	
+  // time < 12
+  //   ? (customStyle.color = "orange")
+  //   : time < 18
+  //   ? (customStyle.color = "red")
+  // : (customStyle.color = "green");
+  
+  return (
+    <div className="App">
+      <h1 style={customStyle}>{greetings}</h1>
+    </div>
+  );
+}
+
+=====================================================================================
+React Components:
+
+index.js render using react-dom render method 
+	in index.js App.jsx is imported 
+	App.jsx is usually kept in components folder
+	other components are also kept in components folder
+	all components are imported in App.js or other sub-components
+=====================================================================================
+Import Export and Module :
+
+In below import export any name in import will work as that is a default export
+	export default pi
+	import pi from "./math.js"
+
+In below example we are exporting more that one values, so name of default export can be anything but other names should be as is they are exported
+	export default pi
+	export {doublePi, triplePi}
+	import PIE, {doublePi, triplePi} from "./math.js"
+
+Wild card import is always discouraged.
+	export default pi
+	export {doublePi, triplePi}
+	import * as pi from "./math.js"
+
+	console.log(pi.default)
+	console.log(pi.doublePi)
+	console.log(pi.triplePi)
+
+=====================================================================================
+Windows Local env setup for react Dev
+
+=====================================================================================
+React Props:
+We can pass data to components using props.
+
+import React from "react";
+import Card from "./Card";
+import contacts from "../contacts";
+
+function App() {
+  console.log("Contacts", contacts);
+  return (
+    <div>
+      <h1 className="heading">My Contacts</h1>
+      {contacts.map((contact) => {
+        return (
+          <Card
+            name={contact.name}
+            imgURL={contact.imgURL}
+            phone={contact.phone}
+            email={contact.email}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
+export default App;
+--------------
+import React from "react";
+
+const Card = (props) => {
+  console.log("props", props);
+  return (
+    <div>
+      <div className="card">
+        <div className="top">
+          <h2 className="name">{props.name}</h2>
+          <img className="circle-img" src={props.imgURL} alt="avatar_img" />
+        </div>
+        <div className="bottom">
+          <p className="info">{props.phone}</p>
+          <p className="info">{props.email}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Card;
+
+=====================================================================================
+React Dev Tools:
+
+install chrome extension : React Developer Tools
+=====================================================================================
+Mapping data to Components:
+use of map function:
+We can create a function thinking of only one object of an array and then we can call that function in map.
+ex:
+const displayContact= (contact)=>{}
+contacts.map(displayContact)
+
+=====================================================================================
+Map, Filter, Reduce, Find, FindIndex :
+
+map : Create a new array by doing something with each item in an array
+
+const newNumbers = numbers.map(x => x*2)
+------
+using forEach:
+	let newNumbers= []
+	numbers.forEach(x => {
+		newNumbers.push(x*2)
+	})
+------------------
+filter : Create a new array by keeping the items that return true
+
+const filteredNumbers = numbers.filter(x => x>10)
+------
+using forEach:
+	let newNumbers= []
+	numbers.forEach(x =>{
+	if(x>10){
+		newNumbers.push(x)
+		}
+	})
+------------------
+reduce : Accumulate a value by doing something to each item in an array
+
+const accumulatedNum = numbers.reduce((accumulater, currentNum) => accumulater + currentNum)
+------
+using forEach:
+let accumulatedNum = 0
+	numbers.forEach(num => accumulatedNum += num)
+------------------
+find : find the first item that matches from an array
+
+const firstItem = numbers.find(num => num > 10)
+
+------------------
+
+findIndex : find the index of the first item that matches
+
+const indexOfFirstItem = numbers.findIndex(num => num > 10)
+------------------
+=====================================================================================
+Ternery operator:
+condition ? ifTrue : ifFalse
+=====================================================================================
+State in React : Declarative and Imperative Programming.:
+
+Declarative Programming : How our UI looks depending upon value of a state variable 
+const App = ()=>{
+	let isDone = false
+	const strikeThrough = { textDecoration : "line-through" };
+	return <p style= { isDone ? strikeThrough : null } >Buy Milk</p>
+}
+
+Imperative Programming: 
+document.getElementById("root").style.textDecoration = "line-through"
+ 
+=====================================================================================
+React Hooks - useState :
+
+const state = useState("InitialValue")
+
+Note : state is an array of two i.e initialValue and a function.
+Use Array destructuring:
+const [count, setCount] = useState(0)
+const increaseCount = ()=>{
+	setCount(count + 1)
+}
+=====================================================================================
+Object and Array Destructuring :
+
+=====================================================================================
+Event Handling in React:
+
+const cars = [
+  {
+    model: "Honda Civic",
+    coloursByPopularity: ["black", "silver"],
+    speedStats: {
+      topSpeed: 140,
+      zeroToSixty: 8.5
+    }
+  },
+  {
+    model: "Tesla Model 3",
+    coloursByPopularity: ["red", "white"],
+    speedStats: {
+      topSpeed: 150,
+      zeroToSixty: 3.2
+    }
+  }
+];
+
+export default cars;
+
+--------------Solution as below:
+
+import React from "react";
+import ReactDOM from "react-dom";
+import cars from "./practice";
+
+const [honda, tesla] = cars;
+
+const {
+  speedStats: { topSpeed: hondaTopSpeed }
+} = honda;
+const {
+  speedStats: { topSpeed: teslaTopSpeed }
+} = tesla;
+
+const {
+  coloursByPopularity: [hondaTopColour]
+} = honda;
+const {
+  coloursByPopularity: [teslaTopColour]
+} = tesla;
+
+ReactDOM.render(
+  <table>
+    <tr>
+      <th>Brand</th>
+      <th>Top Speed</th>
+      <th>Top Colour</th>
+    </tr>
+    <tr>
+      <td>{tesla.model}</td>
+      <td>{teslaTopSpeed}</td>
+      <td>{teslaTopColour}</td>
+    </tr>
+    <tr>
+      <td>{honda.model}</td>
+      <td>{hondaTopSpeed}</td>
+      <td>{hondaTopColour}</td>
+    </tr>
+  </table>,
+  document.getElementById("root")
+);
+
+=====================================================================================
+React Event Handling : 
+
+https://www.w3schools.com/html/html_attributes.asp
+
+https://www.w3schools.com/tags/ref_eventattributes.asp
+
+import React, { useState } from "react";
+
+function App() {
+  const [headingText, setHeadingText] = useState("Hello");
+  const [isMousedOver, setMouseOver] = useState(false);
+
+  function handleClick() {
+    setHeadingText("Submitted");
+  }
+
+  function handleMouseOver() {
+    setMouseOver(true);
+  }
+
+  function handleMouseOut() {
+    setMouseOver(false);
+  }
+
+  return (
+    <div className="container">
+      <h1>{headingText}</h1>
+      <input type="text" placeholder="What's your name?" />
+      <button
+        style={{ backgroundColor: isMousedOver ? "black" : "white" }}
+        onClick={handleClick}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+      >
+        Submit
+      </button>
+    </div>
+  );
+}
+
+export default App;
+
+=====================================================================================
+React Forms:
+
+https://reactjs.org/docs/forms.html#controlled-components
+
+import React, { useState } from "react";
+
+function App() {
+  const [name, setName] = useState("");
+  const [headingText, setHeading] = useState("");
+
+  function handleChange(event) {
+    console.log(event.target.value);
+    setName(event.target.value);
+  }
+
+  function handleClick(event) {
+    setHeading(name);
+
+    event.preventDefault();
+  }
+
+  return (
+    <div className="container">
+      <h1>Hello {headingText}</h1>
+      <form onSubmit={handleClick}>
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="What's your name?"
+          value={name}
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+}
+
+export default App;
+
+=====================================================================================
+Class Components vs. Functional Components:
+
+https://reactjs.org/docs/hooks-intro.html
+https://reactjs.org/docs/hooks-faq.html#should-i-use-hooks-classes-or-a-mix-of-both
+
+=====================================================================================
+427. Changing Complex State :
+429. Javascript ES6 Spread Operator :
+
+import React, { useState } from "react";
+
+function App() {
+  const [inputText, setInputText] = useState("");
+  const [items, setItems] = useState([]);
+
+  function handleChange(event) {
+    const newValue = event.target.value;
+    setInputText(newValue);
+  }
+
+  function addItem() {
+    setItems(prevItems => {
+      return [...prevItems, inputText];
+    });
+    setInputText("");
+  }
+
+  return (
+    <div className="container">
+      <div className="heading">
+        <h1>To-Do List</h1>
+      </div>
+      <div className="form">
+        <input onChange={handleChange} type="text" value={inputText} />
+        <button onClick={addItem}>
+          <span>Add</span>
+        </button>
+      </div>
+      <div>
+        <ul>
+          {items.map(todoItem => (
+            <li>{todoItem}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+=====================================================================================
+
+App.jsx :
+
+import React, { useState } from "react";
+import ToDoItem from "./ToDoItem";
+import InputArea from "./InputArea";
+
+function App() {
+  const [items, setItems] = useState([]);
+
+  function addItem(inputText) {
+    setItems(prevItems => {
+      return [...prevItems, inputText];
+    });
+  }
+
+  function deleteItem(id) {
+    setItems(prevItems => {
+      return prevItems.filter((item, index) => {
+        return index !== id;
+      });
+    });
+  }
+
+  return (
+    <div className="container">
+      <div className="heading">
+        <h1>To-Do List</h1>
+      </div>
+      <InputArea onAdd={addItem} />
+      <div>
+        <ul>
+          {items.map((todoItem, index) => (
+            <ToDoItem
+              key={index}
+              id={index}
+              text={todoItem}
+              onChecked={deleteItem}
+            />
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+------------
+InputArea.jsx :
+
+import React, { useState } from "react";
+
+function InputArea(props) {
+  const [inputText, setInputText] = useState("");
+
+  function handleChange(event) {
+    const newValue = event.target.value;
+    setInputText(newValue);
+  }
+
+  return (
+    <div className="form">
+      <input onChange={handleChange} type="text" value={inputText} />
+      <button
+        onClick={() => {
+          props.onAdd(inputText);
+          setInputText("");
+        }}
+      >
+        <span>Add</span>
+      </button>
+    </div>
+  );
+}
+
+export default InputArea;
+------------
+ToDoItem.jsx :
+
+import React from "react";
+
+function ToDoItem(props) {
+  return (
+    <div
+      onClick={() => {
+        props.onChecked(props.id);
+      }}
+    >
+      <li>{props.text}</li>
+    </div>
+  );
+}
+
+export default ToDoItem;
+
+------------
+=====================================================================================
+Material UI :
+
+Fab : floating Action Button
+
+Zoom 
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
+
+=====================================================================================
